@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EdTech 情報週報 · 2026-06-15</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0f1320; --panel:#161b2e; --panel2:#1d2336;
+    --card:#ffffff; --card-border:#e4e7ef;
+    --ink:#11151f; --ink-soft:#5b6473; --muted:#8b93a4;
+    --accent:#4f7cff; --accent-2:#22c3a6;
+    --hi:#ffd54a; --tag-design:#1f8a5b; --tag-design-bg:#e3f6ec;
+    --tag-context:#6b7280; --tag-context-bg:#eef0f4;
+    --shadow:0 1px 3px rgba(10,15,30,.08),0 8px 24px rgba(10,15,30,.06);
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0; background:var(--bg);
+    font-family:"Noto Sans TC","Inter",system-ui,-apple-system,sans-serif;
+    color:var(--ink); line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:inherit;}
+  .wrap{max-width:980px;margin:0 auto;padding:0 18px 64px;}
+
+  /* Header */
+  header.top{
+    background:linear-gradient(135deg,#141a2e 0%,#222c4d 100%);
+    color:#fff; padding:34px 0 30px; border-bottom:1px solid rgba(255,255,255,.06);
+  }
+  .top .wrap{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:14px;padding-bottom:0;}
+  .brand{display:flex;align-items:center;gap:14px;}
+  .logo{
+    width:46px;height:46px;border-radius:12px;flex:none;
+    background:linear-gradient(135deg,var(--accent),var(--accent-2));
+    display:flex;align-items:center;justify-content:center;font-weight:900;font-size:20px;color:#fff;
+    font-family:"Inter",sans-serif;
+  }
+  .brand h1{font-size:25px;margin:0;font-weight:900;letter-spacing:.3px;}
+  .brand p{margin:2px 0 0;color:#aeb7cd;font-size:13.5px;}
+  .issue{text-align:right;}
+  .issue .date{font-family:"Inter",sans-serif;font-weight:800;font-size:22px;color:#fff;}
+  .issue .label{font-size:12px;color:#8b95ad;letter-spacing:2px;text-transform:uppercase;}
+  .scope{
+    margin-top:18px;display:flex;flex-wrap:wrap;gap:8px;
+  }
+  .scope span{
+    background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.1);
+    color:#cdd5e6;font-size:12px;padding:4px 11px;border-radius:20px;
+  }
+
+  /* Highlights */
+  section.hi-block{
+    background:var(--panel); margin-top:26px;border-radius:18px;padding:26px 26px 12px;
+    border:1px solid rgba(255,255,255,.05);
+  }
+  .hi-block h2{color:#fff;font-size:18px;margin:0 0 4px;display:flex;align-items:center;gap:9px;}
+  .hi-block .sub{color:#8b95ad;font-size:13px;margin:0 0 16px;}
+  .hi-dot{width:9px;height:9px;border-radius:50%;background:var(--hi);box-shadow:0 0 0 4px rgba(255,213,74,.18);}
+  ol.hilist{list-style:none;counter-reset:h;margin:0;padding:0;}
+  ol.hilist li{
+    counter-increment:h;position:relative;padding:14px 4px 16px 56px;
+    border-top:1px solid rgba(255,255,255,.06);color:#dfe5f1;font-size:14.5px;
+  }
+  ol.hilist li:first-child{border-top:none;}
+  ol.hilist li::before{
+    content:counter(h,decimal-leading-zero);position:absolute;left:0;top:13px;
+    font-family:"Inter",sans-serif;font-weight:800;font-size:15px;color:var(--accent);
+    background:rgba(79,124,255,.12);width:38px;height:38px;border-radius:10px;
+    display:flex;align-items:center;justify-content:center;
+  }
+  ol.hilist li b{color:#fff;font-weight:700;}
+  ol.hilist li .meta{display:block;color:#8b95ad;font-size:12px;margin-top:3px;}
+  ol.hilist li .hi-src{display:inline-block;margin-top:8px;font-family:"Inter",sans-serif;font-size:12px;font-weight:600;color:#8fb0ff;text-decoration:none;}
+  ol.hilist li .hi-src:hover{text-decoration:underline;}
+
+  /* Toggle bar */
+  .toolbar{
+    position:sticky;top:0;z-index:10;margin-top:30px;
+    background:rgba(15,19,32,.92);backdrop-filter:blur(8px);
+    padding:14px 4px;display:flex;align-items:center;justify-content:space-between;gap:14px;
+    border-bottom:1px solid rgba(255,255,255,.07);
+  }
+  .toolbar h2{color:#fff;font-size:17px;margin:0;}
+  .switch{display:flex;align-items:center;gap:10px;color:#cdd5e6;font-size:13px;cursor:pointer;user-select:none;}
+  .switch input{display:none;}
+  .track{width:44px;height:24px;border-radius:20px;background:#33405e;position:relative;transition:.2s;flex:none;}
+  .track::after{content:"";position:absolute;top:3px;left:3px;width:18px;height:18px;border-radius:50%;background:#fff;transition:.2s;}
+  .switch input:checked + .track{background:var(--tag-design);}
+  .switch input:checked + .track::after{transform:translateX(20px);}
+
+  /* Category */
+  .cat{margin-top:30px;}
+  .cat-head{display:flex;align-items:center;gap:11px;margin-bottom:14px;}
+  .cat-head .ico{
+    width:34px;height:34px;border-radius:9px;flex:none;display:flex;align-items:center;justify-content:center;font-size:17px;
+    background:var(--panel2);border:1px solid rgba(255,255,255,.07);
+  }
+  .cat-head h3{color:#fff;font-size:17px;margin:0;font-weight:700;}
+  .cat-head .count{color:#8b95ad;font-size:12.5px;margin-left:auto;}
+
+  .cards{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+  @media(max-width:720px){.cards{grid-template-columns:1fr;}}
+  .card{
+    background:var(--card);border:1px solid var(--card-border);border-radius:14px;
+    padding:17px 17px 15px;box-shadow:var(--shadow);display:flex;flex-direction:column;
+  }
+  .card .tags{display:flex;gap:7px;align-items:center;margin-bottom:9px;flex-wrap:wrap;}
+  .tag{font-size:11px;font-weight:700;padding:3px 9px;border-radius:6px;letter-spacing:.3px;}
+  .tag.design{color:var(--tag-design);background:var(--tag-design-bg);}
+  .tag.context{color:var(--tag-context);background:var(--tag-context-bg);}
+  .tag.region{color:#9a5b00;background:#fdeccb;}
+  .card h4{margin:0 0 7px;font-size:15.5px;line-height:1.45;color:var(--ink);font-weight:700;}
+  .card .lead{font-size:13.5px;color:var(--ink-soft);margin:0 0 11px;}
+  .card .foryou{
+    background:#f4f7ff;border-left:3px solid var(--accent);border-radius:0 8px 8px 0;
+    padding:9px 12px;font-size:13px;color:#324063;margin:0 0 12px;
+  }
+  .card .foryou b{color:var(--accent);font-weight:700;}
+  .card .foot{margin-top:auto;display:flex;align-items:center;justify-content:space-between;gap:10px;border-top:1px solid #eef0f5;padding-top:11px;}
+  .card .src{font-size:12.5px;font-weight:600;color:var(--accent);text-decoration:none;display:inline-flex;align-items:center;gap:5px;}
+  .card .src:hover{text-decoration:underline;}
+  .card .date{font-size:12px;color:var(--muted);font-family:"Inter",sans-serif;}
+  .empty{
+    grid-column:1/-1;background:rgba(255,255,255,.04);border:1px dashed rgba(255,255,255,.14);
+    border-radius:12px;color:#8b95ad;font-size:13.5px;padding:18px;text-align:center;
+  }
+  .hidden{display:none !important;}
+
+  /* 取樣方式說明 */
+  .method{
+    margin-top:30px;background:var(--panel);border:1px solid rgba(255,255,255,.06);
+    border-radius:14px;padding:18px 20px;color:#aeb7cd;font-size:12.5px;line-height:1.75;
+  }
+  .method b{color:#dfe5f1;}
+  .method .excl{color:#8b95ad;}
+
+  footer{margin-top:30px;text-align:center;color:#6c768c;font-size:12px;line-height:1.8;}
+  footer .ftag{color:#8b95ad;}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <div class="brand">
+      <div class="logo">ET</div>
+      <div>
+        <h1>EdTech 情報週報</h1>
+        <p>給 EdTech UX Designer 的每週產業掃描 · 北美優先</p>
+      </div>
+    </div>
+    <div class="issue">
+      <div class="label">本期執行日期</div>
+      <div class="date">2026.06.15</div>
+    </div>
+  </div>
+  <div class="wrap" style="padding-top:0;">
+    <div class="scope">
+      <span>蒐集區間：2026/06/08 – 06/15（嚴格七天）</span>
+      <span>取樣：固定來源面板 + 搜尋補漏</span>
+      <span>地區：US › APAC › EU</span>
+    </div>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <!-- HIGHLIGHTS -->
+  <section class="hi-block">
+    <h2><span class="hi-dot"></span>本週最該關注</h2>
+    <p class="sub">依設計決策影響程度排序 · 每點皆可查證於本週（6/8–6/15），並附當期來源</p>
+    <ol class="hilist">
+      <li>
+        <b>InfoComm 2026 本週開展（6/17–19，Las Vegas）</b>：ViewSonic 進駐 Central Hall Booth C7010，主推 LDS136-152 dvLED 與 ViewBoard IFP63；Promethean（Booth C6209）展出 ActivPanel 10 Premium、ActivPanel LE 與 D-Series。
+        <span class="meta">→ 競品硬體與軟體生態最密集的發布期，是現場對標自家 app 首頁、登入與跨裝置體驗的時機。</span>
+        <a class="hi-src" href="https://ravepubs.com/ones-to-watch-infocomm-2026-viewsonic/" target="_blank" rel="noopener">來源：rAVe Pubs（2026-06）↗</a>
+      </li>
+      <li>
+        <b>Ohio AI 政策強制期限 7/1 逼近</b>：依 Ohio Revised Code 3301.24（HB96 預算案），全州每所學區、社區與 STEM 學校須於 2026/07/01 前採用 AI 政策；6/12 多家媒體提醒倒數，州府另提供 model policy 模板。
+        <span class="meta">→ AI 功能需可被學校政策審核、停用與紀錄，並清楚揭露 PII／FERPA 處理方式，否則難進採購名單。</span>
+        <a class="hi-src" href="https://kjk.com/2026/06/12/ohios-july-1-2026-school-ai-policy-deadline-what-districts-educators-and-parents-need-to-know/" target="_blank" rel="noopener">來源：KJK（2026-06-12）↗</a>
+      </li>
+      <li>
+        <b>Google Classroom：Gemini 轉換 rubric，6/8 全面推出</b>：可上傳量表檔案或實體照片（.jpeg／.png）由 Gemini 生成可編輯量表；目前僅支援英文、限 18 歲以上，並由 Admin console 的 Gemini in Classroom 開關控管。
+        <span class="meta">→ 「素材／照片→AI 一鍵結構化」成評量準備基準，但語言與年齡限制、可整體停用都是設計要對齊的條件。</span>
+        <a class="hi-src" href="https://workspaceupdates.googleblog.com/2026/06/convert-rubric-files-and-images-into-Google-Classroom-rubrics-with-help-from-Gemini.html" target="_blank" rel="noopener">來源：Google Workspace Updates（2026-06-08）↗</a>
+      </li>
+      <li>
+        <b>NYC 家長持續施壓，要求學校 AI 暫停兩年</b>：6/9 家長與社區領袖發出兩年 moratorium 信，逾百人於教育政策小組會議作證；校方 6/12 回應將「盡快」公布 AI 政策。
+        <span class="meta">→ 大型學區「先治理後上線」氛圍升溫，產品的可審核性、家長 opt-out 與透明度將決定能否進場。</span>
+        <a class="hi-src" href="https://www.k12dive.com/news/nyc-schools-face-public-pressure-to-pause-ai-use-for-2-years/822673/" target="_blank" rel="noopener">來源：K-12 Dive（2026-06）↗</a>
+      </li>
+      <li>
+        <b>ViewSonic LDE 系列獲 2026 EdTech Breakthrough「教育硬體創新獎」</b>：6/10 公布得獎名單，自家 dvLED LDE 系列（all-in-one、136／163 吋）獲獎。
+        <span class="meta">→ dvLED 走入教育大空間，UI 在超大尺寸、遠距可視情境的對比與字級可借此檢視。</span>
+        <a class="hi-src" href="https://www.globenewswire.com/news-release/2026/06/10/3309859/0/en/global-educational-technology-innovators-honored-in-2026-edtech-breakthrough-awards-program.html" target="_blank" rel="noopener">來源：GlobeNewswire（2026-06-10）↗</a>
+      </li>
+    </ol>
+  </section>
+
+  <!-- TOOLBAR -->
+  <div class="toolbar">
+    <h2>本週結果</h2>
+    <label class="switch">
+      <span>只看「影響設計決策」</span>
+      <input type="checkbox" id="designOnly">
+      <span class="track"></span>
+    </label>
+  </div>
+
+  <!-- 1. 法規 -->
+  <section class="cat" data-cat="法規">
+    <div class="cat-head">
+      <div class="ico">⚖️</div><h3>法規 / 政策</h3>
+      <span class="count"></span>
+    </div>
+    <div class="cards">
+
+      <article class="card" data-level="design">
+        <div class="tags"><span class="tag design">影響設計決策</span><span class="tag region">US · 州級</span></div>
+        <h4>Ohio：每校須於 7/1 前採用 AI 政策，倒數一週</h4>
+        <p class="lead">Ohio Revised Code 3301.24（HB96 預算案）要求每所學區、社區與 STEM 學校於 2026/07/01 前採用 AI 政策；州府提供可客製的 model policy，聚焦家長／社區告知與 PII、FERPA 合規。6/12 多家媒體提醒倒數。</p>
+        <div class="foryou"><b>對你而言：</b>AI 功能需提供可被學校政策審核、停用與紀錄的設定面，並在 UI 清楚區隔「輔助」與「決策」用途。</div>
+        <div class="foot"><a class="src" href="https://kjk.com/2026/06/12/ohios-july-1-2026-school-ai-policy-deadline-what-districts-educators-and-parents-need-to-know/" target="_blank" rel="noopener">來源 ↗</a><span class="date">2026-06-12</span></div>
+      </article>
+
+      <article class="card" data-level="context">
+        <div class="tags"><span class="tag context">背景脈絡</span><span class="tag region">US · NYC</span></div>
+        <h4>NYC 家長要求 AI 暫停兩年，校方稱將「盡快」公布政策</h4>
+        <p class="lead">6/9 家長與社區領袖發出要求兩年 moratorium 的信；逾百人於 Panel for Educational Policy 會議作證。新任市府表態與前任不同，6/12 回應將盡快公布 AI 政策。</p>
+        <div class="foryou"><b>對你而言：</b>大型學區「先治理後上線」升溫，產品的可審核性、家長 opt-out 與透明度直接影響能否被允許進場。</div>
+        <div class="foot"><a class="src" href="https://www.k12dive.com/news/nyc-schools-face-public-pressure-to-pause-ai-use-for-2-years/822673/" target="_blank" rel="noopener">來源 ↗</a><span class="date">2026-06</span></div>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- 2. IFP -->
+  <section class="cat" data-cat="IFP">
+    <div class="cat-head">
+      <div class="ico">🖥️</div><h3>IFP 互動大屏</h3>
+      <span class="count"></span>
+    </div>
+    <div class="cards">
+
+      <article class="card" data-level="design">
+        <div class="tags"><span class="tag design">影響設計決策</span><span class="tag region">US · 自家</span></div>
+        <h4>ViewSonic 進駐 InfoComm 2026（Booth C7010，6/17–19）</h4>
+        <p class="lead">於 Central Hall 展出 LDS136-152 dvLED、ViewBoard IFP63（EDLA、4K PCAP）與 CDE31／CDEG3 商用顯示，並帶兩場 dvLED 主題教育課程；軟體生態（myViewBoard、ClassSwift、AirSync、ViewSonic Manager）為展示重點。</p>
+        <div class="foryou"><b>對你而言：</b>展會把賣點收斂到軟體生態，是檢視四款 app 在同機型上首頁、切換、登入體驗一致性的最佳契機。</div>
+        <div class="foot"><a class="src" href="https://ravepubs.com/ones-to-watch-infocomm-2026-viewsonic/" target="_blank" rel="noopener">來源 ↗</a><span class="date">2026-06</span></div>
+      </article>
+
+      <article class="card" data-level="context">
+        <div class="tags"><span class="tag context">背景脈絡</span><span class="tag region">US · 自家</span></div>
+        <h4>ViewSonic LDE 系列獲 2026 EdTech Breakthrough 教育硬體創新獎</h4>
+        <p class="lead">6/10 公布的 2026 EdTech Breakthrough Awards 中，ViewSonic LDE 系列 dvLED（all-in-one、預配置、136／163 吋、原生 1080p、GOB 技術）獲「Education Hardware Innovation Award」。</p>
+        <div class="foryou"><b>對你而言：</b>dvLED 進入教育大空間，UI 需考量超大尺寸與遠距可視情境下的對比、字級與資訊密度。</div>
+        <div class="foot"><a class="src" href="https://www.globenewswire.com/news-release/2026/06/10/3309859/0/en/global-educational-technology-innovators-honored-in-2026-edtech-breakthrough-awards-program.html" target="_blank" rel="noopener">來源 ↗</a><span class="date">2026-06-10</span></div>
+      </article>
+
+      <article class="card" data-level="context">
+        <div class="tags"><span class="tag context">背景脈絡</span><span class="tag region">US · 競品</span></div>
+        <h4>Promethean 於 InfoComm 2026 展出 ActivPanel 10 Premium 與 LE</h4>
+        <p class="lead">Promethean（Booth C6209）展出旗艦 ActivPanel 10 Premium、EDLA 認證的 ActivPanel LE，以及非互動式數位看板 D-Series，現場提供實機體驗與每日新品展示。</p>
+        <div class="foryou"><b>對你而言：</b>低價 EDLA 機型持續鋪貨、硬體趨同，差異化更靠課堂工作流與登入／帳號流程順暢度。</div>
+        <div class="foot"><a class="src" href="https://www.prnewswire.com/news-releases/promethean-showcases-award-winning-workplace-solutions-at-infocomm-2026-302784457.html" target="_blank" rel="noopener">來源 ↗</a><span class="date">2026-06</span></div>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- 3. 軟體競品 -->
+  <section class="cat" data-cat="軟體">
+    <div class="cat-head">
+      <div class="ico">🧩</div><h3>教育軟體競品</h3>
+      <span class="count"></span>
+    </div>
+    <div class="cards">
+
+      <article class="card" data-level="design">
+        <div class="tags"><span class="tag design">影響設計決策</span><span class="tag region">US · 競品</span></div>
+        <h4>Google Classroom：Gemini 轉換 rubric，6/8 起全面推出</h4>
+        <p class="lead">教師可上傳 rubric 檔案或實體量表照片（.jpeg／.png），由 Gemini 在指派流程中生成可編輯的互動量表。目前僅支援英文、限 18 歲以上使用者；功能由 Admin console 的 Gemini in Classroom 開關控管，停用後即無法轉換。</p>
+        <div class="foryou"><b>對你而言：</b>「素材／照片→AI 一鍵結構化」成評量準備基準，但語言、年齡與管理員可整體停用，都是自家 AI 入口要對齊的設計條件。</div>
+        <div class="foot"><a class="src" href="https://workspaceupdates.googleblog.com/2026/06/convert-rubric-files-and-images-into-Google-Classroom-rubrics-with-help-from-Gemini.html" target="_blank" rel="noopener">來源 ↗</a><span class="date">2026-06-08</span></div>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- 4. UX 趨勢 -->
+  <section class="cat" data-cat="UX">
+    <div class="cat-head">
+      <div class="ico">🎨</div><h3>UX / 設計趨勢</h3>
+      <span class="count"></span>
+    </div>
+    <div class="cards">
+      <div class="empty">本週（6/8–6/15）無重大更新。面板掃描確認：W3C WCAG-EM 2.0 首版草稿發布於 2026/02/05、WCAG 3 與 WCAG-EM 2.0 正式版預計 Q2 內陸續推進，皆非本週新發布，故不收錄。</div>
+    </div>
+  </section>
+
+  <!-- 5. 市場動向 -->
+  <section class="cat" data-cat="市場">
+    <div class="cat-head">
+      <div class="ico">📊</div><h3>市場動向 / 展會報告</h3>
+      <span class="count"></span>
+    </div>
+    <div class="cards">
+
+      <article class="card" data-level="context">
+        <div class="tags"><span class="tag context">背景脈絡</span><span class="tag region">US · 展會</span></div>
+        <h4>InfoComm 2026 本週於 Las Vegas 舉行（展區 6/17–19）</h4>
+        <p class="lead">逾 750 家參展，涵蓋會議、數位看板、廣電、企業 IT、教育與現場活動科技，是 Pro AV 與教育顯示的年度重要窗口；多家 IFP 廠商於本週密集發布。</p>
+        <div class="foryou"><b>對你而言：</b>本週是競品硬體與生態最集中的發布期，建議盤點要追蹤的對手新品作為設計 benchmark。</div>
+        <div class="foot"><a class="src" href="https://www.infocommshow.org/" target="_blank" rel="noopener">來源 ↗</a><span class="date">2026-06</span></div>
+      </article>
+
+      <article class="card" data-level="context">
+        <div class="tags"><span class="tag context">背景脈絡</span><span class="tag region">EU · 高教調查</span></div>
+        <h4>Adobe 調查：68% 學生認為 AI 最省時，1/5 反映創意下降</h4>
+        <p class="lead">6/12 發布，調查 500 名英國大學生與畢業生對 AI、數位工具與遠距協作的使用習慣；多數視 AI 為最大省時工具，但部分反映創意受影響。</p>
+        <div class="foryou"><b>對你而言：</b>樣本為英國高教、非北美 K-12，僅供趨勢參考；提醒 AI 功能應保留「思考留白」，避免一鍵代勞削弱主動性。</div>
+        <div class="foot"><a class="src" href="https://www.edtechinnovationhub.com/news/68-of-young-students-say-ai-saves-time-while-one-in-five-report-less-creativity" target="_blank" rel="noopener">來源 ↗</a><span class="date">2026-06-12</span></div>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- 取樣方式 -->
+  <section class="method">
+    <b>本期取樣方式（固定來源面板 + 搜尋補漏）</b><br>
+    先逐層掃描固定面板的近 7 天：一手／權威層（Federal Register、ed.gov、各州 DOE/DEW、FTC、W3C WAI、1EdTech、各廠商 newsroom、Google Workspace Updates）→ 產業媒體層（EdWeek Market Brief、EdSurge、K-12 Dive、EdTech Innovation Hub、THE Journal）→ 展會／報告層（ISTE、BETT、HolonIQ）；再用關鍵字搜尋補面板外漏網，最後一律回溯到最上游一手來源。<br>
+    <span class="excl">依「嚴格七天」排除（落在 6/8 之前、屬上一期區間）：FTC 對 Illuminate Education 學生資料安全最終命令（6/5）、Digital Promise $8M AI 家教補助（6/4）、OpenAI Education 動態（6/5）。這些雖高度相關，但日期不屬本週，故不列入本期卡片。</span>
+  </section>
+
+  <footer>
+    <div>EdTech 情報週報 · 本期 2026-06-15 · 蒐集區間 2026/06/08–06/15（嚴格七天）</div>
+    <div class="ftag">本期僅保留可查證於本週的項目，並回溯一手來源；無更新之分區據實標註。連結為原始來源，請以原文為準。</div>
+  </footer>
+
+</div>
+
+<script>
+  // 設計決策過濾開關
+  (function(){
+    var toggle=document.getElementById('designOnly');
+    var cats=document.querySelectorAll('.cat');
+    function apply(){
+      var on=toggle.checked;
+      cats.forEach(function(cat){
+        var cards=cat.querySelectorAll('.card');
+        var shown=0;
+        cards.forEach(function(c){
+          var keep=!on || c.getAttribute('data-level')==='design';
+          c.classList.toggle('hidden',!keep);
+          if(keep) shown++;
+        });
+        var emptyEl=cat.querySelector('.empty');
+        if(emptyEl && cat.querySelectorAll('.card').length>0){
+          if(shown===0){
+            emptyEl.textContent='本區本週無「影響設計決策」項目';
+            emptyEl.classList.remove('hidden');
+          } else {
+            emptyEl.classList.add('hidden');
+          }
+        }
+        var countEl=cat.querySelector('.count');
+        if(countEl) countEl.textContent=shown+' 則';
+      });
+    }
+    cats.forEach(function(cat){
+      var n=cat.querySelectorAll('.card').length;
+      var c=cat.querySelector('.count'); if(c)c.textContent=n+' 則';
+    });
+    toggle.addEventListener('change',apply);
+  })();
+</script>
+</body>
+</html>

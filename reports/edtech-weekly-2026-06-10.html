@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EdTech 情報週報 · 2026-06-10</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0f1320; --panel:#161b2e; --panel2:#1d2336;
+    --card:#ffffff; --card-border:#e4e7ef;
+    --ink:#11151f; --ink-soft:#5b6473; --muted:#8b93a4;
+    --accent:#4f7cff; --accent-2:#22c3a6;
+    --hi:#ffd54a; --tag-design:#1f8a5b; --tag-design-bg:#e3f6ec;
+    --tag-context:#6b7280; --tag-context-bg:#eef0f4;
+    --shadow:0 1px 3px rgba(10,15,30,.08),0 8px 24px rgba(10,15,30,.06);
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0; background:var(--bg);
+    font-family:"Noto Sans TC","Inter",system-ui,-apple-system,sans-serif;
+    color:var(--ink); line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:inherit;}
+  .wrap{max-width:980px;margin:0 auto;padding:0 18px 64px;}
+
+  /* Header */
+  header.top{
+    background:linear-gradient(135deg,#141a2e 0%,#222c4d 100%);
+    color:#fff; padding:34px 0 30px; border-bottom:1px solid rgba(255,255,255,.06);
+  }
+  .top .wrap{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:14px;padding-bottom:0;}
+  .brand{display:flex;align-items:center;gap:14px;}
+  .logo{
+    width:46px;height:46px;border-radius:12px;flex:none;
+    background:linear-gradient(135deg,var(--accent),var(--accent-2));
+    display:flex;align-items:center;justify-content:center;font-weight:900;font-size:20px;color:#fff;
+    font-family:"Inter",sans-serif;
+  }
+  .brand h1{font-size:25px;margin:0;font-weight:900;letter-spacing:.3px;}
+  .brand p{margin:2px 0 0;color:#aeb7cd;font-size:13.5px;}
+  .issue{text-align:right;}
+  .issue .date{font-family:"Inter",sans-serif;font-weight:800;font-size:22px;color:#fff;}
+  .issue .label{font-size:12px;color:#8b95ad;letter-spacing:2px;text-transform:uppercase;}
+  .scope{
+    margin-top:18px;display:flex;flex-wrap:wrap;gap:8px;
+  }
+  .scope span{
+    background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.1);
+    color:#cdd5e6;font-size:12px;padding:4px 11px;border-radius:20px;
+  }
+
+  /* Highlights */
+  section.hi-block{
+    background:var(--panel); margin-top:26px;border-radius:18px;padding:26px 26px 12px;
+    border:1px solid rgba(255,255,255,.05);
+  }
+  .hi-block h2{color:#fff;font-size:18px;margin:0 0 4px;display:flex;align-items:center;gap:9px;}
+  .hi-block .sub{color:#8b95ad;font-size:13px;margin:0 0 16px;}
+  .hi-dot{width:9px;height:9px;border-radius:50%;background:var(--hi);box-shadow:0 0 0 4px rgba(255,213,74,.18);}
+  ol.hilist{list-style:none;counter-reset:h;margin:0;padding:0;}
+  ol.hilist li{
+    counter-increment:h;position:relative;padding:14px 4px 16px 56px;
+    border-top:1px solid rgba(255,255,255,.06);color:#dfe5f1;font-size:14.5px;
+  }
+  ol.hilist li:first-child{border-top:none;}
+  ol.hilist li::before{
+    content:counter(h,decimal-leading-zero);position:absolute;left:0;top:13px;
+    font-family:"Inter",sans-serif;font-weight:800;font-size:15px;color:var(--accent);
+    background:rgba(79,124,255,.12);width:38px;height:38px;border-radius:10px;
+    display:flex;align-items:center;justify-content:center;
+  }
+  ol.hilist li b{color:#fff;font-weight:700;}
+  ol.hilist li .meta{display:block;color:#8b95ad;font-size:12px;margin-top:3px;}
+
+  /* Toggle bar */
+  .toolbar{
+    position:sticky;top:0;z-index:10;margin-top:30px;
+    background:rgba(15,19,32,.92);backdrop-filter:blur(8px);
+    padding:14px 4px;display:flex;align-items:center;justify-content:space-between;gap:14px;
+    border-bottom:1px solid rgba(255,255,255,.07);
+  }
+  .toolbar h2{color:#fff;font-size:17px;margin:0;}
+  .switch{display:flex;align-items:center;gap:10px;color:#cdd5e6;font-size:13px;cursor:pointer;user-select:none;}
+  .switch input{display:none;}
+  .track{width:44px;height:24px;border-radius:20px;background:#33405e;position:relative;transition:.2s;flex:none;}
+  .track::after{content:"";position:absolute;top:3px;left:3px;width:18px;height:18px;border-radius:50%;background:#fff;transition:.2s;}
+  .switch input:checked + .track{background:var(--tag-design);}
+  .switch input:checked + .track::after{transform:translateX(20px);}
+
+  /* Category */
+  .cat{margin-top:30px;}
+  .cat-head{display:flex;align-items:center;gap:11px;margin-bottom:14px;}
+  .cat-head .ico{
+    width:34px;height:34px;border-radius:9px;flex:none;display:flex;align-items:center;justify-content:center;font-size:17px;
+    background:var(--panel2);border:1px solid rgba(255,255,255,.07);
+  }
+  .cat-head h3{color:#fff;font-size:17px;margin:0;font-weight:700;}
+  .cat-head .count{color:#8b95ad;font-size:12.5px;margin-left:auto;}
+
+  .cards{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+  @media(max-width:720px){.cards{grid-template-columns:1fr;}}
+  .card{
+    background:var(--card);border:1px solid var(--card-border);border-radius:14px;
+    padding:17px 17px 15px;box-shadow:var(--shadow);display:flex;flex-direction:column;
+  }
+  .card .tags{display:flex;gap:7px;align-items:center;margin-bottom:9px;flex-wrap:wrap;}
+  .tag{font-size:11px;font-weight:700;padding:3px 9px;border-radius:6px;letter-spacing:.3px;}
+  .tag.design{color:var(--tag-design);background:var(--tag-design-bg);}
+  .tag.context{color:var(--tag-context);background:var(--tag-context-bg);}
+  .tag.region{color:#9a5b00;background:#fdeccb;}
+  .card h4{margin:0 0 7px;font-size:15.5px;line-height:1.45;color:var(--ink);font-weight:700;}
+  .card .lead{font-size:13.5px;color:var(--ink-soft);margin:0 0 11px;}
+  .card .foryou{
+    background:#f4f7ff;border-left:3px solid var(--accent);border-radius:0 8px 8px 0;
+    padding:9px 12px;font-size:13px;color:#324063;margin:0 0 12px;
+  }
+  .card .foryou b{color:var(--accent);font-weight:700;}
+  .card .foot{margin-top:auto;display:flex;align-items:center;justify-content:space-between;gap:10px;border-top:1px solid #eef0f5;padding-top:11px;}
+  .card .src{font-size:12.5px;font-weight:600;color:var(--accent);text-decoration:none;display:inline-flex;align-items:center;gap:5px;}
+  .card .src:hover{text-decoration:underline;}
+  .card .date{font-size:12px;color:var(--muted);font-family:"Inter",sans-serif;}
+  .empty{
+    grid-column:1/-1;background:rgba(255,255,255,.04);border:1px dashed rgba(255,255,255,.14);
+    border-radius:12px;color:#8b95ad;font-size:13.5px;padding:18px;text-align:center;
+  }
+  .hidden{display:none !important;}
+
+  footer{margin-top:40px;text-align:center;color:#6c768c;font-size:12px;line-height:1.8;}
+  footer .ftag{color:#8b95ad;}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <div class="brand">
+      <div class="logo">ET</div>
+      <div>
+        <h1>EdTech 情報週報</h1>
+        <p>給 EdTech UX Designer 的每週產業掃描 · 北美優先</p>
+      </div>
+    </div>
+    <div class="issue">
+      <div class="label">本期執行日期</div>
+      <div class="date">2026.06.10</div>
+    </div>
+  </div>
+  <div class="wrap" style="padding-top:0;">
+    <div class="scope">
+      <span>蒐集區間：2026/06/03 – 06/10</span>
+      <span>地區：US › APAC › EU</span>
+      <span>面向：法規 · IFP · 軟體 · UX · 市場</span>
+    </div>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <!-- HIGHLIGHTS -->
+  <section class="hi-block">
+    <h2><span class="hi-dot"></span>本週最該關注</h2>
+    <p class="sub">依設計決策影響程度排序</p>
+    <ol class="hilist">
+      <li>
+        <b>隱私法規進入「神經資料」時代</b>：Connecticut Data Privacy Act 修正案 7/1 生效，將 neural data 列為敏感個資；California AB 1159 禁止用學生資料訓練 AI 模型。
+        <span class="meta">→ 任何蒐集生理／行為訊號、或把學生互動餵給 AI 的功能，都要重新檢視同意流程與資料邊界。</span>
+      </li>
+      <li>
+        <b>NYC DOE 將於 6 月發布 AI 使用 playbook</b>：明訂 AI 可用於備課、溝通草稿，但禁止評分、懲處、蒐集生物與行為資料，且每個 AI 工具須通過審核。
+        <span class="meta">→ AI 功能需要可被「關閉／審核」的設計，並清楚標示用途邊界，否則無法進入採購名單。</span>
+      </li>
+      <li>
+        <b>ADA Title II 數位無障礙合規期限延後至 2027/04</b>：4 月以 Interim Final Rule 公告延期，但 WCAG 2.1 AA 的底層義務不變。
+        <span class="meta">→ 多了緩衝期但方向確定，現在就把 WCAG 2.1 AA 納入設計規範比事後補救便宜得多。</span>
+      </li>
+      <li>
+        <b>競品軟體 AI「生成式備課」全面標配</b>：SMART Lumio 推 AI Assist 一鍵生成完整課程；Google Classroom 上線 Gemini 建議回饋。
+        <span class="meta">→ 「一句話→完整教案」已是基準體驗，myViewBoard 的 AI 入口若多步驟會明顯落後。</span>
+      </li>
+      <li>
+        <b>EDLA 認證成 IFP 教育市場入場券</b>：Samsung WAD、Clevertouch Pro、ViewSonic IFP41 皆主打 Android EDLA；Newline 與 ViewSonic 同時宣稱 Q1 北美市佔第一。
+        <span class="meta">→ 硬體同質化下，差異化回到軟體生態與登入／帳號流程的順暢度——正是 UX 的主戰場。</span>
+      </li>
+    </ol>
+  </section>
+
+  <!-- TOOLBAR -->
+  <div class="toolbar">
+    <h2>本週結果</h2>
+    <label class="switch">
+      <span>只看「影響設計決策」</span>
+      <input type="checkbox" id="designOnly">
+      <span class="track"></span>
+    </label>
+  </div>
+
+  <!-- 1. 法規 -->
+  <section class="cat" data-cat="法規">
+    <div class="cat-head">
+      <div class="ico">⚖️</div><h3>法規 / 政策</h3>
+      <span class="count"></span>
+    </div>
+    <div class="cards">
+
+      <article class="card" data-level="design">
+        <div class="tags"><span class="tag design">影響設計決策</span><span class="tag region">US · 州級</span></div>
+        <h4>Connecticut 把「neural data」列為敏感個資，7/1 生效</h4>
+        <p class="lead">CTDPA 修正案將神經／生理資料納入嚴格保護；2026 被視為學生隱私從自律走向強制問責的轉折年。</p>
+        <div class="foryou"><b>對你而言：</b>凡涉及注意力偵測、表情或行為訊號的課堂功能，需設計明確的選擇加入（opt-in）與資料用途揭露。</div>
+        <div class="foot"><a class="src" href="https://chrisrdale.substack.com/p/edtech-2026-the-new-privacy-mandate" target="_blank" rel="noopener">來源 ↗</a><span class="date">2026-06</span></div>
+      </article>
+
+      <article class="card" data-level="design">
+        <div class="tags"><span class="tag design">影響設計決策</span><span class="tag region">US · NYC</span></div>
+        <h4>NYC DOE 6 月發布 AI 使用 playbook</h4>
+        <p class="lead">允許 AI 備課與溝通草稿，禁止用於評分、懲處與蒐集生物／行為資料；每項 AI 工具須通過審核流程。</p>
+        <div class="foryou"><b>對你而言：</b>AI 功能要能被管理員審核與停用，並在 UI 上明確區隔「輔助」與「決策」用途。</div>
+        <div class="foot"><a class="src" href="https://www.pursuit.us/news/ai-in-education-news-policies-innovations" target="_blank" rel="noopener">來源 ↗</a><span class="date">2026-06</span></div>
+      </article>
+
+      <article class="card" data-level="design">
+        <div class="tags"><span class="tag design">影響設計決策</span><span class="tag region">US · 聯邦</span></div>
+        <h4>ADA Title II 數位無障礙合規期限延後至 2027/04</h4>
+        <p class="lead">4 月以 Interim Final Rule 公告：州級機構延至 2027/04/26、小型學區至 2028；WCAG 2.1 AA 技術標準與底層義務不變。</p>
+        <div class="foryou"><b>對你而言：</b>多了時間但目標明確，現在把 WCAG 2.1 AA（對比、鍵盤、螢幕報讀）納入設計系統最省成本。</div>
+        <div class="foot"><a class="src" href="https://www.federalregister.gov/documents/2026/04/20/2026-07663/extension-of-compliance-dates-for-nondiscrimination-on-the-basis-of-disability-accessibility-of-web" target="_blank" rel="noopener">來源 ↗</a><span class="date">2026-04-20</span></div>
+      </article>
+
+      <article class="card" data-level="design">
+        <div class="tags"><span class="tag design">影響設計決策</span><span class="tag region">US · 州級</span></div>
+        <h4>2026 年逾百件州級 AI 教育法案，多聚焦資料保護</h4>
+        <p class="lead">31 州已提出 134 件 AI 教育法案；California AB 1159 禁止以學生資料訓練 AI、Idaho SB 1227 要求 AI 工具具備隱私保護。</p>
+        <div class="foryou"><b>對你而言：</b>「不以學生資料訓練模型」可能成為硬性需求，產品需提供可稽核的資料使用聲明與設定開關。</div>
+        <div class="foot"><a class="src" href="https://www.future-ed.org/legislative-tracker-2026-state-ai-in-education-bills/" target="_blank" rel="noopener">來源 ↗</a><span class="date">2026-04</span></div>
+      </article>
+
+      <article class="card" data-level="context">
+        <div class="tags"><span class="tag context">背景脈絡</span><span class="tag region">US · 聯邦</span></div>
+        <h4>E-Rate 進入新五年週期，啟用新競標入口</h4>
+        <p class="lead">FCC 通過新競標 portal、Category Two 預算調升 20.7%（每生 $201.57）；教育團體擔憂新流程加重小學區負擔。ESSER 經費大致退場，採購回到 E-Rate 主導。</p>
+        <div class="foryou"><b>對你而言：</b>採購預算結構改變，影響 IFP 與軟體的搭售與授權方案——間接影響定價頁與方案選擇介面。</div>
+        <div class="foot"><a class="src" href="https://www.edweek.org/technology/education-groups-say-new-e-rate-bidding-portal-will-hurt-small-districts-hardest/2026/05" target="_blank" rel="noopener">來源 ↗</a><span class="date">2026-05</span></div>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- 2. IFP -->
+  <section class="cat" data-cat="IFP">
+    <div class="cat-head">
+      <div class="ico">🖥️</div><h3>IFP 互動大屏</h3>
+      <span class="count"></span>
+    </div>
+    <div class="cards">
+
+      <article class="card" data-level="context">
+        <div class="tags"><span class="tag context">背景脈絡</span><span class="tag region">US · 自家</span></div>
+        <h4>ViewSonic 宣稱 Q1 2026 北美互動顯示器市佔第一</h4>
+        <p class="lead">同期 Newline 亦宣稱 Q1 2026 美國市佔第一（口徑／資料來源不同）；ViewBoard IFP41 系列（Android 16 EDLA）3 月上市，定位 IFP50 升級。</p>
+        <div class="foryou"><b>對你而言：</b>硬體換代帶動 OS 升級（Android 16），是檢視 Launcher／首頁與 app 相容性的好時機。</div>
+        <div class="foot"><a class="src" href="https://www.viewsonic.com/us/blog/viewsonic-is-the-leading-interactive-display-brand-in-the-americas-for-q1-2026/" target="_blank" rel="noopener">來源 ↗</a><span class="date">2026-Q1</span></div>
+      </article>
+
+      <article class="card" data-level="design">
+        <div class="tags"><span class="tag design">影響設計決策</span><span class="tag region">US · 競品</span></div>
+        <h4>Samsung 擴充 EDLA 認證 WAD 系列搶教育市場</h4>
+        <p class="lead">2026 年 Samsung 加碼 Google EDLA 認證機型，強化對重度依賴 Google 服務校園的競爭力。</p>
+        <div class="foryou"><b>對你而言：</b>Google 帳號登入與 Workspace 整合的順暢度成為比較重點，需檢視自家 SSO／rostering 體驗是否同級。</div>
+        <div class="foot"><a class="src" href="https://www.ikinor-tech.com/market-insights/top-10-smart-board-companies-and-their-retail-brands/" target="_blank" rel="noopener">來源 ↗</a><span class="date">2026</span></div>
+      </article>
+
+      <article class="card" data-level="context">
+        <div class="tags"><span class="tag context">背景脈絡</span><span class="tag region">US · 競品</span></div>
+        <h4>BenQ 推 AI-Ready RP05 並擴大 ClassroomCare</h4>
+        <p class="lead">RP05 主打 AI 就緒；ClassroomCare 強化護眼（TÜV 低藍光、無閃屏）與抗菌（含筆與遙控器銀離子塗層）。</p>
+        <div class="foryou"><b>對你而言：</b>「健康／護眼」成為可感知賣點，可考慮把護眼模式、亮度自適應做成更顯眼的快捷設定。</div>
+        <div class="foot"><a class="src" href="https://www.uctoday.com/devices-workspace-tech/benq-unveils-ai%E2%80%91ready-rp05-interactive-display/" target="_blank" rel="noopener">來源 ↗</a><span class="date">2026</span></div>
+      </article>
+
+      <article class="card" data-level="context">
+        <div class="tags"><span class="tag context">背景脈絡</span><span class="tag region">US · 競品</span></div>
+        <h4>Boxlight／Clevertouch Pro 系列在北美開始出貨</h4>
+        <p class="lead">Google EDLA 認證，65/75/86/98 吋，主打整合 Google Classroom、Microsoft 365 與數位白板，定位高性價比。</p>
+        <div class="foryou"><b>對你而言：</b>低價 EDLA 機型湧入，IFP 軟體差異化更依賴課堂工作流與內容生態，而非硬體規格。</div>
+        <div class="foot"><a class="src" href="https://www.stocktitan.net/news/BOXL/boxlight-shipping-google-edla-interactive-display-clevertouch-pro-aqoe4grr9v6w.html" target="_blank" rel="noopener">來源 ↗</a><span class="date">2026</span></div>
+      </article>
+
+      <article class="card" data-level="context">
+        <div class="tags"><span class="tag context">背景脈絡</span><span class="tag region">US · 競品</span></div>
+        <h4>Newline 推 XRT 戶外顯示器，宣稱 Q1 美國市佔第一</h4>
+        <p class="lead">Newline 以全天候可視的 XRT 系列拓展應用場景，並宣稱拿下 Q1 2026 美國互動顯示器市佔首位。</p>
+        <div class="foryou"><b>對你而言：</b>產品線往非典型教室環境延伸，UI 需考量強光、戶外等極端可視性情境的對比與字級。</div>
+        <div class="foot"><a class="src" href="https://newline-interactive.com/usa/" target="_blank" rel="noopener">來源 ↗</a><span class="date">2026-Q1</span></div>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- 3. 軟體競品 -->
+  <section class="cat" data-cat="軟體">
+    <div class="cat-head">
+      <div class="ico">🧩</div><h3>教育軟體競品</h3>
+      <span class="count"></span>
+    </div>
+    <div class="cards">
+
+      <article class="card" data-level="design">
+        <div class="tags"><span class="tag design">影響設計決策</span><span class="tag region">US · 競品</span></div>
+        <h4>SMART Lumio AI Assist：一句話生成完整課程</h4>
+        <p class="lead">從簡單 prompt 即可生成可編輯的完整課程（含活動、講義、討論工具）；另推 Instant Start 一鍵啟動投票／隨堂測驗，並改善鍵盤導覽與 ChromeVox 報讀相容。</p>
+        <div class="foryou"><b>對你而言：</b>競品把「生成→可編輯→直接上課」收斂成極短路徑，myViewBoard 的 AI 備課入口應對齊此體驗基準。</div>
+        <div class="foot"><a class="src" href="https://www.prnewswire.com/news-releases/lumios-ai-assist-now-turns-teacher-ideas-into-lessons-in-minutes-302657932.html" target="_blank" rel="noopener">來源 ↗</a><span class="date">2026</span></div>
+      </article>
+
+      <article class="card" data-level="design">
+        <div class="tags"><span class="tag design">影響設計決策</span><span class="tag region">US · 競品</span></div>
+        <h4>Google Classroom 上線 Gemini「建議回饋」</h4>
+        <p class="lead">教師在私人評語中可用「Help me write」由 Gemini 草擬回饋，再編輯後送出；並把 NotebookLM 的 Audio Overview 整合進 Classroom。</p>
+        <div class="foryou"><b>對你而言：</b>AI 輔助「人在迴路內」的審閱模式（生成草稿→教師確認）值得沿用，降低教師對 AI 評語的信任門檻。</div>
+        <div class="foot"><a class="src" href="https://www.edtechinnovationhub.com/news/google-classroom-rolls-out-ai-suggested-feedback-for-written-assignments" target="_blank" rel="noopener">來源 ↗</a><span class="date">2026-02-19</span></div>
+      </article>
+
+      <article class="card" data-level="design">
+        <div class="tags"><span class="tag design">影響設計決策</span><span class="tag region">US · 標準</span></div>
+        <h4>Clever 取得 OneRoster 1.2 認證，LMS Connect 支援成績回傳</h4>
+        <p class="lead">Clever 3/13 通過 OneRoster 1.1／1.2 認證；LMS Connect 支援對 Google Classroom、Canvas、Schoology 的 LTI SSO 與 grade passback。</p>
+        <div class="foryou"><b>對你而言：</b>登入與帳號流程若支援 OneRoster 1.2／Clever／ClassLink，可大幅減少首次設定摩擦——優先納入 onboarding 設計。</div>
+        <div class="foot"><a class="src" href="https://edtechinsiders.substack.com/p/the-new-era-of-k12-rostering-what" target="_blank" rel="noopener">來源 ↗</a><span class="date">2026-03-13</span></div>
+      </article>
+
+      <article class="card" data-level="context">
+        <div class="tags"><span class="tag context">背景脈絡</span><span class="tag region">US · 競品</span></div>
+        <h4>ClassDojo 擴大 Dojo Tutor 一對一線上輔導</h4>
+        <p class="lead">ClassDojo 擴大其私有線上輔導服務，連結學生與認證教師，提供個人化一對一教學。</p>
+        <div class="foryou"><b>對你而言：</b>家長／學生端的「課後延伸」生態正在長大，思考自家產品如何銜接課中與課後的資料與身分。</div>
+        <div class="foot"><a class="src" href="https://blog.mean.ceo/edtech-news-june-2026/" target="_blank" rel="noopener">來源 ↗</a><span class="date">2026-06</span></div>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- 4. UX 趨勢 -->
+  <section class="cat" data-cat="UX">
+    <div class="cat-head">
+      <div class="ico">🎨</div><h3>UX / 設計趨勢</h3>
+      <span class="count"></span>
+    </div>
+    <div class="cards">
+
+      <article class="card" data-level="design">
+        <div class="tags"><span class="tag design">影響設計決策</span><span class="tag region">趨勢</span></div>
+        <h4>機率式 AI 介面讓傳統 UX 慣例失效</h4>
+        <p class="lead">2026 EdTech 產品設計趨勢指出：AI 系統具機率性與適應性，傳統 UX 模式不足，需以策略性 UX research 持續貼近真實使用情境。</p>
+        <div class="foryou"><b>對你而言：</b>為 AI 功能設計「不確定性」的呈現（信心提示、可重生、可修正），而非假裝結果一定正確。</div>
+        <div class="foot"><a class="src" href="https://backpackinteractive.com/resources/articles/edtech-product-trends-2026" target="_blank" rel="noopener">來源 ↗</a><span class="date">2026</span></div>
+      </article>
+
+      <article class="card" data-level="design">
+        <div class="tags"><span class="tag design">影響設計決策</span><span class="tag region">趨勢</span></div>
+        <h4>近半教師「無正式訓練」自學使用 AI 工具</h4>
+        <p class="lead">教師在缺乏機構培訓下自行採用 AI，同時行政負擔加重；產品需主動減輕工作量並兼顧師生身心健康。</p>
+        <div class="foryou"><b>對你而言：</b>把「零訓練即可上手」當硬指標——預設範本、情境化提示、漸進揭露，取代仰賴說明文件。</div>
+        <div class="foot"><a class="src" href="https://openfieldx.com/edtech-trends-2026/" target="_blank" rel="noopener">來源 ↗</a><span class="date">2026</span></div>
+      </article>
+
+      <article class="card" data-level="context">
+        <div class="tags"><span class="tag context">背景脈絡</span><span class="tag region">趨勢</span></div>
+        <h4>無障礙從「選配」變「可強制執行的技術標準」</h4>
+        <p class="lead">DOJ 確立 ADA Title II 首個可強制執行的數位無障礙技術標準，無障礙正式成為合規底線而非加分項。</p>
+        <div class="foryou"><b>對你而言：</b>把無障礙檢核（對比、焦點、ARIA、報讀）寫進設計交付清單與 Definition of Done。</div>
+        <div class="foot"><a class="src" href="https://www.facultyfocus.com/articles/teaching-with-technology-articles/designing-the-2026-classroom-emerging-learning-trends-in-an-ai-powered-education-system/" target="_blank" rel="noopener">來源 ↗</a><span class="date">2026</span></div>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- 5. 市場動向 -->
+  <section class="cat" data-cat="市場">
+    <div class="cat-head">
+      <div class="ico">📊</div><h3>市場動向 / 展會報告</h3>
+      <span class="count"></span>
+    </div>
+    <div class="cards">
+
+      <article class="card" data-level="context">
+        <div class="tags"><span class="tag context">背景脈絡</span><span class="tag region">US · 展會</span></div>
+        <h4>ISTELive 26：6/28–7/1 於奧蘭多登場</h4>
+        <p class="lead">本年度北美最大教育科技展，與 ASCD 年會合辦；是觀察競品最新發布與課堂趨勢的關鍵窗口。</p>
+        <div class="foryou"><b>對你而言：</b>下期週報前的重點事件，建議預先盤點要追蹤的競品 session 與新品，作為設計 benchmark。</div>
+        <div class="foot"><a class="src" href="https://conference.iste.org/2026/" target="_blank" rel="noopener">來源 ↗</a><span class="date">2026-06-28</span></div>
+      </article>
+
+      <article class="card" data-level="context">
+        <div class="tags"><span class="tag context">背景脈絡</span><span class="tag region">US · 調查</span></div>
+        <h4>NPR/Ipsos：近 3/4 教師認為 AI 影響超越網路與電腦</h4>
+        <p class="lead">最新民調顯示多數 K-12 教師認為 AI 對教育的衝擊大於過往任何科技革新。</p>
+        <div class="foryou"><b>對你而言：</b>教師對 AI 期待高、戒心也在，產品需同時放大可控性與透明度以建立信任。</div>
+        <div class="foot"><a class="src" href="https://www.lpm.org/news/2026-06-05/most-k-12-teachers-say-ais-impact-on-education-will-eclipse-the-internet-or-computers" target="_blank" rel="noopener">來源 ↗</a><span class="date">2026-06-05</span></div>
+      </article>
+
+      <article class="card" data-level="context">
+        <div class="tags"><span class="tag context">背景脈絡</span><span class="tag region">產業</span></div>
+        <h4>ISTE 併購 EdSurge，整合展會與新聞資源</h4>
+        <p class="lead">ISTE 收購教育科技新聞媒體 EdSurge，將活動與內容報導整合。</p>
+        <div class="foryou"><b>對你而言：</b>產業資訊來源更集中，可把 ISTE／EdSurge 設為主要情報訂閱源以提高訊號密度。</div>
+        <div class="foot"><a class="src" href="https://marketbrief.edweek.org/marketplace-k-12/iste-acquires-edsurge-pairing-event-news-focused-ed-tech-organizations/" target="_blank" rel="noopener">來源 ↗</a><span class="date">2026</span></div>
+      </article>
+
+    </div>
+  </section>
+
+  <footer>
+    <div>EdTech 情報週報 · 本期 2026-06-10 · 蒐集區間 2026/06/03–06/10</div>
+    <div class="ftag">自動產製情報摘要；連結為原始來源，請以原文為準。部分市佔宣稱來自各廠商新聞稿，口徑互異。</div>
+  </footer>
+
+</div>
+
+<script>
+  // 設計決策過濾開關
+  (function(){
+    var toggle=document.getElementById('designOnly');
+    var cats=document.querySelectorAll('.cat');
+    function apply(){
+      var on=toggle.checked;
+      cats.forEach(function(cat){
+        var cards=cat.querySelectorAll('.card');
+        var shown=0;
+        cards.forEach(function(c){
+          var keep=!on || c.getAttribute('data-level')==='design';
+          c.classList.toggle('hidden',!keep);
+          if(keep) shown++;
+        });
+        var emptyEl=cat.querySelector('.empty');
+        if(shown===0){
+          if(!emptyEl){
+            emptyEl=document.createElement('div');
+            emptyEl.className='empty';
+            emptyEl.textContent='本區本週無「影響設計決策」項目';
+            cat.querySelector('.cards').appendChild(emptyEl);
+          }
+          emptyEl.classList.remove('hidden');
+        } else if(emptyEl){
+          emptyEl.classList.add('hidden');
+        }
+        var countEl=cat.querySelector('.count');
+        if(countEl) countEl.textContent=shown+' 則';
+      });
+    }
+    cats.forEach(function(cat){
+      var n=cat.querySelectorAll('.card').length;
+      var c=cat.querySelector('.count'); if(c)c.textContent=n+' 則';
+    });
+    toggle.addEventListener('change',apply);
+  })();
+</script>
+</body>
+</html>

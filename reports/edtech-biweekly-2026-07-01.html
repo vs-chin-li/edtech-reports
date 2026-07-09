@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EdTech 情報雙週報 · 2026-07-01</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0f1320; --panel:#161b2e; --panel2:#1d2336;
+    --card:#ffffff; --card-border:#e4e7ef;
+    --ink:#11151f; --ink-soft:#5b6473; --muted:#8b93a4;
+    --accent:#4f7cff; --accent-2:#22c3a6;
+    --hi:#ffd54a; --tag-design:#1f8a5b; --tag-design-bg:#e3f6ec;
+    --tag-context:#6b7280; --tag-context-bg:#eef0f4;
+    --shadow:0 1px 3px rgba(10,15,30,.08),0 8px 24px rgba(10,15,30,.06);
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0; background:var(--bg);
+    font-family:"Noto Sans TC","Inter",system-ui,-apple-system,sans-serif;
+    color:var(--ink); line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:inherit;}
+  .wrap{max-width:980px;margin:0 auto;padding:0 18px 64px;}
+
+  /* Header */
+  header.top{
+    background:linear-gradient(135deg,#141a2e 0%,#222c4d 100%);
+    color:#fff; padding:34px 0 30px; border-bottom:1px solid rgba(255,255,255,.06);
+  }
+  .top .wrap{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:14px;padding-bottom:0;}
+  .brand{display:flex;align-items:center;gap:14px;}
+  .logo{
+    width:46px;height:46px;border-radius:12px;flex:none;
+    background:linear-gradient(135deg,var(--accent),var(--accent-2));
+    display:flex;align-items:center;justify-content:center;font-weight:900;font-size:20px;color:#fff;
+    font-family:"Inter",sans-serif;
+  }
+  .brand h1{font-size:25px;margin:0;font-weight:900;letter-spacing:.3px;}
+  .brand p{margin:2px 0 0;color:#aeb7cd;font-size:13.5px;}
+  .issue{text-align:right;}
+  .issue .date{font-family:"Inter",sans-serif;font-weight:800;font-size:22px;color:#fff;}
+  .issue .label{font-size:12px;color:#8b95ad;letter-spacing:2px;text-transform:uppercase;}
+  .scope{
+    margin-top:18px;display:flex;flex-wrap:wrap;gap:8px;
+  }
+  .scope span{
+    background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.1);
+    color:#cdd5e6;font-size:12px;padding:4px 11px;border-radius:20px;
+  }
+
+  /* Highlights */
+  section.hi-block{
+    background:var(--panel); margin-top:26px;border-radius:18px;padding:26px 26px 12px;
+    border:1px solid rgba(255,255,255,.05);
+  }
+  .hi-block h2{color:#fff;font-size:18px;margin:0 0 4px;display:flex;align-items:center;gap:9px;}
+  .hi-block .sub{color:#8b95ad;font-size:13px;margin:0 0 16px;}
+  .hi-dot{width:9px;height:9px;border-radius:50%;background:var(--hi);box-shadow:0 0 0 4px rgba(255,213,74,.18);}
+  ol.hilist{list-style:none;counter-reset:h;margin:0;padding:0;}
+  ol.hilist li{
+    counter-increment:h;position:relative;padding:14px 4px 16px 56px;
+    border-top:1px solid rgba(255,255,255,.06);color:#dfe5f1;font-size:14.5px;
+  }
+  ol.hilist li:first-child{border-top:none;}
+  ol.hilist li::before{
+    content:counter(h,decimal-leading-zero);position:absolute;left:0;top:13px;
+    font-family:"Inter",sans-serif;font-weight:800;font-size:15px;color:var(--accent);
+    background:rgba(79,124,255,.12);width:38px;height:38px;border-radius:10px;
+    display:flex;align-items:center;justify-content:center;
+  }
+  ol.hilist li b{color:#fff;font-weight:700;}
+  ol.hilist li .meta{display:block;color:#8b95ad;font-size:12px;margin-top:3px;}
+  ol.hilist li .hi-src{display:inline-block;margin-top:8px;font-family:"Inter",sans-serif;font-size:12px;font-weight:600;color:#8fb0ff;text-decoration:none;}
+  ol.hilist li .hi-src:hover{text-decoration:underline;}
+
+  /* Toggle bar */
+  .toolbar{
+    position:sticky;top:0;z-index:10;margin-top:30px;
+    background:rgba(15,19,32,.92);backdrop-filter:blur(8px);
+    padding:14px 4px;display:flex;align-items:center;justify-content:space-between;gap:14px;
+    border-bottom:1px solid rgba(255,255,255,.07);
+  }
+  .toolbar h2{color:#fff;font-size:17px;margin:0;}
+  .switch{display:flex;align-items:center;gap:10px;color:#cdd5e6;font-size:13px;cursor:pointer;user-select:none;}
+  .switch input{display:none;}
+  .track{width:44px;height:24px;border-radius:20px;background:#33405e;position:relative;transition:.2s;flex:none;}
+  .track::after{content:"";position:absolute;top:3px;left:3px;width:18px;height:18px;border-radius:50%;background:#fff;transition:.2s;}
+  .switch input:checked + .track{background:var(--tag-design);}
+  .switch input:checked + .track::after{transform:translateX(20px);}
+
+  /* Category */
+  .cat{margin-top:30px;}
+  .cat-head{display:flex;align-items:center;gap:11px;margin-bottom:14px;}
+  .cat-head .ico{
+    width:34px;height:34px;border-radius:9px;flex:none;display:flex;align-items:center;justify-content:center;font-size:17px;
+    background:var(--panel2);border:1px solid rgba(255,255,255,.07);
+  }
+  .cat-head h3{color:#fff;font-size:17px;margin:0;font-weight:700;}
+  .cat-head .count{color:#8b95ad;font-size:12.5px;margin-left:auto;}
+
+  .cards{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+  @media(max-width:720px){.cards{grid-template-columns:1fr;}}
+  .card{
+    background:var(--card);border:1px solid var(--card-border);border-radius:14px;
+    padding:17px 17px 15px;box-shadow:var(--shadow);display:flex;flex-direction:column;
+  }
+  .card .tags{display:flex;gap:7px;align-items:center;margin-bottom:9px;flex-wrap:wrap;}
+  .tag{font-size:11px;font-weight:700;padding:3px 9px;border-radius:6px;letter-spacing:.3px;}
+  .tag.design{color:var(--tag-design);background:var(--tag-design-bg);}
+  .tag.context{color:var(--tag-context);background:var(--tag-context-bg);}
+  .tag.region{color:#9a5b00;background:#fdeccb;}
+  .card h4{margin:0 0 7px;font-size:15.5px;line-height:1.45;color:var(--ink);font-weight:700;}
+  .card .lead{font-size:13.5px;color:var(--ink-soft);margin:0 0 11px;}
+  .card .foryou{
+    background:#f4f7ff;border-left:3px solid var(--accent);border-radius:0 8px 8px 0;
+    padding:9px 12px;font-size:13px;color:#324063;margin:0 0 12px;
+  }
+  .card .foryou b{color:var(--accent);font-weight:700;}
+  .card .conf{font-size:11.5px;color:var(--muted);margin:0 0 11px;font-family:"Inter",sans-serif;}
+  .card .conf b{color:var(--ink-soft);font-weight:600;}
+  .card .foot{margin-top:auto;display:flex;align-items:center;justify-content:space-between;gap:10px;border-top:1px solid #eef0f5;padding-top:11px;}
+  .card .src{font-size:12.5px;font-weight:600;color:var(--accent);text-decoration:none;display:inline-flex;align-items:center;gap:5px;}
+  .card .src:hover{text-decoration:underline;}
+  .card .date{font-size:12px;color:var(--muted);font-family:"Inter",sans-serif;}
+  .empty{
+    grid-column:1/-1;background:rgba(255,255,255,.04);border:1px dashed rgba(255,255,255,.14);
+    border-radius:12px;color:#8b95ad;font-size:13.5px;padding:18px;text-align:center;line-height:1.7;
+  }
+  .hidden{display:none !important;}
+
+  /* 取樣方式說明 */
+  .method{
+    margin-top:30px;background:var(--panel);border:1px solid rgba(255,255,255,.06);
+    border-radius:14px;padding:18px 20px;color:#aeb7cd;font-size:12.5px;line-height:1.75;
+  }
+  .method b{color:#dfe5f1;}
+  .method .excl{color:#8b95ad;}
+
+  footer{margin-top:30px;text-align:center;color:#6c768c;font-size:12px;line-height:1.8;}
+  footer .ftag{color:#8b95ad;}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <div class="brand">
+      <div class="logo">ET</div>
+      <div>
+        <h1>EdTech 情報雙週報</h1>
+        <p>給 EdTech UX Designer 的雙週產業掃描 · 北美優先</p>
+      </div>
+    </div>
+    <div class="issue">
+      <div class="label">本期執行日期</div>
+      <div class="date">2026.07.01</div>
+    </div>
+  </div>
+  <div class="wrap" style="padding-top:0;">
+    <div class="scope">
+      <span>蒐集區間：2026/06/17 – 07/01（近兩週）</span>
+      <span>僅收錄本期（雙週）發布</span>
+      <span>逐則開頁查證</span>
+      <span>地區：US › APAC › EU</span>
+    </div>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <!-- HIGHLIGHTS -->
+  <section class="hi-block">
+    <h2><span class="hi-dot"></span>本期最該關注</h2>
+    <p class="sub">依設計決策影響程度排序 · 每點皆可查證於本期（6/17–7/1），並附當期一手來源</p>
+    <ol class="hilist">
+      <li>
+        <b>ISTELive 26 本期開展（6/28–7/1，Orlando），全年最密集的 EdTech 發布窗口</b>：全美最大 K-12／高教教育科技年會，與 ASCD 年會合辦，逾 2 萬名教育人員與數百家廠商齊聚；Google、Microsoft、Samsung、BenQ 等主要對手皆選在本週集中發布新版與 AI 功能。
+        <span class="meta">→ 這是一年中對標對手 app 登入、首頁、AI 入口與課堂工作流最佳的 benchmark 時機，值得逐一盤點。</span>
+        <a class="hi-src" href="https://conference.iste.org/2026/" target="_blank" rel="noopener">來源：ISTE 官方會議頁（會期 6/28–7/1）↗</a>
+      </li>
+      <li>
+        <b>Google 在 ISTE 2026 全面推「教師主導 AI」，並把 Gemini／NotebookLM 透過 LTI 送進第三方 LMS（6/25）</b>：Google Classroom 擴充 teacher-led 活動（Guided Learning、study notebooks、NotebookLM），教師可指定課程素材、取得個別與全班學習洞察；連 Classroom app in Gemini 上線（全球英文、18 歲以上），並將推出 Google Classroom MCP server 供外部平台安全接取課堂脈絡。Gemini LTI 先支援 PowerSchool Schoology，Canvas 即將、Moodle 需手動上傳。
+        <span class="meta">→ 跨 LMS 的授權、SSO 與「課堂脈絡」串接正在標準化，直接牽動自家帳號流程、第三方整合與 AI 權限揭露設計。</span>
+        <a class="hi-src" href="https://blog.google/products-and-platforms/products/education/iste-2026-educator-updates/" target="_blank" rel="noopener">來源：Google The Keyword（2026-06-25）↗</a>
+      </li>
+      <li>
+        <b>Microsoft 為 M365 Education 推逐作業「Student AI Guidelines」與學習教練式 AI（6/24）</b>：Assignments 可逐份作業設定 AI 使用範圍（從「禁用」到「完整 Copilot Chat」）；Study and Learn Agent 把 Copilot Chat 從「答案機」改為 13 歲以上學生的互動學習教練；另有 Teach 的 Unit Plans、Copilot Notebooks，A3／A5 授權自 7 月起免加價。
+        <span class="meta">→「AI 使用分級」正成為介面標配：需設計清楚的權限開關、教師可見的使用洞察，以及 13+／18+ 年齡分級流程。</span>
+        <a class="hi-src" href="https://www.microsoft.com/en-us/education/blog/2026/06/ai-in-education-is-changing-fast-new-microsoft-365-education-experiences-put-learning-first/" target="_blank" rel="noopener">來源：Microsoft Education Blog（2026-06-24）↗</a>
+      </li>
+      <li>
+        <b>Samsung 在 ISTELive 26 推共用大屏「個人化登入」：QR／NFC 卡刷入即帶出雲端個人設定（6/29）</b>：Account Management Solution（AMS）讓多位老師共用同一台顯示器時，各自用 QR code 或 NFC ID 卡登入，帶出專屬版面、書籤、檔案與設定；離開可一鍵鎖屏；並發表 WAF-S／WAFX-PS／WAHX-M（新增 98 吋）三款 Android 16 新機。
+        <span class="meta">→ 直接對標自家共用大屏的 sign-in／個人化情境：QR/NFC 快速登入、跨教室帶設定、快速鎖屏，是可立即參照的競品體驗基準。</span>
+        <a class="hi-src" href="https://news.samsung.com/global/samsung-introduces-new-education-tools-for-interactive-displays-at-istelive-26" target="_blank" rel="noopener">來源：Samsung Global Newsroom（2026-06-29）↗</a>
+      </li>
+      <li>
+        <b>BenQ 在 ISTE 2026 主打 Board RP05：業界首發 50 點觸控＋Google EDLA（6/28）</b>：新世代教育互動大屏內建 AI 工具、通過 EDLA 認證可直連 Google 教育生態，並主打 IT 易部署管理；同場展出 SL04 數位看板與 WDC15 免安裝無線投放。
+        <span class="meta">→ 觸控點數與 EDLA 成 IFP 硬體軍備競賽指標；免安裝投放持續是課堂「快速上手」體驗的競爭點。</span>
+        <a class="hi-src" href="https://teachercast.net/news/benq-iste-2026-update/" target="_blank" rel="noopener">來源：TeacherCast（2026-06-28）↗</a>
+      </li>
+    </ol>
+  </section>
+
+  <!-- TOOLBAR -->
+  <div class="toolbar">
+    <h2>本期結果</h2>
+    <label class="switch">
+      <span>只看「影響設計決策」</span>
+      <input type="checkbox" id="designOnly">
+      <span class="track"></span>
+    </label>
+  </div>
+
+  <!-- 1. 法規 -->
+  <section class="cat" data-cat="法規">
+    <div class="cat-head">
+      <div class="ico">⚖️</div><h3>法規 / 政策</h3>
+      <span class="count"></span>
+    </div>
+    <div class="cards">
+      <div class="empty">本期（6/17–7/1）無「雙週內＋一手來源」的重大新法規／政策發布。說明：FCC E-Rate 全面檢討 NPRM 表決（含螢幕時間、社群限制）為 6/25，屬本期時間窗但已於上一期（06-29）收錄，未重複列卡；ADA Title II 數位無障礙合規期限已於 2026 年 4 月由 DOJ 過渡規則延後（5 萬人以上州／地方政府延至 2027-04-26，較小者 2028-04-28，標準仍為 WCAG 2.1 AA），屬本期之前事件；州級 K-12 AI 指引持續增加（年底前已達 34 州），屬趨勢累積而非本期單一新規。</div>
+    </div>
+  </section>
+
+  <!-- 2. IFP -->
+  <section class="cat" data-cat="IFP">
+    <div class="cat-head">
+      <div class="ico">🖥️</div><h3>IFP 互動大屏</h3>
+      <span class="count"></span>
+    </div>
+    <div class="cards">
+
+      <article class="card" data-level="design">
+        <div class="tags"><span class="tag design">影響設計決策</span><span class="tag region">APAC/US · 競品</span></div>
+        <h4>Samsung：共用大屏 AMS 個人化登入（QR／NFC）＋ 三款 Android 16 新機</h4>
+        <p class="lead">ISTELive 26 期間（6/29）Samsung 為 Android 互動大屏推出 Account Management Solution（AMS）：多位老師共用一台顯示器時，可用 QR code 或 NFC ID 卡登入，透過 Home Personalization 帶出雲端個人版面、書籤、App 捷徑、檔案與設定；短暫離開可一鍵鎖屏。Samsung Education Portal 供 IT 集中註冊教師與裝置、NFC 綁定與分組（Tags）並串接 InformaCast／Raptor 緊急通報。另發表 WAF-S、WAFX-PS 與新增 98 吋的 WAHX-M。AMS 自 7 月上線，AI Assistant（含 Circle to Search、Live Transcript、AI Quiz）已於 4 月推出。</p>
+        <div class="foryou"><b>對你而言：</b>共用大屏「一台多人、各自個人化」的登入情境正被競品標準化。設計自家 sign-in 時可參照：QR/NFC 快速登入、跨教室帶回設定、離開即鎖屏，以及 IT 端的裝置分組與權限管理。</div>
+        <p class="conf"><b>信心：高</b>　·　來源類型：廠商官方（Samsung Newsroom press release）</p>
+        <div class="foot"><a class="src" href="https://news.samsung.com/global/samsung-introduces-new-education-tools-for-interactive-displays-at-istelive-26" target="_blank" rel="noopener">來源 ↗</a><span class="date">2026-06-29</span></div>
+      </article>
+
+      <article class="card" data-level="context">
+        <div class="tags"><span class="tag context">背景脈絡</span><span class="tag region">US · 競品</span></div>
+        <h4>BenQ：Board RP05 業界首發 50 點觸控 ＋ Google EDLA</h4>
+        <p class="lead">BenQ 於 ISTE 2026（booth #2401，6/28 前後報導）主打新世代教育互動大屏 BenQ Board RP05：內建 AI 工具、通過 Google EDLA 認證可直連 Google 教育生態，並宣稱業界首發 50 點觸控，強調 IT 易部署管理。同場展出 SL04 數位看板（號稱全球首款通過 Pantone 驗證＋EDLA 的看板）與 WDC15 免安裝無線投放系統。</p>
+        <div class="foryou"><b>對你而言：</b>觸控點數與 EDLA 認證是 IFP 硬體規格戰的顯性指標；「免安裝、免登網」的無線投放持續是課堂快速上手體驗的競爭點，可納入自家投放流程 benchmark。</div>
+        <p class="conf"><b>信心：中</b>　·　來源類型：廠商＋媒體（TeacherCast 報導，規格可於 BenQ 產品頁再核）</p>
+        <div class="foot"><a class="src" href="https://teachercast.net/news/benq-iste-2026-update/" target="_blank" rel="noopener">來源 ↗</a><span class="date">2026-06-28</span></div>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- 3. 軟體競品 -->
+  <section class="cat" data-cat="軟體">
+    <div class="cat-head">
+      <div class="ico">🧩</div><h3>教育軟體競品</h3>
+      <span class="count"></span>
+    </div>
+    <div class="cards">
+
+      <article class="card" data-level="design">
+        <div class="tags"><span class="tag design">影響設計決策</span><span class="tag region">US · 競品</span></div>
+        <h4>Google：教師主導 AI 進 Classroom，Gemini／NotebookLM 透過 LTI 進第三方 LMS</h4>
+        <p class="lead">ISTE 2026（6/25）Google 擴充 Google Classroom 的 teacher-led AI 活動：教師可用 Guided Learning、study notebooks 與 NotebookLM 建互動學習指引，指定課程素材、取得個別與全班學習洞察；並可用 Chromebook「Class tools」Focus Mode 鎖定學生螢幕於指定工具。Classroom app in Gemini 上線（全球英文、限 18 歲以上），安全引用既有作業、成績與教材協助備課；未來數月推出 Google Classroom MCP server，讓外部 EdTech 平台安全接取課堂脈絡。Gemini LTI 先支援 PowerSchool Schoology，Canvas 即將、Moodle 須手動上傳素材。</p>
+        <div class="foryou"><b>對你而言：</b>跨 LMS 的授權、SSO 與「課堂脈絡」串接正成事實標準。自家若要接 Google 生態，需對齊 LTI／MCP 的登入流程、權限揭露與 18+ 年齡分級；「教師主導＋可見洞察」也是學生端體驗的新基準。</div>
+        <p class="conf"><b>信心：高</b>　·　來源類型：廠商官方（Google The Keyword）</p>
+        <div class="foot"><a class="src" href="https://blog.google/products-and-platforms/products/education/iste-2026-educator-updates/" target="_blank" rel="noopener">來源 ↗</a><span class="date">2026-06-25</span></div>
+      </article>
+
+      <article class="card" data-level="design">
+        <div class="tags"><span class="tag design">影響設計決策</span><span class="tag region">US · 競品</span></div>
+        <h4>Microsoft：逐作業「Student AI Guidelines」＋ 學習教練式 Study and Learn Agent</h4>
+        <p class="lead">Microsoft（6/24）為 Microsoft 365 Education 發表多項 AI 教學功能：Assignments 可逐份作業設定 Student AI Guidelines（從「禁用 AI」到「完整 Copilot Chat」），並依閱讀程度／語言需求分組指派資源；Study and Learn Agent 把 Copilot Chat 從「答案機」轉為 13 歲以上學生的互動學習教練（scaffolded 問答、閃卡、測驗、即時回饋）；另有 Teach 的標準對齊 Unit Plans（支援 50+ 國標準）、Copilot Notebooks 及 Learning Zone 現場授課模式。多數功能對 A3／A5 授權自 7 月起免加價；並與 ISTE+ASCD 合作推出「AI Literacy for Educators」認證路徑。</p>
+        <div class="foryou"><b>對你而言：</b>「AI 使用分級」正成介面標配：需設計清楚的作業層 AI 權限開關、教師可見的學生使用洞察、13+ 年齡分級與 IT 端啟用流程；學生端也要處理「引導式學習 vs 直接給答案」的體驗取捨。</div>
+        <p class="conf"><b>信心：高</b>　·　來源類型：廠商官方（Microsoft Education Blog／Microsoft Source）</p>
+        <div class="foot"><a class="src" href="https://www.microsoft.com/en-us/education/blog/2026/06/ai-in-education-is-changing-fast-new-microsoft-365-education-experiences-put-learning-first/" target="_blank" rel="noopener">來源 ↗</a><span class="date">2026-06-24</span></div>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- 4. UX 趨勢 -->
+  <section class="cat" data-cat="UX">
+    <div class="cat-head">
+      <div class="ico">🎨</div><h3>UX / 設計趨勢</h3>
+      <span class="count"></span>
+    </div>
+    <div class="cards">
+
+      <article class="card" data-level="design">
+        <div class="tags"><span class="tag design">影響設計決策</span><span class="tag region">US · 趨勢</span></div>
+        <h4>本期主導 UX 訊號：「教師主導 AI ＋ 可調式使用權限」成介面新標配</h4>
+        <p class="lead">本期 ISTE 三大陣營的共通設計語言高度一致：Google 的 teacher-led activities（教師指定素材、拿到學習洞察、Focus Mode 鎖畫面）、Microsoft 的逐作業 Student AI Guidelines（禁用→完整 Copilot 的連續光譜）、以及把 AI 定位為「學習教練而非答案機」。三者都把「教師掌控權」「AI 使用透明度」「學生使用洞察」放到介面前景，而非埋在設定深處。</p>
+        <div class="foryou"><b>對你而言：</b>自家 AI 功能的資訊架構應把「AI 開關／權限分級」「教師可見的學生使用軌跡」「年齡分級（13+／18+）」設計成一級可見元素；並考慮「引導式 vs 直接回答」的模式切換與相應的空白狀態、回饋節奏。</div>
+        <p class="conf"><b>信心：中</b>　·　來源類型：推論（綜整 Google 6/25、Microsoft 6/24 兩則一手發布之共通模式）</p>
+        <div class="foot"><a class="src" href="https://blog.google/products-and-platforms/products/education/iste-2026-educator-updates/" target="_blank" rel="noopener">來源 ↗</a><span class="date">2026-06-25</span></div>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- 5. 市場動向 -->
+  <section class="cat" data-cat="市場">
+    <div class="cat-head">
+      <div class="ico">📊</div><h3>市場動向 / 展會報告</h3>
+      <span class="count"></span>
+    </div>
+    <div class="cards">
+
+      <article class="card" data-level="context">
+        <div class="tags"><span class="tag context">背景脈絡</span><span class="tag region">US · 展會</span></div>
+        <h4>ISTELive 26 於 Orlando 舉行（6/28–7/1），與 ASCD 年會合辦</h4>
+        <p class="lead">全美最大 K-12／高教教育科技年會，本期與 ASCD 年會合辦，逾 2 萬名教育人員與數百家 EdTech 廠商齊聚；6/28 另有 Solutions Summit 與 Solutions Hub。會中「What Just Happened 2026」場次專門盤點各家 EdTech 本期新功能，是快速掌握競品動向的入口。</p>
+        <div class="foryou"><b>對你而言：</b>本週是競品新版與 AI 功能最集中的發布窗口；建議把本期 Google／Microsoft／Samsung／BenQ 的發布列成對照表，作為下一輪自家設計的 benchmark 基準。</div>
+        <p class="conf"><b>信心：高</b>　·　來源類型：官方（ISTE 會議頁）</p>
+        <div class="foot"><a class="src" href="https://conference.iste.org/2026/" target="_blank" rel="noopener">來源 ↗</a><span class="date">2026-06-28</span></div>
+      </article>
+
+      <article class="card" data-level="context">
+        <div class="tags"><span class="tag context">背景脈絡</span><span class="tag region">Global · 報告</span></div>
+        <h4>Microsoft 第三版《AI in Education Report》：AI 已普及，缺口在「訓練與規範」</h4>
+        <p class="lead">Microsoft（6/24）發布第三版年度報告（PSB Insights 於美、英、澳、巴西、日、沙烏地訪問 3,345 位受訪者）：92% 學生與教育領導者、88% 教師已為校務使用 AI；但 77% 學生與 53% 教師未受過正式 AI 訓練，66% 教師與 52% 學生希望機構每月或每季提供訓練；學術誠信是學生（41%）與教師（42%）的首要疑慮。</p>
+        <div class="foryou"><b>對你而言：</b>採用瓶頸已從「有沒有 AI」轉為「會不會用、用得對不對」。產品內建的引導、範例提示、使用規範說明與 onboarding，是降低教師焦慮、提升採用率的設計槓桿。</div>
+        <p class="conf"><b>信心：高</b>　·　來源類型：廠商官方調查（Microsoft Source press release）</p>
+        <div class="foot"><a class="src" href="https://news.microsoft.com/source/2026/06/24/microsofts-new-ai-in-education-report-highlights-widespread-adoption-and-increasing-demand-for-support/" target="_blank" rel="noopener">來源 ↗</a><span class="date">2026-06-24</span></div>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- 取樣方式 -->
+  <section class="method">
+    <b>本期取樣與查證方式（先驗證再交付）</b><br>
+    對五大面向各做 2–4 次日期精確搜尋，逐層掃描固定面板的近 14 天：一手／權威層（Federal Register、ed.gov、FCC、各州 DOE、W3C WAI、1EdTech、各廠商 newsroom、Google The Keyword／Workspace Updates、Microsoft Education Blog／Source）→ 產業媒體層（K-12 Dive、EdWeek Market Brief、EdSurge、EdTech Innovation Hub、TeacherCast、rAVe）→ 展會／報告層（ISTE、InfoComm、HolonIQ）。軟體競品面向已個別查詢 Canva for Education、SchoolAI、ClassDojo、Microsoft Education。<b>本期納入的每一則卡片來源皆已實際開頁核對內容、網址與真實發布日期</b>（Google 6/25、Microsoft 6/24、Samsung 6/29、BenQ 6/28、ISTE 官方頁均通過驗證）。每則另標信心等級（高／中／低）與來源類型（法規／官方／廠商／推論）。<br>
+    <span class="excl">本期開頁查證後排除（不屬本期或已收錄）：MagicSchool「June 2026 MagicDrop」實際發布日為 2026-06-09（含 Canvas／Schoology 整合、Class Writing Feedback 升級），落在近 14 天窗口之前，故不列卡；Canva for Education 之 Learn Grid／Canva Code 2.0 主要為 Canva Create 2026（非本期新發布），無法確認落於 6/17–7/1，暫不列入；ClassDojo Websites 於「2026 年 6 月」宣布但未取得可核對的精確本期日期，從嚴不列；FCC E-Rate NPRM（6/25）與 ADA Title II 期限延後（4 月）如上區說明。以上未達「雙週內＋一手可核對日期」門檻者，一律不列卡，僅在此據實記錄。</span>
+  </section>
+
+  <footer>
+    <div>EdTech 情報雙週報 · 本期 2026-07-01 · 蒐集區間 2026/06/17–07/01（近兩週）</div>
+    <div class="ftag">本期僅保留可查證於本期的項目並回溯一手來源；無更新之分區據實標註。連結為原始來源，請以原文為準。下期預定 2026-07-15。</div>
+  </footer>
+
+</div>
+
+<script>
+  // 設計決策過濾開關
+  (function(){
+    var toggle=document.getElementById('designOnly');
+    var cats=document.querySelectorAll('.cat');
+    function apply(){
+      var on=toggle.checked;
+      cats.forEach(function(cat){
+        var cards=cat.querySelectorAll('.card');
+        var shown=0;
+        cards.forEach(function(c){
+          var keep=!on || c.getAttribute('data-level')==='design';
+          c.classList.toggle('hidden',!keep);
+          if(keep) shown++;
+        });
+        var emptyEl=cat.querySelector('.empty');
+        if(emptyEl && cat.querySelectorAll('.card').length>0){
+          if(shown===0){
+            emptyEl.textContent='本區本期無「影響設計決策」項目';
+            emptyEl.classList.remove('hidden');
+          } else {
+            emptyEl.classList.add('hidden');
+          }
+        }
+        var countEl=cat.querySelector('.count');
+        if(countEl) countEl.textContent=shown+' 則';
+      });
+    }
+    cats.forEach(function(cat){
+      var n=cat.querySelectorAll('.card').length;
+      var c=cat.querySelector('.count'); if(c)c.textContent=n+' 則';
+    });
+    toggle.addEventListener('change',apply);
+  })();
+</script>
+</body>
+</html>
