@@ -40,6 +40,10 @@
     display:flex;align-items:center;justify-content:center;font-weight:900;font-size:20px;color:#fff;
     font-family:"Inter",sans-serif;
   }
+  a.logo{text-decoration:none;cursor:pointer;
+    transition:transform .15s ease, box-shadow .15s ease;}
+  a.logo:hover{transform:scale(1.06);box-shadow:0 0 0 3px rgba(79,124,255,.45);}
+  a.logo:focus-visible{outline:2px solid #fff;outline-offset:3px;}
   .brand h1{font-size:25px;margin:0;font-weight:900;letter-spacing:.3px;}
   .brand p{margin:2px 0 0;color:#aeb7cd;font-size:13.5px;}
   .issue{text-align:right;}
@@ -150,7 +154,7 @@
 <header class="top">
   <div class="wrap">
     <div class="brand">
-      <div class="logo">ET</div>
+      <a class="logo" href="../index.html" title="回歷史總表：查看全部期數" aria-label="回歷史總表，查看全部期數">ET</a>
       <div>
         <h1>EdTech 情報雙週報</h1>
         <p>給 EdTech UX Designer 的雙週產業掃描 · 北美優先</p>
