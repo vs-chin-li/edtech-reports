@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EdTech 情報雙週報 · 2026-08-01</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0f1320; --panel:#161b2e; --panel2:#1d2336;
+    --card:#ffffff; --card-border:#e4e7ef;
+    --ink:#11151f; --ink-soft:#5b6473; --muted:#8b93a4;
+    --accent:#4f7cff; --accent-2:#22c3a6;
+    --hi:#ffd54a; --tag-design:#1f8a5b; --tag-design-bg:#e3f6ec;
+    --tag-context:#6b7280; --tag-context-bg:#eef0f4;
+    --shadow:0 1px 3px rgba(10,15,30,.08),0 8px 24px rgba(10,15,30,.06);
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0; background:var(--bg);
+    font-family:"Noto Sans TC","Inter",system-ui,-apple-system,sans-serif;
+    color:var(--ink); line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:inherit;}
+  .wrap{max-width:980px;margin:0 auto;padding:0 18px 64px;}
+
+  /* Header */
+  header.top{
+    background:linear-gradient(135deg,#141a2e 0%,#222c4d 100%);
+    color:#fff; padding:34px 0 30px; border-bottom:1px solid rgba(255,255,255,.06);
+  }
+  .top .wrap{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:14px;padding-bottom:0;}
+  .brand{display:flex;align-items:center;gap:14px;}
+  .logo{
+    width:46px;height:46px;border-radius:12px;flex:none;
+    background:linear-gradient(135deg,var(--accent),var(--accent-2));
+    display:flex;align-items:center;justify-content:center;font-weight:900;font-size:20px;color:#fff;
+    font-family:"Inter",sans-serif;
+  }
+  .brand h1{font-size:25px;margin:0;font-weight:900;letter-spacing:.3px;}
+  .brand p{margin:2px 0 0;color:#aeb7cd;font-size:13.5px;}
+  .issue{text-align:right;}
+  .issue .date{font-family:"Inter",sans-serif;font-weight:800;font-size:22px;color:#fff;}
+  .issue .label{font-size:12px;color:#8b95ad;letter-spacing:2px;text-transform:uppercase;}
+  .scope{
+    margin-top:18px;display:flex;flex-wrap:wrap;gap:8px;
+  }
+  .scope span{
+    background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.1);
+    color:#cdd5e6;font-size:12px;padding:4px 11px;border-radius:20px;
+  }
+
+  /* Highlights */
+  section.hi-block{
+    background:var(--panel); margin-top:26px;border-radius:18px;padding:26px 26px 12px;
+    border:1px solid rgba(255,255,255,.05);
+  }
+  .hi-block h2{color:#fff;font-size:18px;margin:0 0 4px;display:flex;align-items:center;gap:9px;}
+  .hi-block .sub{color:#8b95ad;font-size:13px;margin:0 0 16px;}
+  .hi-dot{width:9px;height:9px;border-radius:50%;background:var(--hi);box-shadow:0 0 0 4px rgba(255,213,74,.18);}
+  ol.hilist{list-style:none;counter-reset:h;margin:0;padding:0;}
+  ol.hilist li{
+    counter-increment:h;position:relative;padding:14px 4px 16px 56px;
+    border-top:1px solid rgba(255,255,255,.06);color:#dfe5f1;font-size:14.5px;
+  }
+  ol.hilist li:first-child{border-top:none;}
+  ol.hilist li::before{
+    content:counter(h,decimal-leading-zero);position:absolute;left:0;top:13px;
+    font-family:"Inter",sans-serif;font-weight:800;font-size:15px;color:var(--accent);
+    background:rgba(79,124,255,.12);width:38px;height:38px;border-radius:10px;
+    display:flex;align-items:center;justify-content:center;
+  }
+  ol.hilist li b{color:#fff;font-weight:700;}
+  ol.hilist li .meta{display:block;color:#8b95ad;font-size:12px;margin-top:3px;}
+  ol.hilist li .hi-src{display:inline-block;margin-top:8px;font-family:"Inter",sans-serif;font-size:12px;font-weight:600;color:#8fb0ff;text-decoration:none;}
+  ol.hilist li .hi-src:hover{text-decoration:underline;}
+
+  /* Toggle bar */
+  .toolbar{
+    position:sticky;top:0;z-index:10;margin-top:30px;
+    background:rgba(15,19,32,.92);backdrop-filter:blur(8px);
+    padding:14px 4px;display:flex;align-items:center;justify-content:space-between;gap:14px;
+    border-bottom:1px solid rgba(255,255,255,.07);
+  }
+  .toolbar h2{color:#fff;font-size:17px;margin:0;}
+  .switch{display:flex;align-items:center;gap:10px;color:#cdd5e6;font-size:13px;cursor:pointer;user-select:none;}
+  .switch input{display:none;}
+  .track{width:44px;height:24px;border-radius:20px;background:#33405e;position:relative;transition:.2s;flex:none;}
+  .track::after{content:"";position:absolute;top:3px;left:3px;width:18px;height:18px;border-radius:50%;background:#fff;transition:.2s;}
+  .switch input:checked + .track{background:var(--tag-design);}
+  .switch input:checked + .track::after{transform:translateX(20px);}
+
+  /* Category */
+  .cat{margin-top:30px;}
+  .cat-head{display:flex;align-items:center;gap:11px;margin-bottom:14px;}
+  .cat-head .ico{
+    width:34px;height:34px;border-radius:9px;flex:none;display:flex;align-items:center;justify-content:center;font-size:17px;
+    background:var(--panel2);border:1px solid rgba(255,255,255,.07);
+  }
+  .cat-head h3{color:#fff;font-size:17px;margin:0;font-weight:700;}
+  .cat-head .count{color:#8b95ad;font-size:12.5px;margin-left:auto;}
+
+  .cards{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+  @media(max-width:720px){.cards{grid-template-columns:1fr;}}
+  .card{
+    background:var(--card);border:1px solid var(--card-border);border-radius:14px;
+    padding:17px 17px 15px;box-shadow:var(--shadow);display:flex;flex-direction:column;
+  }
+  .card .tags{display:flex;gap:7px;align-items:center;margin-bottom:9px;flex-wrap:wrap;}
+  .tag{font-size:11px;font-weight:700;padding:3px 9px;border-radius:6px;letter-spacing:.3px;}
+  .tag.design{color:var(--tag-design);background:var(--tag-design-bg);}
+  .tag.context{color:var(--tag-context);background:var(--tag-context-bg);}
+  .tag.region{color:#9a5b00;background:#fdeccb;}
+  .card h4{margin:0 0 7px;font-size:15.5px;line-height:1.45;color:var(--ink);font-weight:700;}
+  .card .lead{font-size:13.5px;color:var(--ink-soft);margin:0 0 11px;}
+  .card .foryou{
+    background:#f4f7ff;border-left:3px solid var(--accent);border-radius:0 8px 8px 0;
+    padding:9px 12px;font-size:13px;color:#324063;margin:0 0 12px;
+  }
+  .card .foryou b{color:var(--accent);font-weight:700;}
+  .card .conf{font-size:11.5px;color:var(--muted);margin:0 0 11px;font-family:"Inter",sans-serif;}
+  .card .conf b{color:var(--ink-soft);font-weight:600;}
+  .card .foot{margin-top:auto;display:flex;align-items:center;justify-content:space-between;gap:10px;border-top:1px solid #eef0f5;padding-top:11px;}
+  .card .src{font-size:12.5px;font-weight:600;color:var(--accent);text-decoration:none;display:inline-flex;align-items:center;gap:5px;}
+  .card .src:hover{text-decoration:underline;}
+  .card .date{font-size:12px;color:var(--muted);font-family:"Inter",sans-serif;}
+  .empty{
+    grid-column:1/-1;background:rgba(255,255,255,.04);border:1px dashed rgba(255,255,255,.14);
+    border-radius:12px;color:#8b95ad;font-size:13.5px;padding:18px;text-align:center;line-height:1.7;
+  }
+  .hidden{display:none !important;}
+
+  /* 取樣方式說明 */
+  .method{
+    margin-top:30px;background:var(--panel);border:1px solid rgba(255,255,255,.06);
+    border-radius:14px;padding:18px 20px;color:#aeb7cd;font-size:12.5px;line-height:1.75;
+  }
+  .method b{color:#dfe5f1;}
+  .method .excl{color:#8b95ad;}
+
+  footer{margin-top:30px;text-align:center;color:#6c768c;font-size:12px;line-height:1.8;}
+  footer .ftag{color:#8b95ad;}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <div class="brand">
+      <div class="logo">ET</div>
+      <div>
+        <h1>EdTech 情報雙週報</h1>
+        <p>給 EdTech UX Designer 的雙週產業掃描 · 北美優先</p>
+      </div>
+    </div>
+    <div class="issue">
+      <div class="label">本期執行日期</div>
+      <div class="date">2026.08.01</div>
+    </div>
+  </div>
+  <div class="wrap" style="padding-top:0;">
+    <div class="scope">
+      <span>蒐集區間：2026/07/02 – 08/01</span>
+      <span>補上一期（07-15）遺漏窗口</span>
+      <span>後段（7/18 後）優先</span>
+      <span>逐則開頁查證</span>
+      <span>地區：US › APAC › EU</span>
+    </div>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <!-- HIGHLIGHTS -->
+  <section class="hi-block">
+    <h2><span class="hi-dot"></span>本期最該關注</h2>
+    <p class="sub">依設計決策影響程度排序 · 每點皆已開頁查證並附一手／權威來源。本期為補上一期遺漏，涵蓋 7/2–8/1，最新動態集中於下半段</p>
+    <ol class="hilist">
+      <li>
+        <b>Google Classroom 全面改版「角色感知首頁」：教師／學生／管理者各自儀表板，7/27 起全球上線（7/21 公告）</b>：改版把原本散落各處的工具集中成一個依角色動態呈現的入口——教師端有「學生作業互動洞察／完成度追蹤／功能聚光燈」儀表板、學生端有「Enrolled」與「Due soon（未來 7 天最多 5 筆）」、管理者端看參與度指標；符合資格的學生另有「Learn with Gemini」「Class learning tools」模組。橫跨所有版本（含個人帳號）。
+        <span class="meta">→ 這是本期最直接的介面基準：共用大屏＋自家軟體的「首頁／儀表板」應照抄這套「先分角色、再談功能」的資訊架構，並把待辦與洞察前置。</span>
+        <a class="hi-src" href="https://workspaceupdates.googleblog.com/2026/07/redesigned-google-classroom-homepage-with-tailored-views-based-on-users-role.html" target="_blank" rel="noopener">來源：Google Workspace Updates（2026-07-21，7/27 起推出）↗</a>
+      </li>
+      <li>
+        <b>FCC E-Rate 存廢之戰延燒：$2.5B 校園連網補助恐大砍或取消，牽動整條裝置與軟體採購鏈（7/17 進度）</b>：FCC 6/25 通過的 NPRM 把「是否縮限／限定區域／整個取消 E-Rate」全部攤上檯面，另問螢幕時間、內容過濾、顧問監管；SHLB、ALA 發動大規模反對（已逾 9,000 次國會聯繫）。正式意見期將於刊登聯邦公報後 60 天截止。
+        <span class="meta">→ 若補助縮水，學區會砍連網與裝置預算——這對「需連網才可用」的功能是紅旗，值得預先盤點離線／低頻寬體驗。</span>
+        <a class="hi-src" href="https://broadbandbreakfast.com/schools-libraries-fight-to-preserve-e-rate-in-major-battle-at-fcc/" target="_blank" rel="noopener">來源：Broadband Breakfast（2026-07-17）↗</a>
+      </li>
+      <li>
+        <b>州級 K-12 AI 指引接連落地：Michigan（7/14）、Illinois（7/10）先後發布，AI 使用規範正成產品必備欄位</b>：Illinois 端出 400 頁框架，四大原則（以人為本、公民參與、AI 輔助非取代、在地決策），並點名學生資料隱私、溝通透明度、文化偏見與 AI 幻覺（hallucination）；Michigan 與 Michigan Virtual 合作，聚焦「學生該懂的 AI 素養（演算法／資料／運算思維）」與在地規劃討論題組。全美已逾 30 州有 AI 指引。
+        <span class="meta">→ 這些指引正把「AI 透明度、使用分級、幻覺揭露」變成校方採購檢核項；自家 AI 功能需能對應州級框架的語言。</span>
+        <a class="hi-src" href="https://www.chalkbeat.org/chicago/2026/07/10/illinois-teachers-get-guidance-on-how-to-use-ai-in-schools/" target="_blank" rel="noopener">來源：Chalkbeat（2026-07-10）／Michigan Public（2026-07-14）↗</a>
+      </li>
+      <li>
+        <b>Anthropic 推免費 Claude for Teachers，內建 teaching skills 並綁定全 50 州課綱（7/14）</b>：僅限已驗證的美國 K-12 教師（學生不可用，維持 18+ 政策），提供一年 Pro 級免費存取、teaching-skills library 與 Learning Commons 課綱連接器；學生資料受 Anthropic 的 K-12 DPA（宣稱符合 FERPA）保護、不用於訓練，並與 AFT 共同制定隱私標準。7/1 起 Google、Microsoft 之外，教師端 AI 卡位戰再添一家。
+        <span class="meta">→ 教師端「AI 助教」正快速商品化；觀察其如何把「課綱對齊、每日 exit ticket 檢視、差異化」做成教師流程，是自家 ClassSwift 備課／評量體驗的對照組。</span>
+        <a class="hi-src" href="https://www.anthropic.com/news/claude-for-teachers" target="_blank" rel="noopener">來源：Anthropic（2026-07-14）↗</a>
+      </li>
+      <li>
+        <b>ClassDojo 把觸角伸出教室：校級／學區級溝通工具，一次寫、多通道發、190+ 語言自動翻譯（7/13）</b>：新增多通道公告（App／Email，區級再加 SMS／語音）、內建 Canva 電子報、一鍵社群發文、校級參與度儀表板，以及中學階段的師生安全訊息。皆為 2026-27 學年上線、對學校免費。
+        <span class="meta">→ 家長溝通「一次撰寫、跨通道送達、自動翻譯」正被標準化；自家家長端通知若仍要逐通道手動發，就落後了。</span>
+        <a class="hi-src" href="https://www.prnewswire.com/news-releases/classdojo-expands-beyond-the-classroom-with-new-schoolwide-tools-for-school-leaders-302823380.html" target="_blank" rel="noopener">來源：ClassDojo（PR Newswire，2026-07-13）↗</a>
+      </li>
+    </ol>
+  </section>
+
+  <!-- TOOLBAR -->
+  <div class="toolbar">
+    <h2>本期結果</h2>
+    <label class="switch">
+      <span>只看「影響設計決策」</span>
+      <input type="checkbox" id="designOnly">
+      <span class="track"></span>
+    </label>
+  </div>
+
+  <!-- 1. 法規 -->
+  <section class="cat" data-cat="法規">
+    <div class="cat-head">
+      <div class="ico">⚖️</div><h3>法規 / 政策</h3>
+      <span class="count"></span>
+    </div>
+    <div class="cards">
+
+      <article class="card" data-level="context">
+        <div class="tags"><span class="tag context">背景脈絡</span><span class="tag region">US · 聯邦政策</span></div>
+        <h4>FCC E-Rate 全面檢討 NPRM：$2.5B 校園連網補助面臨縮限或取消</h4>
+        <p class="lead">FCC 於 6/25 通過近年最全面的 E-Rate 檢討 NPRM，攤開「是否縮限、限定地理區、或整個取消」等選項，並一併檢視學生螢幕時間、內容過濾與顧問監管。E-Rate 補助逾 100,000 所學校、11,000 間圖書館的寬頻。SHLB Broadband Coalition 與 ALA 發動大規模反對（ALA 已促成逾 9,000 次國會聯繫），執行長 Joey Wender 稱若通過「將在全國學校與圖書館預算炸出一個大坑」。正式意見期於刊登聯邦公報後 60 天截止、回覆意見再加 30 天，截止日尚未定。</p>
+        <div class="foryou"><b>對你而言：</b>定位訊號——若連網補助縮水，學區會優先砍「必須連網才可用」的功能與裝置更新。把此列入風險雷達：盤點 IFP＋AirSync 投放、myViewBoard 雲端協作在低頻寬／離線情境的降級表現，作為下一輪體驗韌性評估的起點（本則僅做定位，不含即刻動作）。</div>
+        <p class="conf"><b>信心：高</b>　·　來源類型：產業媒體＋官方（Broadband Breakfast／K-12 Dive／FCC NPRM）</p>
+        <div class="foot"><a class="src" href="https://broadbandbreakfast.com/schools-libraries-fight-to-preserve-e-rate-in-major-battle-at-fcc/" target="_blank" rel="noopener">來源 ↗</a><span class="date">2026-07-17</span></div>
+      </article>
+
+      <article class="card" data-level="context">
+        <div class="tags"><span class="tag context">背景脈絡</span><span class="tag region">US · 州級指引</span></div>
+        <h4>Illinois 發 400 頁 K-12 AI 教師指引：點名幻覺、隱私、透明度與偏見</h4>
+        <p class="lead">Illinois 州教育廳（ISBE）7/10 發布 400 頁 AI 使用框架，四大原則為以人為本、公民參與、「AI 輔助教學而非取代」、以及在地脈絡決策；提供分年級的實例（含如何為備課寫有效 prompt）。倫理章節明列學生資料隱私、對外溝通的透明度要求、文化偏見風險與「AI 幻覺（把捏造資訊當事實）」。並要求把「AI 生成的網路霸凌」納入校園網路安全教育。落實仍由學區彈性決定。</p>
+        <div class="foryou"><b>對你而言：</b>定位訊號——州級框架正把「幻覺揭露、資料用途、透明度」變成校方採購問卷的既定欄位。可先建一份「州級 AI 指引 → 產品對應點」對照表，供 ClassSwift／myViewBoard 的 AI 功能日後對齊（本則做定位，實作留待影響設計卡片）。</div>
+        <p class="conf"><b>信心：高</b>　·　來源類型：產業媒體引述官方（Chalkbeat 引 ISBE 文件）</p>
+        <div class="foot"><a class="src" href="https://www.chalkbeat.org/chicago/2026/07/10/illinois-teachers-get-guidance-on-how-to-use-ai-in-schools/" target="_blank" rel="noopener">來源 ↗</a><span class="date">2026-07-10</span></div>
+      </article>
+
+      <article class="card" data-level="context">
+        <div class="tags"><span class="tag context">背景脈絡</span><span class="tag region">US · 州級指引</span></div>
+        <h4>Michigan 發布統一 K-12 AI 指引：聚焦學生 AI 素養與在地規劃</h4>
+        <p class="lead">Michigan 教育廳 7/14 與非營利 Michigan Virtual 合作發布全州 AI 指引，聚焦「學生該理解的 AI（演算法、資料、運算思維）」，並強調公平、負責任的導入與長期規劃；內含供學區在地討論的題組。發言人 Ken Coleman 表示後續將加入「依年齡分層的學習計畫」。此為 2025 年 Ohio 要求各學區須於 2026-07-01 前訂定 AI 政策後，州級指引持續累積（全美已逾 30 州）的一環。</p>
+        <div class="foryou"><b>對你而言：</b>定位訊號——「AI 素養」正被寫進州級課程期待，代表面向學生的 AI 功能未來需能對應「可解釋、可討論」的敘事，而非黑箱。列為觀察項，暫不需動作。</div>
+        <p class="conf"><b>信心：高</b>　·　來源類型：公共媒體引述官方（Michigan Public 引 MDE）</p>
+        <div class="foot"><a class="src" href="https://www.michiganpublic.org/education/2026-07-14/michigan-adds-statewide-ai-guidance-for-k-12-schools" target="_blank" rel="noopener">來源 ↗</a><span class="date">2026-07-14</span></div>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- 2. IFP -->
+  <section class="cat" data-cat="IFP">
+    <div class="cat-head">
+      <div class="ico">🖥️</div><h3>IFP 互動大屏</h3>
+      <span class="count"></span>
+    </div>
+    <div class="cards">
+      <div class="empty">本期（7/2–8/1）無「本期窗口內＋一手來源」的重大 IFP 硬體新品／新功能發布。說明：本季 IFP 發表集中在上半年——ViewSonic Android 16 世代（ViewBoard IFP35-1／IFP41-1，64 點觸控＋PIR/環境光感測）於 Bett 2026（1 月）發表、Samsung AMS 個人化登入與 BenQ Board RP05（50 點觸控＋EDLA）於 ISTELive 26（6 月底–7/1）發表，均已於前期收錄；7 月下旬至 8 月初進入年會後的發布空窗，故本區據實標註無重大更新，不硬湊。</div>
+    </div>
+  </section>
+
+  <!-- 3. 軟體競品 -->
+  <section class="cat" data-cat="軟體">
+    <div class="cat-head">
+      <div class="ico">🧩</div><h3>教育軟體競品</h3>
+      <span class="count"></span>
+    </div>
+    <div class="cards">
+
+      <article class="card" data-level="design">
+        <div class="tags"><span class="tag design">影響設計決策</span><span class="tag region">US/Global · 競品</span></div>
+        <h4>Google Classroom：角色感知首頁——教師／學生／管理者各自儀表板</h4>
+        <p class="lead">7/21 公告、7/27 起全球分批上線的 Classroom 首頁改版，把原本散落的工具收攏為一個依角色動態呈現的中央入口：教師端有「學生作業互動洞察／指派完成度追蹤／功能聚光燈」；學生端有「Enrolled」課程視圖與「Due soon」模組（列出未來 7 天內、最多 5 筆待交作業）；管理者端看參與度指標。模組可收合以自訂版面。符合資格的學生另會看到「Learn with Gemini」（依作業脈絡觸發學習動作選單）與「Class learning tools」。跨所有 Workspace 版本與個人帳號。</p>
+        <div class="foryou"><b>對你而言：</b>照抄這套資訊架構——首頁「先分角色、再談功能」。自家 IFP Launcher 與 myViewBoard/ClassSwift 首頁應把「老師的待辦與班級洞察」「學生的 Due soon 待交清單」設為預設一級模組，AI 入口做成情境化模組而非埋在選單；並支援模組收合以容納 K-12 多角色（老師／學生）的差異需求。</div>
+        <p class="conf"><b>信心：高</b>　·　來源類型：廠商官方（Google Workspace Updates，並經 7/24 週報再確認）</p>
+        <div class="foot"><a class="src" href="https://workspaceupdates.googleblog.com/2026/07/redesigned-google-classroom-homepage-with-tailored-views-based-on-users-role.html" target="_blank" rel="noopener">來源 ↗</a><span class="date">2026-07-21</span></div>
+      </article>
+
+      <article class="card" data-level="design">
+        <div class="tags"><span class="tag design">影響設計決策</span><span class="tag region">US · 競品</span></div>
+        <h4>Anthropic：免費 Claude for Teachers，綁定全 50 州課綱、FERPA 對齊</h4>
+        <p class="lead">7/14 推出、僅限已驗證美國 K-12 教師（學生不可用，維持 18+ 政策）：一年 Pro 級免費存取（2027-06-30 前註冊者享滿一年）、teaching-skills library，以及 Learning Commons 連接器（對接全 50 州學術標準與 OpenSciEd、Illustrative Mathematics 等課綱）。用例含依州標準備課（附學習進程與常見迷思）、每日檢視 exit ticket 並據此調整後續教學、教材差異化。學生資訊受 Anthropic K-12 DPA（宣稱符合 FERPA）保護、不用於訓練；隱私標準與 AFT 共同制定。</p>
+        <div class="foryou"><b>對你而言：</b>把「課綱對齊」做成流程第一步——教師選定州別／年級／科目後，備課與評量產出物即帶入該州標準標籤。這是自家 ClassSwift 備課精靈可直接對照的敘事：讓「對齊哪條標準」在產出物上以可見標籤揭露，而非藏在設定裡；並在教師端明示「學生資料不用於訓練」的信任訊息。</div>
+        <p class="conf"><b>信心：高</b>　·　來源類型：廠商官方（Anthropic newsroom）</p>
+        <div class="foot"><a class="src" href="https://www.anthropic.com/news/claude-for-teachers" target="_blank" rel="noopener">來源 ↗</a><span class="date">2026-07-14</span></div>
+      </article>
+
+      <article class="card" data-level="design">
+        <div class="tags"><span class="tag design">影響設計決策</span><span class="tag region">US · 競品</span></div>
+        <h4>ClassDojo：校級／學區級溝通——一次寫、多通道發、190+ 語言自動翻譯</h4>
+        <p class="lead">7/13 宣布把產品從教室延伸到校級／學區級：多通道公告（一次撰寫，跨 App／Email 派送，區級再加 SMS 與語音）、內建 Canva 電子報製作、一鍵社群發文、校級參與度儀表板，以及中學階段的師生安全訊息。訊息自動翻成 190+ 種語言以觸及多語家庭。新校級功能於 2026-27 學年上線，對學校、教師、家長維持免費。</p>
+        <div class="foryou"><b>對你而言：</b>把「撰寫一次 → 選通道 → 自動翻譯」設計成單一發送流程的預設路徑，而非要老師在各通道重複貼文。自家家長端通知若仍逐通道手動，應優先補上「多通道勾選＋自動語言偵測」與送達狀態揭露，對應美國校園高比例的多語家庭情境。</div>
+        <p class="conf"><b>信心：高</b>　·　來源類型：廠商官方（ClassDojo，PR Newswire 新聞稿）</p>
+        <div class="foot"><a class="src" href="https://www.prnewswire.com/news-releases/classdojo-expands-beyond-the-classroom-with-new-schoolwide-tools-for-school-leaders-302823380.html" target="_blank" rel="noopener">來源 ↗</a><span class="date">2026-07-13</span></div>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- 4. UX 趨勢 -->
+  <section class="cat" data-cat="UX">
+    <div class="cat-head">
+      <div class="ico">🎨</div><h3>UX / 設計趨勢</h3>
+      <span class="count"></span>
+    </div>
+    <div class="cards">
+
+      <article class="card" data-level="design">
+        <div class="tags"><span class="tag design">影響設計決策</span><span class="tag region">US · 趨勢</span></div>
+        <h4>本期 UX 主訊號：「角色感知首頁 ＋ 教師掌控 ＋ 可稽核」成 AI 時代信任預設值</h4>
+        <p class="lead">把本期一手發布連起來看，設計語言高度一致：Google Classroom 首頁改成依角色（教師／學生／管理者）動態呈現、把洞察與待辦前置；Claude for Teachers 與 ClassDojo 都把「教師掌控權」「資料用途透明」「可對齊標準／可翻譯」放到前景。呼應本期產業報導共同結論——「信任（teacher control、audit trail、隱私與資料規則）已成 AI 教學工具的採購過濾器」。</p>
+        <div class="foryou"><b>對你而言：</b>把三件事升為自家 AI 功能的一級可見元件：(1) 首頁依角色分流的模組化儀表板；(2) 教師可見的「AI 使用／學生活動軌跡」揭露區；(3) 產出物上的「標準對齊標籤＋資料用途說明」。在 myViewBoard/ClassSwift 的 AI 入口，用「引導式 vs 直接給答案」的模式切換，取代單一黑箱回覆。</div>
+        <p class="conf"><b>信心：中</b>　·　來源類型：推論（綜整 Google 7/21、Anthropic 7/14、ClassDojo 7/13 三則一手發布之共通模式，佐以本期產業報導）</p>
+        <div class="foot"><a class="src" href="https://workspaceupdates.googleblog.com/2026/07/redesigned-google-classroom-homepage-with-tailored-views-based-on-users-role.html" target="_blank" rel="noopener">來源 ↗</a><span class="date">2026-07-21</span></div>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- 5. 市場動向 -->
+  <section class="cat" data-cat="市場">
+    <div class="cat-head">
+      <div class="ico">📊</div><h3>市場動向 / 展會報告</h3>
+      <span class="count"></span>
+    </div>
+    <div class="cards">
+
+      <article class="card" data-level="context">
+        <div class="tags"><span class="tag context">背景脈絡</span><span class="tag region">US · 資金／標準</span></div>
+        <h4>Digital Promise $8M 開源 K-12 AI 數學輔導基礎建設 RFP：7/31 截止</h4>
+        <p class="lead">Gates 基金會支持、Digital Promise 主辦的 K-12 AI Infrastructure Program，徵求「開源、教育專用的 AI 模型基礎建設」（模型權重、訓練碼、資料集、評測工具、文件），採寬鬆授權（內容 CC BY 4.0、軟體 Apache 2.0），非資助特定廠商產品。申請於 2026-07-31 截止，計畫 11 月起跑、為期 30–36 個月，僅選一隊。要求具 LLM 經驗、同儕審查發表、以及以真實學生資料的部署／評測，並附學生資料保護與偏見緩解計畫。模型將以「效度、信度、公平、安全、成效、成本」受測。</p>
+        <div class="foryou"><b>對你而言：</b>定位訊號——K-12 AI 正走向「開源、可評測、可稽核」的公共基礎建設路線，成效與安全被列為驗收指標。這預示未來校方會拿「效度／偏見緩解」問所有 AI 供應商；先把自家 AI 功能的評測與安全敘事準備好，日後不必臨時補件。</div>
+        <p class="conf"><b>信心：中</b>　·　來源類型：產業媒體＋一手 RFP（EdTech Innovation Hub／Digital Promise，RFP 開放於 6/4、截止 7/31）</p>
+        <div class="foot"><a class="src" href="https://www.edtechinnovationhub.com/news/digital-promise-program-opens-8-million-ai-tutoring-grant-backed-by-gates-foundation" target="_blank" rel="noopener">來源 ↗</a><span class="date">2026-07-31</span></div>
+      </article>
+
+      <article class="card" data-level="context">
+        <div class="tags"><span class="tag context">背景脈絡</span><span class="tag region">US · 品牌整併</span></div>
+        <h4>ExploreLearning ＋ Learning A-Z 整併為「ExploreK12」，主打讀寫／數學／科學</h4>
+        <p class="lead">Cambium Learning 旗下的 ExploreLearning 與 Learning A-Z 於 7/1 統一為新品牌 ExploreK12，定位為橫跨讀寫、數學、科學的整合型 K-12 學習組合；並宣布 2026-27 學年的返校強化——包含更強的評量、擴充內容與新的教學支援。屬本期窗口前緣的市場整併訊號。</p>
+        <div class="foryou"><b>對你而言：</b>定位訊號——EdTech 供應端持續整併為「跨學科單一品牌」，校方採購趨向「一站式」而非拼裝多個點工具。觀察此對「單一登入、跨科目一致的介面語言」需求的推力；自家軟體組合（myViewBoard/ClassSwift/AirSync）的品牌與登入一致性值得對照檢視。</div>
+        <p class="conf"><b>信心：中</b>　·　來源類型：廠商官方（BusinessWire 新聞稿）</p>
+        <div class="foot"><a class="src" href="https://www.businesswire.com/news/home/20260701755097/en/Introducing-ExploreK12-Unlocking-Learning-for-Every-Student-in-the-Critical-Subjects-of-Literacy-Math-and-Science" target="_blank" rel="noopener">來源 ↗</a><span class="date">2026-07-01</span></div>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- 取樣方式 -->
+  <section class="method">
+    <b>本期取樣與查證方式（先驗證再交付）</b><br>
+    本期執行日為 2026-08-01；因 <b>上一期（原定 2026-07-15）未見產出檔</b>，為避免遺漏兩週以上的重大更新，本期蒐集區間放寬為 <b>2026/07/02 – 08/01（涵蓋自上次發佈 07-01 以來）</b>，並在排序上優先呈現 7/18 之後的最新動態。對五大面向各做 2–4 次日期精確搜尋，逐層掃描一手／權威層（ed.gov、FCC、各州 DOE、W3C WAI、1EdTech、各廠商 newsroom、Google Workspace Updates、Anthropic newsroom）→ 產業媒體層（K-12 Dive、EdWeek Market Brief、EdSurge、EdTech Innovation Hub、Broadband Breakfast、Tech &amp; Learning）→ 展會／報告層（ISTE、HolonIQ）。軟體競品面向已個別查詢 Canva for Education、SchoolAI、ClassDojo、Microsoft Education。<b>本期納入的每一則卡片來源皆已實際開頁核對內容、網址與真實發布日期</b>（Google 7/21、Anthropic 7/14、ClassDojo 7/13、Illinois 7/10、Michigan 7/14、E-Rate 7/17、Digital Promise、ExploreK12 7/1 均通過驗證）。每則另標信心等級（高／中／低）與來源類型。<br>
+    <span class="excl">本期開頁查證後排除或校正：SchoolAI「重大平台更新（Dot AI／PowerUps）」經開頁確認實際發布日為 <b>2025-07-16</b>（去年舊聞），故不列；SchoolAI Student Portal 概覽為 2026-05-24，落在窗口前；myViewBoard／ClassSwift／AirSync 本期查無可核對的新版新聞稿（官方 KB 未見本窗口內條目），故自家產品本期無新項可列；Microsoft M365 Education（逐作業 AI 分級、Study and Learn Agent）為 6/24 發布、已於前期收錄，7 月僅為既定功能分批上線，不重複列卡；ED 學生隱私辦公室（SPPO）夏季網路研討會（8/12、8/19、8/26）屬窗口後、暫不列。IFP 硬體本期無窗口內一手新品發布，據實標註無重大更新。</span>
+  </section>
+
+  <footer>
+    <div>EdTech 情報雙週報 · 本期 2026-08-01 · 蒐集區間 2026/07/02–08/01（補上一期 07-15 遺漏窗口）</div>
+    <div class="ftag">本期僅保留可查證項目並回溯一手來源；無更新之分區據實標註。連結為原始來源，請以原文為準。下期預定 2026-08-15。</div>
+  </footer>
+
+</div>
+
+<script>
+  // 設計決策過濾開關
+  (function(){
+    var toggle=document.getElementById('designOnly');
+    var cats=document.querySelectorAll('.cat');
+    function apply(){
+      var on=toggle.checked;
+      cats.forEach(function(cat){
+        var cards=cat.querySelectorAll('.card');
+        var shown=0;
+        cards.forEach(function(c){
+          var keep=!on || c.getAttribute('data-level')==='design';
+          c.classList.toggle('hidden',!keep);
+          if(keep) shown++;
+        });
+        var emptyEl=cat.querySelector('.empty');
+        if(emptyEl && cat.querySelectorAll('.card').length>0){
+          if(shown===0){
+            emptyEl.textContent='本區本期無「影響設計決策」項目';
+            emptyEl.classList.remove('hidden');
+          } else {
+            emptyEl.classList.add('hidden');
+          }
+        }
+        var countEl=cat.querySelector('.count');
+        if(countEl) countEl.textContent=shown+' 則';
+      });
+    }
+    cats.forEach(function(cat){
+      var n=cat.querySelectorAll('.card').length;
+      var c=cat.querySelector('.count'); if(c)c.textContent=n+' 則';
+    });
+    toggle.addEventListener('change',apply);
+  })();
+</script>
+</body>
+</html>
