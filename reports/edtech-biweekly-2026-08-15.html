@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EdTech 情報雙週報 · 2026-08-15</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0f1320; --panel:#161b2e; --panel2:#1d2336;
+    --card:#ffffff; --card-border:#e4e7ef;
+    --ink:#11151f; --ink-soft:#5b6473; --muted:#8b93a4;
+    --accent:#4f7cff; --accent-2:#22c3a6;
+    --hi:#ffd54a; --tag-design:#1f8a5b; --tag-design-bg:#e3f6ec;
+    --tag-context:#6b7280; --tag-context-bg:#eef0f4;
+    --shadow:0 1px 3px rgba(10,15,30,.08),0 8px 24px rgba(10,15,30,.06);
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0; background:var(--bg);
+    font-family:"Noto Sans TC","Inter",system-ui,-apple-system,sans-serif;
+    color:var(--ink); line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:inherit;}
+  .wrap{max-width:980px;margin:0 auto;padding:0 18px 64px;}
+
+  /* Header */
+  header.top{
+    background:linear-gradient(135deg,#141a2e 0%,#222c4d 100%);
+    color:#fff; padding:34px 0 30px; border-bottom:1px solid rgba(255,255,255,.06);
+  }
+  .top .wrap{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:14px;padding-bottom:0;}
+  .brand{display:flex;align-items:center;gap:14px;}
+  .logo{
+    width:46px;height:46px;border-radius:12px;flex:none;
+    background:linear-gradient(135deg,var(--accent),var(--accent-2));
+    display:flex;align-items:center;justify-content:center;font-weight:900;font-size:20px;color:#fff;
+    font-family:"Inter",sans-serif;
+  }
+  a.logo{text-decoration:none;cursor:pointer;
+    transition:transform .15s ease, box-shadow .15s ease;}
+  a.logo:hover{transform:scale(1.06);box-shadow:0 0 0 3px rgba(79,124,255,.45);}
+  a.logo:focus-visible{outline:2px solid #fff;outline-offset:3px;}
+  .brand h1{font-size:25px;margin:0;font-weight:900;letter-spacing:.3px;}
+  .brand p{margin:2px 0 0;color:#aeb7cd;font-size:13.5px;}
+  .issue{text-align:right;}
+  .issue .date{font-family:"Inter",sans-serif;font-weight:800;font-size:22px;color:#fff;}
+  .issue .label{font-size:12px;color:#8b95ad;letter-spacing:2px;text-transform:uppercase;}
+  .scope{
+    margin-top:18px;display:flex;flex-wrap:wrap;gap:8px;
+  }
+  .scope span{
+    background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.1);
+    color:#cdd5e6;font-size:12px;padding:4px 11px;border-radius:20px;
+  }
+
+  /* Highlights */
+  section.hi-block{
+    background:var(--panel); margin-top:26px;border-radius:18px;padding:26px 26px 12px;
+    border:1px solid rgba(255,255,255,.05);
+  }
+  .hi-block h2{color:#fff;font-size:18px;margin:0 0 4px;display:flex;align-items:center;gap:9px;}
+  .hi-block .sub{color:#8b95ad;font-size:13px;margin:0 0 16px;}
+  .hi-dot{width:9px;height:9px;border-radius:50%;background:var(--hi);box-shadow:0 0 0 4px rgba(255,213,74,.18);}
+  ol.hilist{list-style:none;counter-reset:h;margin:0;padding:0;}
+  ol.hilist li{
+    counter-increment:h;position:relative;padding:14px 4px 16px 56px;
+    border-top:1px solid rgba(255,255,255,.06);color:#dfe5f1;font-size:14.5px;
+  }
+  ol.hilist li:first-child{border-top:none;}
+  ol.hilist li::before{
+    content:counter(h,decimal-leading-zero);position:absolute;left:0;top:13px;
+    font-family:"Inter",sans-serif;font-weight:800;font-size:15px;color:var(--accent);
+    background:rgba(79,124,255,.12);width:38px;height:38px;border-radius:10px;
+    display:flex;align-items:center;justify-content:center;
+  }
+  ol.hilist li b{color:#fff;font-weight:700;}
+  ol.hilist li .meta{display:block;color:#8b95ad;font-size:12px;margin-top:3px;}
+  ol.hilist li .hi-src{display:inline-block;margin-top:8px;font-family:"Inter",sans-serif;font-size:12px;font-weight:600;color:#8fb0ff;text-decoration:none;}
+  ol.hilist li .hi-src:hover{text-decoration:underline;}
+
+  /* Toggle bar */
+  .toolbar{
+    position:sticky;top:0;z-index:10;margin-top:30px;
+    background:rgba(15,19,32,.92);backdrop-filter:blur(8px);
+    padding:14px 4px;display:flex;align-items:center;justify-content:space-between;gap:14px;
+    border-bottom:1px solid rgba(255,255,255,.07);
+  }
+  .toolbar h2{color:#fff;font-size:17px;margin:0;}
+  .switch{display:flex;align-items:center;gap:10px;color:#cdd5e6;font-size:13px;cursor:pointer;user-select:none;}
+  .switch input{display:none;}
+  .track{width:44px;height:24px;border-radius:20px;background:#33405e;position:relative;transition:.2s;flex:none;}
+  .track::after{content:"";position:absolute;top:3px;left:3px;width:18px;height:18px;border-radius:50%;background:#fff;transition:.2s;}
+  .switch input:checked + .track{background:var(--tag-design);}
+  .switch input:checked + .track::after{transform:translateX(20px);}
+
+  /* Category */
+  .cat{margin-top:30px;}
+  .cat-head{display:flex;align-items:center;gap:11px;margin-bottom:14px;}
+  .cat-head .ico{
+    width:34px;height:34px;border-radius:9px;flex:none;display:flex;align-items:center;justify-content:center;font-size:17px;
+    background:var(--panel2);border:1px solid rgba(255,255,255,.07);
+  }
+  .cat-head h3{color:#fff;font-size:17px;margin:0;font-weight:700;}
+  .cat-head .count{color:#8b95ad;font-size:12.5px;margin-left:auto;}
+
+  .cards{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+  @media(max-width:720px){.cards{grid-template-columns:1fr;}}
+  .card{
+    background:var(--card);border:1px solid var(--card-border);border-radius:14px;
+    padding:17px 17px 15px;box-shadow:var(--shadow);display:flex;flex-direction:column;
+  }
+  .card .tags{display:flex;gap:7px;align-items:center;margin-bottom:9px;flex-wrap:wrap;}
+  .tag{font-size:11px;font-weight:700;padding:3px 9px;border-radius:6px;letter-spacing:.3px;}
+  .tag.design{color:var(--tag-design);background:var(--tag-design-bg);}
+  .tag.context{color:var(--tag-context);background:var(--tag-context-bg);}
+  .tag.region{color:#9a5b00;background:#fdeccb;}
+  .card h4{margin:0 0 7px;font-size:15.5px;line-height:1.45;color:var(--ink);font-weight:700;}
+  .card .lead{font-size:13.5px;color:var(--ink-soft);margin:0 0 11px;}
+  .card .foryou{
+    background:#f4f7ff;border-left:3px solid var(--accent);border-radius:0 8px 8px 0;
+    padding:9px 12px;font-size:13px;color:#324063;margin:0 0 12px;
+  }
+  .card .foryou b{color:var(--accent);font-weight:700;}
+  .card .conf{font-size:11.5px;color:var(--muted);margin:0 0 11px;font-family:"Inter",sans-serif;}
+  .card .conf b{color:var(--ink-soft);font-weight:600;}
+  .card .foot{margin-top:auto;display:flex;align-items:center;justify-content:space-between;gap:10px;border-top:1px solid #eef0f5;padding-top:11px;}
+  .card .src{font-size:12.5px;font-weight:600;color:var(--accent);text-decoration:none;display:inline-flex;align-items:center;gap:5px;}
+  .card .src:hover{text-decoration:underline;}
+  .card .date{font-size:12px;color:var(--muted);font-family:"Inter",sans-serif;}
+  .empty{
+    grid-column:1/-1;background:rgba(255,255,255,.04);border:1px dashed rgba(255,255,255,.14);
+    border-radius:12px;color:#8b95ad;font-size:13.5px;padding:18px;text-align:center;line-height:1.7;
+  }
+  .hidden{display:none !important;}
+
+  /* 取樣方式說明 */
+  .method{
+    margin-top:30px;background:var(--panel);border:1px solid rgba(255,255,255,.06);
+    border-radius:14px;padding:18px 20px;color:#aeb7cd;font-size:12.5px;line-height:1.75;
+  }
+  .method b{color:#dfe5f1;}
+  .method .excl{color:#8b95ad;}
+
+  footer{margin-top:30px;text-align:center;color:#6c768c;font-size:12px;line-height:1.8;}
+  footer .ftag{color:#8b95ad;}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <div class="brand">
+      <a class="logo" href="../index.html" title="回歷史總表：查看全部期數" aria-label="回歷史總表，查看全部期數">ET</a>
+      <div>
+        <h1>EdTech 情報雙週報</h1>
+        <p>給 EdTech UX Designer 的雙週產業掃描 · 北美優先</p>
+      </div>
+    </div>
+    <div class="issue">
+      <div class="label">本期執行日期</div>
+      <div class="date">2026.08.15</div>
+    </div>
+  </div>
+  <div class="wrap" style="padding-top:0;">
+    <div class="scope">
+      <span>蒐集區間：2026/08/02 – 08/15（近兩週）</span>
+      <span>僅收錄本期發布</span>
+      <span>逐則開頁查證</span>
+      <span>地區：US › APAC › EU</span>
+    </div>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <!-- HIGHLIGHTS -->
+  <section class="hi-block">
+    <h2><span class="hi-dot"></span>本期最該關注</h2>
+    <p class="sub">依設計決策影響程度排序 · 每點皆已開頁查證並附一手／權威來源。本期落在「開學季 × 學生端 AI 上線」與「AI 風險反思」交會的節點，IFP 硬體維持年會後空窗、據實不硬湊</p>
+    <ol class="hilist">
+      <li>
+        <b>Google Classroom：Gemini 開放給「全年齡 K-12 學生」，starter prompts 自動帶入課程脈絡（8/4 公告、8/10 web 上線、8/17 行動版）</b>：原本僅開放大專 18 歲以上，本期擴大到已獲管理者核准的各年齡層學生。學生可選定某堂課與某份作業，系統就自動把「作業標題、指示、課綱教材」當脈絡帶進 Gemini，直接生成客製化 flashcards、練習測驗與學習指南，無須切換 app；作業卡片 hover 時另有「Learn with Gemini」入口。管理者可用組織單位（OU）針對未滿 18 歲關閉。
+        <span class="meta">→ 本期唯一大規模、可直接對照的「學生端 AI 入口」基準：值得拿自家課中軟體的 AI 動線與「脈絡帶入」做法並排看一次。</span>
+        <a class="hi-src" href="https://workspaceupdates.googleblog.com/2026/08/gemini-in-google-classroom-is-expanding-to-users-of-all-ages-with-contextualized-Gemini-starter-prompts-for-students.html" target="_blank" rel="noopener">來源：Google Workspace Updates（2026-08-04，8/10 起推出）↗</a>
+      </li>
+      <li>
+        <b>FCC E-Rate 檢討 NPRM 8/14 刊登聯邦公報，意見期正式開跑（意見 10/13 截止、回覆意見 11/12）</b>：6/25 通過、6/4 以 fact sheet 預告的 E-Rate 全面檢討，本期正式刊登聯邦公報（Doc 2026-16590），把「是否限縮、限定區域或整個落日」與 CIPA 內容過濾、學生螢幕時間、家長賦權一併徵詢公眾意見。這是本期把該政策從「已通過草案」推進成「有明確截止日、可正式陳情」的關鍵里程碑。
+        <span class="meta">→ 牽動學區明後年連網／裝置預算，也可能把「螢幕時間」寫進採購問卷，是本期最該放進風險雷達的政策變數。</span>
+        <a class="hi-src" href="https://www.eratesync.com/blog/e-rate-program-review-2026-fcc-funding-schools-libraries" target="_blank" rel="noopener">來源：ErateSync（引聯邦公報 2026-08-14，含意見截止日）↗</a>
+      </li>
+      <li>
+        <b>教育 AI「淘金熱」風險示警：performance cliff、cognitive surrender、AI 評分偏誤同時登上主流報導（8/7）</b>：Christian Science Monitor 綜整多份研究——Stanford 指出學生用 AI 時進步、一移除工具即出現「表現斷崖」；UPenn 研究稱 AI 造成「認知繳械」；AI 評分因學生姓名而異，顯示種族／性別偏誤；Common Sense Media 早前將校用 Gemini 評為「高風險」（對不同年齡給相同答案）。市場已達 $730M、卻缺乏嚴謹成效證據。
+        <span class="meta">→ 這條把「AI 揭露、年齡適配、教師可介入」從加分項推成基本盤，是本期最該內化到設計原則的訊號。</span>
+        <a class="hi-src" href="https://www.csmonitor.com/USA/Education/2026/0807/ai-risks-schools-students" target="_blank" rel="noopener">來源：Christian Science Monitor（2026-08-07）↗</a>
+      </li>
+    </ol>
+  </section>
+
+  <!-- TOOLBAR -->
+  <div class="toolbar">
+    <h2>本期結果</h2>
+    <label class="switch">
+      <span>只看「影響設計決策」</span>
+      <input type="checkbox" id="designOnly">
+      <span class="track"></span>
+    </label>
+  </div>
+
+  <!-- 1. 法規 -->
+  <section class="cat" data-cat="法規">
+    <div class="cat-head">
+      <div class="ico">⚖️</div><h3>法規 / 政策</h3>
+      <span class="count"></span>
+    </div>
+    <div class="cards">
+
+      <article class="card" data-level="context">
+        <div class="tags"><span class="tag context">背景脈絡</span><span class="tag region">US · 聯邦政策</span></div>
+        <h4>FCC E-Rate 檢討 NPRM 刊登聯邦公報：意見期開跑，聚焦 CIPA、螢幕時間與家長賦權</h4>
+        <p class="lead">FCC 於 6/25 通過近年最全面的 E-Rate 檢討 NPRM（FCC 26-41），本期（8/14）正式刊登聯邦公報（文件 2026-16590「FCC To Review E-Rate Program To Ensure Congress's Vision」），啟動法定意見時鐘：意見於 2026-10-13 截止、回覆意見於 2026-11-12 截止。NPRM 徵詢「E-Rate 是否應限縮、限定區域或整個落日」，並就 CIPA 內容過濾、限制學生螢幕時間、賦權家長／老師以確保補助真正提升學習成效等一併徵求意見，同時提出強化計畫誠信與行政流程的作法。E-Rate 補助逾 100,000 所學校、11,000 間圖書館的寬頻。</p>
+        <div class="foryou"><b>對你而言：</b>這次 NPRM 把「內容過濾、學生螢幕時間、經費存續」全攤上檯面。值得思考的是兩件事：一是預算面——學區連網補助若縮水，自家「一斷網就不能用」的功能（AirSync 課中無線投屏、雲端協作）在低頻寬教室會降級到什麼程度、老師看不看得懂當下狀態；二是若「螢幕時間」成為採購問卷的新欄位，課中互動情境裡有沒有讓老師能掌握、甚至向校方交代學生螢幕使用的視角。</div>
+        <p class="conf"><b>信心：高</b>　·　來源類型：產業媒體引聯邦公報＋FCC 一手文件（ErateSync 引 Federal Register 2026-16590 / FCC 26-41）</p>
+        <div class="foot"><a class="src" href="https://www.eratesync.com/blog/e-rate-program-review-2026-fcc-funding-schools-libraries" target="_blank" rel="noopener">來源 ↗</a><span class="date">2026-08-14</span></div>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- 2. IFP -->
+  <section class="cat" data-cat="IFP">
+    <div class="cat-head">
+      <div class="ico">🖥️</div><h3>IFP 互動大屏</h3>
+      <span class="count"></span>
+    </div>
+    <div class="cards">
+      <div class="empty">本期（8/2–8/15）無重大更新。說明：本季 IFP 發表集中在上半年——ViewSonic Android 16 世代（ViewBoard IFP35-1／IFP41-1，64 點觸控＋PIR／環境光感測）於 Bett 2026（1 月）發表；Samsung AMS 共用大屏 QR／NFC 快速登入與 AI Assistant（Circle to Search／Live Transcript／AI Quiz）、BenQ、Promethean、Clevertouch 的 AI 課堂工具均於 ISTELive 26（6 月底–7 月初）發表並已於前兩期收錄。8 月上半為開學前的發布空窗，本區據實標註、不硬湊。</div>
+    </div>
+  </section>
+
+  <!-- 3. 軟體競品 -->
+  <section class="cat" data-cat="軟體">
+    <div class="cat-head">
+      <div class="ico">🧩</div><h3>教育軟體競品</h3>
+      <span class="count"></span>
+    </div>
+    <div class="cards">
+
+      <article class="card" data-level="design">
+        <div class="tags"><span class="tag design">影響設計決策</span><span class="tag region">US/Global · 競品</span></div>
+        <h4>Google Classroom：Gemini 開放全年齡學生，starter prompts 自動帶入課程／作業脈絡</h4>
+        <p class="lead">8/4 公告、8/10 起 web 上線（行動版 8/17）的更新，把學生端 Gemini 從原本僅限大專 18 歲以上，擴大到已獲管理者核准的各年齡層 K-12／高教學生。核心是「情境化 starter prompts」：學生選定某堂課與某份作業後，系統自動把該作業的標題、指示與課綱教材當脈絡帶入，直接生成客製化 flashcards、練習測驗與學習指南，免去在 app 間切換；Classroom 首頁作業卡片 hover 時另有「Learn with Gemini」入口。管理者可透過建立獨立 OU 針對未滿 18 歲關閉。</p>
+        <div class="foryou"><b>對你而言：</b>Google 把學生端 AI 做成「選課程／選作業 → 自動帶入脈絡」，不必手動貼題目。值得檢視的是：自家課中軟體（如 ClassSwift 即時出題、myViewBoard 白板課程設計）若要放任何 AI 輔助，能不能同樣讓使用者「一鍵帶入當下這堂課的脈絡」，還是得手動複製？另一個值得一問的是——當同一功能對「全年齡」開放，介面上有沒有讓老師／管理者清楚看到「這個班的 AI 是開是關、對哪個年齡層生效」的狀態揭露。</div>
+        <p class="conf"><b>信心：高</b>　·　來源類型：廠商官方（Google Workspace Updates）</p>
+        <div class="foot"><a class="src" href="https://workspaceupdates.googleblog.com/2026/08/gemini-in-google-classroom-is-expanding-to-users-of-all-ages-with-contextualized-Gemini-starter-prompts-for-students.html" target="_blank" rel="noopener">來源 ↗</a><span class="date">2026-08-04</span></div>
+      </article>
+
+      <article class="card" data-level="design">
+        <div class="tags"><span class="tag design">影響設計決策</span><span class="tag region">US/Global · 競品</span></div>
+        <h4>Google Classroom：Gemini 於作業建立流程「一鍵產生評分量表 rubric」、老師先審後套用</h4>
+        <p class="lead">8/5 起全面推出（Education Fundamentals／Standard／Plus，限 18 歲以上使用者）的功能：老師在建立作業的動線中，可用作業本身的脈絡即時生成一份 Classroom-ready 的 rubric，並在加入作業前先審閱、編輯 AI 提出的評分項目；可直接於作業頁草擬，或先在 Gemini 分頁生成、稍後再附加。訴求是把備課時間壓縮，同時保留老師對評分標準的最終決定權。</p>
+        <div class="foryou"><b>對你而言：</b>Google 把「AI 生草稿 → 老師審閱編輯 → 才生效」這條「人在迴路」的順序，明確做進作業建立流程。值得檢視的是：ClassSwift 這類即時評量，若引入任何 AI 產生的題目或評分建議，老師是不是在「送給全班之前」有一個清楚的檢視／修改關卡，而不是 AI 直接生效？這個把關關卡擺在動線的哪一步，值得先定位清楚。</p>
+        <p class="conf"><b>信心：高</b>　·　來源類型：廠商官方（Google Workspace Updates）</p>
+        <div class="foot"><a class="src" href="https://workspaceupdates.googleblog.com/2026/08/streamlining-rubric-generation-in-Google-Classroom-with-Gemini.html" target="_blank" rel="noopener">來源 ↗</a><span class="date">2026-08-05</span></div>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- 4. UX 趨勢 -->
+  <section class="cat" data-cat="UX">
+    <div class="cat-head">
+      <div class="ico">🎨</div><h3>UX / 設計趨勢</h3>
+      <span class="count"></span>
+    </div>
+    <div class="cards">
+
+      <article class="card" data-level="design">
+        <div class="tags"><span class="tag design">影響設計決策</span><span class="tag region">US · 趨勢</span></div>
+        <h4>教育 AI 風險反思成主流論述：年齡適配、AI 揭露、教師可介入被推成基本盤</h4>
+        <p class="lead">CSMonitor 8/7 綜整多份研究：Stanford 記錄到學生用 AI 當下進步、工具一移除即出現「performance cliff（表現斷崖）」；UPenn 研究指 AI 使用造成「cognitive surrender（認知繳械）」、重塑推理方式；AI 評分系統因學生姓名不同而給出不一致結果，顯示種族與性別偏誤；Common Sense Media 早前將校用 Gemini 列為「高風險」，理由是對六年級與高三生給出相同答案、且安全防護不一致。核心矛盾：AI 教育產品快速鋪開，效果證據卻仍薄弱。</p>
+        <div class="foryou"><b>對你而言：</b>報告點名的兩大痛點是「AI 對不同年齡給一樣的答案」與「學生用 AI 直接代寫」。值得檢視的是：自家任何面向學生的 AI 產出，介面上有沒有「這是 AI 生成、可能有誤」的可辨識標記，以及能不能依年齡／年級調整深淺？另一個值得一問的是——老師端能不能看見「學生在 AI 上做了什麼」的軌跡，讓 AI 從看不見的代寫黑盒，變成老師看得到、能即時介入的教學環節。</div>
+        <p class="conf"><b>信心：高</b>　·　來源類型：產業／主流媒體綜整多份研究（Christian Science Monitor 引 Stanford／UPenn／Common Sense Media）</p>
+        <div class="foot"><a class="src" href="https://www.csmonitor.com/USA/Education/2026/0807/ai-risks-schools-students" target="_blank" rel="noopener">來源 ↗</a><span class="date">2026-08-07</span></div>
+      </article>
+
+      <article class="card" data-level="design">
+        <div class="tags"><span class="tag design">影響設計決策</span><span class="tag region">US · 趨勢（推論）</span></div>
+        <h4>本期訊號：學生端 AI「自助化」與「教師監督／年齡適配」同週對撞</h4>
+        <p class="lead">本期兩條線在同一週交會：一邊是 Google 把學生端 Gemini 對「全年齡」開放、做成自動帶入脈絡的自助工具（8/4）；另一邊是主流論述在示警年齡不適配與認知依賴（8/7）。這是前幾期「教師掌控權前景化」（逐作業 AI 分級、教師先審 AI 產出）的延伸與張力——當 AI 入口愈往學生端自助推，「老師的監督位置擺哪」就愈需要在介面上被明確安排，而非預設放手。</p>
+        <div class="foryou"><b>對你而言：</b>值得觀察的是：自家若要走「學生自助 AI」，老師的監督位置擺哪？是完全放手，還是保留「老師先設定範圍／先審閱」的關卡（對照 Google 讓管理者用 OU 分齡開關、讓老師先審 rubric 的做法）？這個「自助 vs. 監督」的平衡點，會直接決定學生登入後看到的 AI 入口長什麼樣、預設是開還是關。</div>
+        <p class="conf"><b>信心：中</b>　·　來源類型：推論（以 Google 8/4 一手發布＋CSMonitor 8/7 綜整為據，銜接前期教師掌控權觀察）</p>
+        <div class="foot"><a class="src" href="https://workspaceupdates.googleblog.com/2026/08/gemini-in-google-classroom-is-expanding-to-users-of-all-ages-with-contextualized-Gemini-starter-prompts-for-students.html" target="_blank" rel="noopener">來源 ↗</a><span class="date">2026-08-07</span></div>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- 5. 市場動向 -->
+  <section class="cat" data-cat="市場">
+    <div class="cat-head">
+      <div class="ico">📊</div><h3>市場動向 / 展會報告</h3>
+      <span class="count"></span>
+    </div>
+    <div class="cards">
+
+      <article class="card" data-level="context">
+        <div class="tags"><span class="tag context">背景脈絡</span><span class="tag region">US · 市場／證據</span></div>
+        <h4>教育 AI 市場擴張與「成效證據落差」被並置檢視</h4>
+        <p class="lead">同一份 CSMonitor 8/7 報導點出市場與證據的落差：教育 AI 市場 2026 年約 $730M、推估 2036 年上看 $18.5B，但缺乏經嚴謹試驗證明成效——Stanford 研究者指「個人化學習」聊天機器人尚未通過嚴謹試驗。加上缺乏聯邦標準，監管重擔落在經費吃緊的學區身上，部分地區（如 LA、NY 的相關爭議）已出現暫緩校內 AI 使用的呼聲。老師普遍缺乏 AI 使用的正式訓練。</p>
+        <div class="foryou"><b>對你而言：</b>資助端與研究端開始把「有沒有效果證據」當成檢驗 AI 產品的標準。值得思考的是：當學區拿「你的 AI 有什麼成效證據、如何避免學生認知依賴」來問，自家介面要不要、以及如何呈現 AI 的能力邊界與建議用法（例如給老師的使用指引、給學生的提醒），而不只是把功能推出去就算數。</div>
+        <p class="conf"><b>信心：中</b>　·　來源類型：主流媒體引研究與市場數據（Christian Science Monitor）</p>
+        <div class="foot"><a class="src" href="https://www.csmonitor.com/USA/Education/2026/0807/ai-risks-schools-students" target="_blank" rel="noopener">來源 ↗</a><span class="date">2026-08-07</span></div>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- 取樣方式 -->
+  <section class="method">
+    <b>本期取樣與查證方式（先驗證再交付）</b><br>
+    本期蒐集區間為 <b>2026/08/02 – 08/15</b>，銜接上一期（2026-08-01，已正常發佈）。對五大面向各做 2–4 次日期精確搜尋，逐層掃描一手／權威層（FCC、federalregister.gov、各州 DOE、W3C WAI、1EdTech、各廠商 newsroom、Google Workspace Updates）→ 產業媒體層（K-12 Dive、EdWeek、EdSurge、EdTech Innovation Hub、Christian Science Monitor、ErateSync）→ 展會／報告層（ISTE、HolonIQ）。軟體競品面向已個別查詢 Canva for Education、SchoolAI、ClassDojo、Microsoft Education。<b>本期納入的每一則卡片來源皆已實際開頁核對內容、網址與真實發布日期</b>（Google 8/4、Google 8/5、E-Rate 意見期 8/14、CSMonitor 8/7 均通過驗證）。每則另標信心等級（高／中／低）與來源類型。<br>
+    <span class="excl">本期開頁查證後排除或校正：<b>Microsoft 365 Education（Teach 單元計畫、逐作業 AI 分級、Study and Learn Agent 等）經開頁確認一手發布日為 2026-06-24</b>，8 月僅為既定功能分批上線（「Remember Settings」GA 僅見於二手彙整、官方一手頁未載明 8 月里程碑），不列卡；<b>Common Sense Media「Google AI Search 對兒童風險不可接受」新聞稿實際發布日為 2026-07-15</b>（上期窗口），本期不重複列卡，僅以 CSMonitor 8/7 的綜整報導為當期依據；Canva for Education、SchoolAI、ClassDojo、Nearpod、Seesaw 本期查無落在 8/2–8/15、可開頁核對的新版新聞稿。IFP 硬體（ViewSonic／Samsung／BenQ／Promethean／Clevertouch）本期新聞集中在 Bett 2026 與 ISTELive 26，已於前兩期收錄。ADA Title II 網站無障礙規則已於 2026-04 延期至 2027-04（公眾實體），本期無新進展，不列卡。myViewBoard／ClassSwift／AirSync 本期查無窗口內可核對的新版新聞稿，自家產品本期無新項。</span>
+  </section>
+
+  <footer>
+    <div>EdTech 情報雙週報 · 本期 2026-08-15 · 蒐集區間 2026/08/02–08/15（近兩週）</div>
+    <div class="ftag">本期僅保留可查證於本期的項目並回溯一手來源；無更新之分區據實標註。連結為原始來源，請以原文為準。下期預定 2026-09-01。</div>
+  </footer>
+
+</div>
+
+<script>
+  // 設計決策過濾開關
+  (function(){
+    var toggle=document.getElementById('designOnly');
+    var cats=document.querySelectorAll('.cat');
+    function apply(){
+      var on=toggle.checked;
+      cats.forEach(function(cat){
+        var cards=cat.querySelectorAll('.card');
+        var shown=0;
+        cards.forEach(function(c){
+          var keep=!on || c.getAttribute('data-level')==='design';
+          c.classList.toggle('hidden',!keep);
+          if(keep) shown++;
+        });
+        var emptyEl=cat.querySelector('.empty');
+        if(emptyEl && cat.querySelectorAll('.card').length>0){
+          if(shown===0){
+            emptyEl.textContent='本區本期無「影響設計決策」項目';
+            emptyEl.classList.remove('hidden');
+          } else {
+            emptyEl.classList.add('hidden');
+          }
+        }
+        var countEl=cat.querySelector('.count');
+        if(countEl) countEl.textContent=shown+' 則';
+      });
+    }
+    cats.forEach(function(cat){
+      var n=cat.querySelectorAll('.card').length;
+      var c=cat.querySelector('.count'); if(c)c.textContent=n+' 則';
+    });
+    toggle.addEventListener('change',apply);
+  })();
+</script>
+</body>
+</html>
