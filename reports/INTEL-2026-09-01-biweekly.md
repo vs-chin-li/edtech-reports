@@ -90,7 +90,7 @@ source-date: 2026-08-18
 
 **對你而言**：這一則同時示範了三個可對照的決策。一是「年齡不是使用者填的、是系統推估的」——若自家學生端功能要做年齡適配，資訊來源是 rostering 帶入的年級、還是需要另一套判斷？二是「引導模式可以被設成預設」——課中即時出題若有 AI 協助解題，預設是給答案還是給提示，這個預設值該由誰決定（老師、學校、還是產品本身）？三是最值得一問的：監護角色「看得到設定與警訊、看不到對話內容」這條界線，換到老師身上該畫在哪裡——老師需要看到學生跟 AI 講了什麼，還是只需要看到「哪些學生卡住了」？兩種答案會做出完全不同的教師端畫面。
 
-### INTEL-0901-5 — Google 開學季發布：學生端 study notebooks 與 student hub 上線，教師端可依課綱調整並即時追蹤
+### INTEL-0901-5 — Google 開學季發布：Gemini 新增學生專屬 student hub 與一年免費方案（study notebooks 為 6 月既有功能）
 tier: hot
 expires: 2026-11-17
 design-impact: true
@@ -100,10 +100,11 @@ region: US/Global
 category: edtech-software
 source-url: https://blog.google/
 source-date: 2026-08-19
+source-note: 實質敘述在 Back to School 彙整頁所連之細節頁「College students get 12 months of Google AI free」（同日）
 
-8/19 的 Back to School 發布把 Gemini 的學生端整理成一個學習中樞。Study notebooks 用診斷式小測驗找出強項與知識缺口，再產出分段（bite-sized）的個人化學習計畫；另有一個 dedicated student hub，讓學生保持條理並從這裡開始使用 Gemini 的學習工具（原文僅到此）；Gemini Live 新增可請求並口頭討論 Deep Research 報告。美國符合資格的大學生可領一年免費 Google AI Pro，美國以外為免費 Google AI Plus。教師端部分，原文以「we recently introduced」描述 Classroom 的 teacher-led tools（依課綱調整學生 AI 體驗、即時追蹤進度）與連結 Classroom 的 Gemini 起草教案應用——屬既有功能的開學季回顧，非 8/19 首發。
+本期真正新增者為兩件：一是 Gemini app 內的學生專屬 student hub（原文「New in the Gemini app, we've built a dedicated hub」，位於 gemini.google.com/students），把開 study notebook、create flashcards、take a practice quiz 收攏成單一起點，並預告後續學習工具都會出現在此；二是學生免費方案（美國大學生一年 Google AI Pro、美國以外 AI Plus）。屬既有功能者：study notebooks 原文為「we launched study notebooks in June」，流程是上傳課堂教材 → 產出拆解學習主題的 gameplan →（可選）diagnostic quiz 找知識缺口 → 生成客製 bite-sized 課程與測驗 → 即時進度儀表板，並自動排入考試與作業截止日；Classroom teacher-led tools 原文為「we recently introduced」，連向 ISTE 2026 educator updates。Gemini Live 另新增可口頭討論 Deep Research 報告。
 
-**對你而言**：值得檢視的是這條動線的順序——Google 的做法是「先診斷 → 再產出分段計畫 → 老師可調整範圍並看到進度」，把 AI 放在診斷與規劃這一端，而不只是產內容。自家課中即時評量已經在收集答題資料，這些資料現在停在「這題全班對幾成」，還是有往「這個學生下一步該練什麼」延伸的位置？如果要延伸，老師是在課中就要看到建議，還是課後在後端報告裡看？另外「teacher-led」在介面上到底長什麼樣：是老師先設好範圍學生才看得到，還是學生先用、老師事後看紀錄，這個預設會決定教師端主畫面該以「設定」還是以「觀察」為中心。
+**對你而言**：本期這則的設計訊號不在新功能，而在入口收攏——Google 沒有再加一個工具，而是開一個學生專屬起點，並明說之後的學習工具都會落在這裡。自家學生端目前的起點在哪裡？是只能從老師發起的活動被動進入，還是學生有一個可自行回訪的位置？如果沒有，往後新增的學習型功能會被放到哪裡、學生怎麼找得到？另可對照 study notebooks 的順序（上傳教材 → 拆解主題 →〔可選〕診斷測驗 → 分段課程 → 進度儀表板）：自家課中即時評量已在收答題資料，這些資料現在停在「這題全班對幾成」，還是有往「這個學生下一步該練什麼」延伸的位置，值得檢視。
 
 ### INTEL-0901-6 — Google Classroom 支援 Context-Aware Access：管理者可依身分、地點、裝置狀態與 IP 決定誰能開啟
 tier: hot
