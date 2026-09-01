@@ -143,7 +143,8 @@
     border-radius:14px;padding:18px 20px;color:#aeb7cd;font-size:12.5px;line-height:1.75;
   }
   .method b{color:#dfe5f1;}
-  .method .excl{color:#8b95ad;}
+  .method p{margin:0 0 10px;}
+  .method p:last-child{margin-bottom:0;}
 
   footer{margin-top:30px;text-align:center;color:#6c768c;font-size:12px;line-height:1.8;}
   footer .ftag{color:#8b95ad;}
@@ -178,27 +179,27 @@
   <!-- HIGHLIGHTS -->
   <section class="hi-block">
     <h2><span class="hi-dot"></span>本期最該關注</h2>
-    <p class="sub">依設計決策影響程度排序 · 每點皆已開頁查證並附一手／權威來源。本期主軸是「聯邦把成效證據與家長透明寫進正式指引」與「學生端 AI 全面進入開學動線」同時落地，IFP 硬體仍在年會後空窗、據實不硬湊</p>
+    <p class="sub">依設計決策影響程度排序。主軸：聯邦把成效證據與家長透明寫成正式指引，學生端 AI 同期進入開學動線；IFP 硬體仍在年會後空窗</p>
     <ol class="hilist">
       <li>
-        <b>美國教育部 8/20 發布 Dear Colleague 指引：教育科技要有獨立成效證據、要對家長透明、螢幕時間要有明確目的</b>：由 Assistant Secretary Kirsten Baesler 具名發出，是聯邦首次針對「課堂科技怎麼選、怎麼檢討」給出正式立場。要求學區把「休閒使用」與「教學使用」分開看待、以學習成果而非使用時數評斷工具、採購時優先考量有隨機對照試驗（RCT）證據的產品，並在證據顯示無效時願意換掉、反覆無效則整個移除。對廠商則明列期待：與教師和家長共同設計、做獨立評估、盡量減少不必要的螢幕暴露、盡可能公開學習成效發現、對產品能力與限制保持透明。
-        <span class="meta">→ 本期最該內化的一條：它把「說明產品的能力與限制」「讓學校交代得出使用情形」從行銷素材推進成介面層的要求。</span>
-        <a class="hi-src" href="https://www.ed.gov/about/news/press-release/us-department-of-education-releases-guidance-responsible-use-of-education-technology-classroom" target="_blank" rel="noopener">來源：U.S. Department of Education 新聞稿（2026-08-20）↗</a>
+        <b>美國教育部 8/20 發指引：以學習成果、而非使用時數評斷教育科技</b>：Assistant Secretary Kirsten Baesler 具名的 Dear Colleague 信，要求學區分開看待休閒與教學使用、採購優先考量有 RCT 證據的產品、無效就換掉。對廠商列出五項期待：與教師和家長共同設計、做獨立評估、壓低不必要的螢幕暴露、盡可能公開成效、對能力與限制保持透明。
+        <span class="meta">→ 它把「說明產品能力邊界」「交代得出使用情形」從行銷素材推進成介面層要求。</span>
+        <a class="hi-src" href="https://www.ed.gov/about/news/press-release/us-department-of-education-releases-guidance-responsible-use-of-education-technology-classroom" target="_blank" rel="noopener">來源：U.S. Department of Education（2026-08-20）↗</a>
       </li>
       <li>
-        <b>OpenAI 8/18 推出 ChatGPT for Teens：系統推估未滿 18 歲即自動分流，Study Mode 引導取代直接給答案，監護人可設 Quiet Hours 但看不到對話內容</b>：13–17 歲（或系統推估未成年）的帳號會被自動放進青少年版本，內容防護針對自傷、輕生與戀愛／性相關對話加強。Study Mode 用引導提問與分步支援取代直接答案，偵測到疑似作弊時會把使用者導回 Study Mode；監護人可連結帳號、管理設定、設定 Quiet Hours、決定 Study Mode 是否預設開啟，並在高風險情境收到安全通知——但不能閱讀或監看對話內容。全球在免費與付費個人方案同步推出。
-        <span class="meta">→ 「年齡自動分流 ＋ 引導式模式預設開啟 ＋ 監督者只看得到邊界不看得到內容」，是本期最完整、可直接對照的未成年 AI 介面基準。</span>
+        <b>OpenAI 8/18 推出 ChatGPT for Teens：年齡自動分流、Study Mode 取代直接給答案、監護人看得到邊界看不到內容</b>：系統推估未滿 18 歲即自動進入青少年版本；Study Mode 用引導提問與分步支援取代答案，偵測到疑似作弊會導回。監護人可設 Quiet Hours、決定 Study Mode 是否預設、收高風險通知，但無法閱讀對話內容。
+        <span class="meta">→ 本期最完整、可直接對照的未成年 AI 介面基準。</span>
         <a class="hi-src" href="https://techcrunch.com/2026/08/18/openai-launches-a-safer-chatgpt-for-teens-years-after-teens-started-using-it/" target="_blank" rel="noopener">來源：TechCrunch（2026-08-18）↗</a>
       </li>
       <li>
-        <b>Google 開學季雙推：8/19 Gemini 新增學生專屬 student hub 與一年免費方案，8/26 Classroom 新增 Context-Aware Access 管理者控制</b>：8/19 真正新增的是「入口」而非功能：Gemini app 內開出學生專屬 student hub（gemini.google.com/students），把開 study notebook、做 flashcards、練習測驗收攏成一個起點，並明言後續的學習工具都會出現在這裡；同時推出學生免費方案（美國大學生一年 Google AI Pro、美國以外為 AI Plus）。須留意的是 study notebooks 本身原文寫的是「we launched study notebooks in June」、教師端 Classroom teacher-led tools 寫的是「we recently introduced」（連向 ISTE 2026 更新），兩者皆為既有功能，本文屬開學季彙整回顧。8/26 另一則則從安全面補上：管理者可在 Admin console 依使用者身分、地理位置、裝置安全狀態與 IP 設定 Classroom 的存取條件，並以 OU／群組為單位套用（Education Standard 與 Plus，8/18 起推出）。
-        <span class="meta">→ 一邊把學生端入口收攏成單一起點、一邊把管理者的存取邊界做細，兩件事同期發生本身就是訊號。</span>
-        <a class="hi-src" href="https://blog.google/innovation-and-ai/products/gemini-app/student-offer-google-ai/" target="_blank" rel="noopener">來源：Google 官方部落格（2026-08-19，Back to School 彙整頁所連之細節頁）↗</a>
+        <b>Google 8/19 新增學生專屬 student hub 與一年免費方案；8/26 Classroom 加上 Context-Aware Access</b>：新的是「入口」不是功能——Gemini app 開出學生起點，收攏 study notebook、flashcards、練習測驗，並預告後續學習工具都會落在這裡。須留意 study notebooks 原文為「launched in June」、Classroom teacher-led tools 為「recently introduced」，均屬既有功能。8/26 則讓管理者依身分、地點、裝置狀態與 IP 設定 Classroom 存取條件。
+        <span class="meta">→ 一邊把學生端入口收攏成單一起點、一邊把管理者的邊界做細。</span>
+        <a class="hi-src" href="https://blog.google/innovation-and-ai/products/gemini-app/student-offer-google-ai/" target="_blank" rel="noopener">來源：Google 官方部落格（2026-08-19，彙整頁所連之細節頁）↗</a>
       </li>
       <li>
-        <b>採購端同步收緊：EdWeek 8/20 指學區被 AI 工具與改版速度淹沒，MarketScale 8/29 直指合約從一開始就沒定義過「成功」</b>：EdWeek 訪談指出資訊不對稱是核心問題（「廠商知道的永遠比學區多」），學區的把關清單已延伸到資料處理協議、保證學生資料不被販售或用於模型訓練、評分與懲處須有人工監督；賓州、紐約市、芝加哥各自寫了採購指引。MarketScale 則點出續約風險——沒有事先定義成效，稽核與續約時無從交代，並建議合約要求依學校／年級的使用回報、強制 SSO 與 rostering 等整合標準、把專業培訓當成必要成本而非加購。
-        <span class="meta">→ 「使用回報」「SSO／rostering」「人工監督」正在從 IT 附錄變成產品必備欄位，會回頭影響介面上要留哪些視角。</span>
-        <a class="hi-src" href="https://www.edweek.org/technology/schools-spend-billions-on-ai-but-struggle-to-figure-out-whats-worth-buying/2026/08" target="_blank" rel="noopener">來源：Education Week（2026-08-20）↗</a>
+        <b>採購端收緊：EdWeek 8/20 指學區被工具數量與改版速度淹沒，MarketScale 8/29 指合約從未定義「成功」</b>：學區把關清單已延伸到資料處理協議、保證學生資料不用於訓練、評分與懲處保留人工監督；賓州、紐約市、芝加哥各有採購指引。MarketScale 建議合約要求依學校／年級的使用回報、強制 SSO 與 rostering、把培訓編為必要成本而非加購。
+        <span class="meta">→ 使用回報、SSO／rostering、人工監督正從 IT 附錄變成產品欄位。</span>
+        <a class="hi-src" href="https://www.edweek.org/technology/schools-spend-billions-on-ai-but-struggle-to-figure-out-whats-worth-buying/2026/08" target="_blank" rel="noopener">來源：Education Week（2026-08-20）＋ MarketScale（2026-08-29）↗</a>
       </li>
     </ol>
   </section>
@@ -223,18 +224,18 @@
 
       <article class="card" data-level="design">
         <div class="tags"><span class="tag design">影響設計決策</span><span class="tag region">US · 聯邦政策</span></div>
-        <h4>美國教育部發布課堂科技「負責任使用」指引：以學習成果而非使用時數評斷工具</h4>
-        <p class="lead">8/20 由 Assistant Secretary Kirsten Baesler 具名的 Dear Colleague 信，是聯邦針對課堂科技選用與檢討的正式立場。核心主張：優先看教學價值而非「娛樂式投入」；工具須有獨立證據證明能改善學習成果；學校應定期檢討成效，證據顯示無效就換掉、反覆確認有缺陷就整個移除。同時強調要減少不必要的螢幕暴露、讓科技有明確的教學目的與使用時長，並要求學校與供應商對家長揭露科技如何被使用、學生用了多久、是否確實帶來有意義的學習。指引亦指出，選對的教學科技能支持身心障礙學生、縮小學習落差。此信銜接 2025-07 McMahon 部長提出的五項 AI 原則（含「保護學生資料」）。</p>
-        <div class="foryou"><b>對你而言：</b>指引把「使用時長」與「對家長交代」同時放上檯面。值得檢視的是：課中即時評量與白板教學這些場景，現在留下的是「誰按了什麼」的操作紀錄，還是「這段時間學生實際做了什麼、學到什麼」的教學紀錄？後端報告畫面若要回答學校「這個工具有沒有用」，需要的欄位跟現在呈現的參與度／出席數字是不是同一組？另一個值得一問的是——產品在哪個介面位置說明自己的能力邊界與適用情境，是只在官網，還是老師開啟功能的當下就看得到。</div>
+        <h4>美國教育部發布課堂科技「負責任使用」指引</h4>
+        <p class="lead">8/20 由 Assistant Secretary Kirsten Baesler 具名的 Dear Colleague 信，是聯邦對課堂科技選用與檢討的正式立場。要點：以學習成果而非娛樂式投入評斷；工具須有獨立證據；定期檢討，無效就換掉；減少不必要的螢幕暴露、讓科技有明確的教學目的與時長；學校與供應商須對家長揭露科技如何被使用、學生用了多久、是否帶來有意義的學習。指引並指出選對的教學科技能支持身心障礙學生。</p>
+        <div class="foryou"><b>對你而言：</b>指引把「對家長交代」寫進要求。課中即時評量與白板教學現在留下的是「誰按了什麼」的操作紀錄，還是「學生學到什麼」的教學紀錄？後端報告若要回答「這工具有沒有用」，需要的可能是另一組欄位。</div>
         <p class="conf"><b>信心：高</b>　·　來源類型：政府一手（U.S. Department of Education 新聞稿）</p>
         <div class="foot"><a class="src" href="https://www.ed.gov/about/news/press-release/us-department-of-education-releases-guidance-responsible-use-of-education-technology-classroom" target="_blank" rel="noopener">來源 ↗</a><span class="date">2026-08-20</span></div>
       </article>
 
       <article class="card" data-level="design">
         <div class="tags"><span class="tag design">影響設計決策</span><span class="tag region">US · 聯邦政策／業界反應</span></div>
-        <h4>同一份指引對「供應商」開出的具體清單：獨立評估、公開成效、揭露能力與限制</h4>
-        <p class="lead">EdSurge 8/20 拆解這封信對兩端的要求。對學區：區分休閒與教學科技、以學習成果而非螢幕時間評斷、採購時優先考量有 RCT 證據的產品、建立導入與成效檢討流程、投資教師專業發展。對供應商：與教師和家長共同設計產品、進行獨立評估與 RCT、在最大化教學價值的前提下盡量壓低螢幕暴露、「在可行時」公開學生學習成效發現、對產品能力與限制保持透明。Baesler 同時提醒不應「單以學生使用時間長短」評斷教育科技，因為遠距存取對偏鄉與身障學生特別重要。業界對「重成果」方向多表歡迎，但 Helen Crompton 與 Jean-Claude Brizard 批評這種放任式做法缺乏全國性的學生隱私、無障礙與資料保護標準，恐擴大各州之間的落差。</p>
-        <div class="foryou"><b>對你而言：</b>「對產品能力與限制保持透明」這句話落到介面上，其實是個尚未有共識的設計題。值得一問的是：AI 輔助功能（生成題目、生成教材、生成摘要）在使用當下要不要、以及用什麼形式說明「它適合什麼、不適合什麼」？寫在說明文件、放進首次使用引導、還是留在產出結果旁邊，三種選擇對老師的信任建立完全不同。另一個值得檢視的是——批評方點名的「無障礙沒有全國標準」意味著各州各自要求，介面的無障礙表現若要能逐州交代，需要的是可查驗的規格說明還是產品內的設定項，值得先想清楚。</div>
+        <h4>同一份指引對「供應商」開出的清單：獨立評估、公開成效、揭露能力與限制</h4>
+        <p class="lead">EdSurge 8/20 拆解這封信的兩端要求。對學區：區分休閒與教學科技、以學習成果評斷、優先採購有 RCT 證據的產品、建立檢討流程。對供應商：與教師和家長共同設計、做獨立評估與 RCT、盡量壓低螢幕暴露、「在可行時」公開學習成效、對能力與限制保持透明。Baesler 提醒不應單以使用時間評斷，因遠距存取對偏鄉與身障學生重要。業界歡迎重成果的方向，但 Helen Crompton 與 Jean-Claude Brizard 批評缺乏全國性的隱私、無障礙與資料保護標準，恐擴大各州落差。</p>
+        <div class="foryou"><b>對你而言：</b>「對能力與限制保持透明」落到介面上是個沒有共識的題目。AI 生成題目或教材時，「它適合什麼、不適合什麼」該說在哪——說明文件、首次使用引導，還是產出結果旁邊？三種位置對老師的信任建立完全不同。</div>
         <p class="conf"><b>信心：高</b>　·　來源類型：產業媒體逐條拆解一手文件＋業界訪談（EdSurge）</p>
         <div class="foot"><a class="src" href="https://www.edsurge.com/news/department-of-education-issues-long-awaited-edtech-guidance-for-states-and-districts" target="_blank" rel="noopener">來源 ↗</a><span class="date">2026-08-20</span></div>
       </article>
@@ -242,8 +243,8 @@
       <article class="card" data-level="context">
         <div class="tags"><span class="tag context">背景脈絡</span><span class="tag region">US · 聯邦 vs 州／學區</span></div>
         <h4>聯邦為 edtech 辯護，與州級／學區的螢幕時間限制形成張力</h4>
-        <p class="lead">K-12 Dive 8/20 的解讀點出這封信的政治位置：它是教育部在螢幕時間限制持續擴散之際的第一個明確表態。Baesler 主張「教育科技的使用與休閒科技的使用是兩回事」，認為政策制定應聚焦教育價值而非單看螢幕暴露，並強調輔助科技對身障學生、遠距存取對偏鄉學生的價值。但同時間，數個州與 Los Angeles Unified 已在 2026 年推動使用時數限制，FCC 與 HHS 也各自對青少年螢幕暴露表達關切——聯邦內部對「課堂科技該擴張還是該節制」並未一致。</p>
-        <div class="foryou"><b>對你而言：</b>當同一個學年裡，聯邦說「別只看時數」、州和大學區卻直接寫下分鐘數上限，產品端等於同時面對兩套評判標準。值得觀察的是：課堂互動情境若被要求「用最少的螢幕時間達到同樣的教學目的」，哪些動線其實可以更短——例如把內容投放到學生裝置這類場景，是每個環節都要學生盯著自己的螢幕，還是有些步驟本來就該回到大屏、回到教室前方？這個問題現在還沒有標準答案，但值得先盤點自家哪些流程是「必須看螢幕」、哪些只是習慣。</div>
+        <p class="lead">K-12 Dive 8/20 點出這封信的政治位置：它是教育部在螢幕時間限制擴散之際的第一個明確表態。Baesler 主張教育科技與休閒科技的使用是兩回事，認為政策應聚焦教育價值而非單看螢幕暴露，並強調輔助科技對身障學生、遠距存取對偏鄉學生的價值。但同時，數個州與 Los Angeles Unified 已推動使用時數限制，FCC 與 HHS 也對青少年螢幕暴露表達關切——聯邦內部並未一致。</p>
+        <div class="foryou"><b>對你而言：</b>聯邦說別只看時數、州和大學區卻寫下分鐘上限，產品端同時面對兩套標準。課堂互動若要用更少螢幕時間達到同樣目的，哪些動線其實可以縮短？值得先盤點哪些步驟是「必須看螢幕」、哪些只是習慣。</div>
         <p class="conf"><b>信心：高</b>　·　來源類型：產業媒體分析（K-12 Dive）</p>
         <div class="foot"><a class="src" href="https://www.k12dive.com/news/education-department-goes-to-ed-techs-defense-in-new-guidance/828425/" target="_blank" rel="noopener">來源 ↗</a><span class="date">2026-08-20</span></div>
       </article>
@@ -258,7 +259,7 @@
       <span class="count"></span>
     </div>
     <div class="cards">
-      <div class="empty">本期（8/16–9/1）無重大更新。說明：本季 IFP 發表集中在上半年——ViewSonic Android 16 世代（ViewBoard IFP35-1／IFP41-1）於 Bett 2026（1 月）發表，官方 press releases 頁最新一則為 2026-05-13 的投影機新品；Samsung AMS 共用大屏 QR／NFC 登入與 AI Assistant、BenQ、Promethean、Clevertouch 的 AI 課堂工具均於 ISTELive 26（6 月底–7 月初）發表，已於前兩期收錄；SMART 為 Lumio 導入 WCAG 2.2 的新聞稿實際發布日為 2026-07-07，落在上期窗口。8 月下旬為開學後的硬體發布空窗，本區據實標註、不硬湊。</div>
+      <div class="empty">本期（8/16–9/1）無重大更新。本季 IFP 發表集中在上半年：ViewSonic Android 16 世代於 Bett 2026 發表、官方 press releases 最新一則為 2026-05-13；Samsung、BenQ、Promethean、Clevertouch 的 AI 課堂工具均於 ISTELive 26 發表，已於前兩期收錄；SMART 為 Lumio 導入 WCAG 2.2 的新聞稿為 2026-07-07，落在上期窗口。本區據實標註、不硬湊。</div>
     </div>
   </section>
 
@@ -272,27 +273,27 @@
 
       <article class="card" data-level="design">
         <div class="tags"><span class="tag design">影響設計決策</span><span class="tag region">US/Global · 競品</span></div>
-        <h4>OpenAI 推出 ChatGPT for Teens：年齡自動分流、Study Mode 引導式回答、監護人看得到邊界但看不到內容</h4>
-        <p class="lead">8/18 全球推出（免費與付費個人方案皆適用）。若使用者自陳 13–17 歲，或系統推估其未滿 18 歲，會被自動放進青少年版本，內容防護針對自傷、輕生與戀愛／性相關對話加強。Study Mode 以引導提問與分步支援取代直接給答案，並附測驗與學習視覺化；系統偵測到疑似「用來作弊」時，會把使用者導回 Study Mode。監護人端可連結帳號、管理部分設定、設定 Quiet Hours（禁用時段）、決定 Study Mode 是否預設啟用，並在有限的高風險情境收到安全通知——但無法閱讀或監看青少年的對話內容。TechCrunch 同時提出質疑：這些防護實際上有多容易被繞過仍待觀察，且這些保護遲至今日、在週活躍用戶已達 9 億後才推出。</p>
-        <div class="foryou"><b>對你而言：</b>這一則同時示範了三個可對照的決策。一是「年齡不是使用者填的、是系統推估的」——若自家學生端功能要做年齡適配，資訊來源是 rostering 帶入的年級、還是需要另一套判斷？二是「引導模式可以被設成預設」——課中即時出題若有 AI 協助解題，預設是給答案還是給提示，這個預設值該由誰決定（老師、學校、還是產品本身）？三是最值得一問的：監護角色「看得到設定與警訊、看不到對話內容」這條界線，換到老師身上該畫在哪裡——老師需要看到學生跟 AI 講了什麼，還是只需要看到「哪些學生卡住了」？兩種答案會做出完全不同的教師端畫面。</div>
+        <h4>OpenAI 推出 ChatGPT for Teens：年齡自動分流、Study Mode、監護人看得到邊界看不到內容</h4>
+        <p class="lead">8/18 全球推出，免費與付費個人方案皆適用。使用者自陳 13–17 歲、或系統推估未滿 18 歲，會自動進入青少年版本，內容防護針對自傷、輕生與戀愛／性相關對話加強。Study Mode 以引導提問與分步支援取代直接給答案，偵測到疑似作弊會導回。監護人可連結帳號、設定 Quiet Hours、決定 Study Mode 是否預設啟用，並在有限的高風險情境收到通知——但無法閱讀或監看對話內容。TechCrunch 質疑這些防護有多容易被繞過仍待觀察。</p>
+        <div class="foryou"><b>對你而言：</b>最值得一問的是那條界線：監護人「看得到設定與警訊、看不到對話內容」，換到老師身上該畫在哪？老師需要看到學生跟 AI 說了什麼，還是只需要看到「哪些學生卡住了」——兩種答案會做出完全不同的教師端畫面。</div>
         <p class="conf"><b>信心：高</b>　·　來源類型：科技媒體開頁核對（TechCrunch；官方 openai.com 頁面本期無法直接開啟驗證）</p>
         <div class="foot"><a class="src" href="https://techcrunch.com/2026/08/18/openai-launches-a-safer-chatgpt-for-teens-years-after-teens-started-using-it/" target="_blank" rel="noopener">來源 ↗</a><span class="date">2026-08-18</span></div>
       </article>
 
       <article class="card" data-level="design">
         <div class="tags"><span class="tag design">影響設計決策</span><span class="tag region">US/Global · 競品</span></div>
-        <h4>Google 開學季發布：Gemini 新增學生專屬 student hub 與一年免費方案（study notebooks 為 6 月既有功能）</h4>
-        <p class="lead">8/19 的 Back to School 為彙整頁，實質內容在其所連的細節頁（同日發布）。<b>本期真正新增的是兩件事</b>：一是 Gemini app 內的學生專屬 <b>student hub</b>（原文「New in the Gemini app, we&rsquo;ve built a dedicated hub」，位於 gemini.google.com/students），把開 study notebook、create flashcards、take a practice quiz 等收攏成單一起點，並預告「隨著 Gemini 推出更多學習工具，都會出現在這裡」；二是學生免費方案——美國符合資格的大學生一年免費 Google AI Pro，美國以外為免費 Google AI Plus。<b>屬既有功能、非本次首發者</b>：study notebooks 原文為「we launched study notebooks in June」，其流程是上傳課堂教材 → Gemini 產出拆解學習主題的 gameplan →（可選）做 diagnostic quiz 找出知識缺口 → 生成客製 bite-sized 課程與測驗 → 附即時進度儀表板，並自動排入考試與作業截止日，圖表與圖片將於數週內加入；Classroom 的 teacher-led tools 原文為「we recently introduced」，連向 ISTE 2026 educator updates。Gemini Live 另新增可請求並口頭討論 Deep Research 報告。</p>
-        <div class="foryou"><b>對你而言：</b>本期這則的設計訊號不在新功能，而在<b>入口收攏</b>——Google 沒有再加一個工具，而是開一個學生專屬起點，並明說之後的學習工具都會落在這裡。值得檢視的是：自家學生端目前的起點在哪裡？是只能從老師發起的活動被動進入，還是學生有一個可自行回訪的位置？如果沒有，往後新增的學習型功能會被放到哪裡、學生怎麼找得到？另一個值得對照的是 study notebooks 的順序（上傳教材 → 拆解主題 →〔可選〕診斷測驗 → 分段課程 → 進度儀表板）：自家課中即時評量已在收答題資料，這些資料現在停在「這題全班對幾成」，還是有往「這個學生下一步該練什麼」延伸的位置？若要延伸，是課中就給老師建議，還是課後在後端報告裡看？</div>
-        <p class="conf"><b>信心：高</b>　·　來源類型：廠商官方（Google 官方部落格細節頁，已逐字比對「in June」「recently introduced」等時序用語）</p>
+        <h4>Google 新增學生專屬 student hub 與一年免費方案（study notebooks 為 6 月既有功能）</h4>
+        <p class="lead">8/19 的 Back to School 是彙整頁，實質內容在其所連的細節頁（同日）。<b>本期真正新增兩件事</b>：一是 Gemini app 內的學生專屬 student hub（gemini.google.com/students），收攏開 study notebook、create flashcards、take a practice quiz，並預告後續學習工具都會出現在這裡；二是學生免費方案（美國大學生一年 Google AI Pro，美國以外為 AI Plus）。<b>屬既有功能者</b>：study notebooks 原文為「we launched study notebooks in June」，流程是上傳課堂教材 → 拆解主題的 gameplan →（可選）diagnostic quiz 找知識缺口 → 生成 bite-sized 課程與測驗 → 即時進度儀表板；Classroom teacher-led tools 原文為「we recently introduced」。</p>
+        <div class="foryou"><b>對你而言：</b>訊號不在新功能，而在入口收攏——Google 沒有再加工具，而是開一個學生專屬起點，並明說之後的學習工具都會落在這裡。自家學生端的起點在哪裡？是只能從老師發起的活動被動進入，還是學生有一個可自行回訪的位置？</div>
+        <p class="conf"><b>信心：高</b>　·　來源類型：廠商官方（Google 部落格細節頁，已逐字比對「in June」「recently introduced」等時序用語）</p>
         <div class="foot"><a class="src" href="https://blog.google/innovation-and-ai/products/gemini-app/student-offer-google-ai/" target="_blank" rel="noopener">來源 ↗</a><span class="date">2026-08-19</span></div>
       </article>
 
       <article class="card" data-level="design">
         <div class="tags"><span class="tag design">影響設計決策</span><span class="tag region">US/Global · 競品</span></div>
-        <h4>Google Classroom 支援 Context-Aware Access：管理者可依身分、地點、裝置狀態與 IP 決定誰能開啟</h4>
-        <p class="lead">8/26 公告、8/18 起推出（Rapid 與 Scheduled Release 皆為 available now），僅限 Education Standard 與 Plus。管理者可在 Admin console 為 Classroom 設定情境式存取政策，條件包含使用者身分、地理位置、裝置安全狀態與 IP 位址，例如限定只有從特定地理區域連線才能存取 Classroom；政策可以 OU 或群組為單位套用。使用者端則是以 Google 登入進入 Classroom，若組織的 Context-Aware Access 設定限制了其存取，會看到說明訊息或補救選項。</p>
-        <div class="foryou"><b>對你而言：</b>重點不在「能不能擋」，而在「被擋的時候使用者看到什麼」。Google 明確做了「說明訊息或補救選項」這一層。值得檢視的是：自家課中軟體若因為裝置、網路或權限條件而無法使用，老師在課堂當下看到的是可行動的說明（原因是什麼、找誰、能不能改用別的方式繼續上課），還是一個泛用的錯誤畫面？在一堂課只有四十幾分鐘的前提下，這個失敗狀態的文案與後續選項，實質上決定了老師會不會第二次再用。另一個值得一問的是——當管理者用 OU／群組把權限切得很細，老師端有沒有辦法在上課前就知道「我這班今天能用什麼」，而不是進了教室才發現。</div>
+        <h4>Google Classroom 支援 Context-Aware Access：依身分、地點、裝置狀態與 IP 決定誰能開啟</h4>
+        <p class="lead">8/26 公告、8/18 起推出（Rapid 與 Scheduled Release 皆 available now），限 Education Standard 與 Plus。管理者可在 Admin console 依使用者身分、地理位置、裝置安全狀態與 IP 位址設定 Classroom 的存取政策，例如限定只有特定地理區域才能連線；政策可以 OU 或群組為單位套用。使用者若被組織設定限制，會看到說明訊息或補救選項。</p>
+        <div class="foryou"><b>對你而言：</b>重點不在能不能擋，而在被擋時使用者看到什麼——Google 做了說明訊息與補救選項這一層。自家軟體若因裝置或權限無法使用，老師在課堂當下看到的是可行動的說明，還是泛用錯誤畫面？一堂課四十幾分鐘，這一屏決定他會不會有第二次。</div>
         <p class="conf"><b>信心：高</b>　·　來源類型：廠商官方（Google Workspace Updates）</p>
         <div class="foot"><a class="src" href="https://workspaceupdates.googleblog.com/2026/08/google-classroom-now-supports-context-Aware-Access-controls.html" target="_blank" rel="noopener">來源 ↗</a><span class="date">2026-08-26</span></div>
       </article>
@@ -310,19 +311,19 @@
 
       <article class="card" data-level="design">
         <div class="tags"><span class="tag design">影響設計決策</span><span class="tag region">US · 趨勢</span></div>
-        <h4>學區實務把「AI 產出 → 人做決定」寫成明規則，並刻意不把敏感個資餵進系統</h4>
-        <p class="lead">K-12 Dive 8/26 訪問多個學區的人事主管，整理出一套已在運作的人機分工原則。Indianapolis Public Schools 用 Google Gemini 自建內部工具做校長職缺的初步候選人評分，但最終人選由遴選委員會決定；受訪者直言「AI 對我們而言不是任何決策的替代品」。學區普遍避免把敏感的個人可識別資訊輸入 AI 系統，Indianapolis 也因為自建而非採購多家第三方工具，省下逾 $300,000 並保有員工資料的控制權。科羅拉多州教育廳則建議建立明確的 AI 治理架構、為每項新措施指定聯絡窗口，以避免規模化後的失控與不一致。</p>
-        <div class="foryou"><b>對你而言：</b>這則的價值在於它是實際運作中的模式，不是原則宣示：AI 只做「初步排序」，人做「最終決定」，而且兩者在流程上被明確分開。值得檢視的是：自家任何會影響到個別學生評價的畫面——即時評量的成績彙整、後端報告的參與度分析——若引入 AI 產出的判斷或分群，介面上有沒有把「這是系統的初步判斷」與「這是老師確認過的結論」視覺上分開？還是兩者混在同一張表上、老師事後也分不清哪個數字是誰下的？另一個值得一問的是：哪些欄位其實不需要送進 AI 就能完成任務，這個「刻意不傳」的邊界，值不值得在產品說明裡對學區講清楚。</div>
+        <h4>學區把「AI 產出 → 人做決定」寫成明規則，並刻意不把敏感個資餵進系統</h4>
+        <p class="lead">K-12 Dive 8/26 訪問多個學區的人事主管，整理出已在運作的人機分工。Indianapolis Public Schools 用 Gemini 自建內部工具做校長職缺的初步候選人評分，最終人選由遴選委員會決定；受訪者直言「AI 不是任何決策的替代品」。學區普遍避免把敏感的個人可識別資訊輸入 AI 系統；Indianapolis 因自建而非採購多家第三方工具，省下逾 $300,000 並保有資料控制權。科羅拉多州教育廳建議建立明確的 AI 治理架構。</p>
+        <div class="foryou"><b>對你而言：</b>這是運作中的模式，不是原則宣示：AI 只做初步排序，人做最終決定。若成績彙整或參與度分析引入 AI 判斷，介面上有沒有把「系統初判」與「老師確認過的結論」分開？混在同一張表，事後誰也說不清哪個數字是誰下的。</div>
         <p class="conf"><b>信心：高</b>　·　來源類型：產業媒體實地訪談（K-12 Dive）</p>
         <div class="foot"><a class="src" href="https://www.k12dive.com/news/district-hr-leaders-keep-humans-in-decision-making-as-ais-presence-grows/827953/" target="_blank" rel="noopener">來源 ↗</a><span class="date">2026-08-26</span></div>
       </article>
 
       <article class="card" data-level="design">
         <div class="tags"><span class="tag design">影響設計決策</span><span class="tag region">US · 趨勢（推論）</span></div>
-        <h4>本期訊號：「可交代性」正在成為一個介面問題，而不只是文件問題</h4>
-        <p class="lead">把本期三條線放在一起看：聯邦要求學校對家長揭露科技如何被使用、學生用了多久、是否帶來有意義的學習（8/20）；學區在採購合約裡開始要求依學校與年級的使用回報（8/29）；而學區實務上已把「AI 初判、人決定」寫成明規則（8/26）。三者指向同一件事——過去放在白皮書、資安問卷、DPA 附錄裡的東西，正在往產品介面移動：誰用了、用多久、AI 建議了什麼、人改了什麼。這延續前期觀察到的「教師掌控權前景化」，但重心從「老師能不能改」推進到「改完之後，這件事對外交代得出來嗎」。</p>
-        <div class="foryou"><b>對你而言：</b>值得觀察的是：如果明年學區帶著「請提供這學期這個工具怎麼被用、有沒有用」來要資料，現在的後端報告畫面能回答到哪一層？是只能給登入次數與活動次數，還是能對到教學情境（哪個班、哪堂課、什麼類型的活動）？以及——這份「對外交代」的視角，該是後端報告裡的一個新分頁，還是應該讓老師在課後就能一鍵匯出？把它當成新使用者（學區管理者、要向家長說明的校方）的需求來看，而不是既有報表加欄位，可能會得到不一樣的資訊架構。</div>
-        <p class="conf"><b>信心：中</b>　·　來源類型：推論（以 ED 一手指引 8/20＋K-12 Dive 8/26＋MarketScale 8/29 為據，銜接前期教師掌控權觀察）</p>
+        <h4>本期訊號：「可交代性」正在成為介面問題，而不只是文件問題</h4>
+        <p class="lead">把本期三條線放在一起：聯邦要求對家長揭露科技如何被使用、用了多久、是否帶來有意義的學習（8/20）；學區在合約裡要求依學校與年級的使用回報（8/29）；學區實務已把「AI 初判、人決定」寫成明規則（8/26）。三者指向同一件事——過去放在白皮書、資安問卷、DPA 附錄裡的東西，正在往產品介面移動：誰用了、用多久、AI 建議了什麼、人改了什麼。這是前期「教師掌控權前景化」的延伸。</p>
+        <div class="foryou"><b>對你而言：</b>如果學區明年帶著「這學期這個工具怎麼被用、有沒有用」來要資料，現在的後端報告能答到哪一層？是登入次數與活動次數，還是能對到哪個班、哪堂課、什麼類型的活動？</div>
+        <p class="conf"><b>信心：中</b>　·　來源類型：推論（以 ED 一手指引 8/20＋K-12 Dive 8/26＋MarketScale 8/29 為據）</p>
         <div class="foot"><a class="src" href="https://www.marketscale.com/industries/education-technology/schools-are-buying-ai-fast-but-their-contracts-still-cant-show-it-helps" target="_blank" rel="noopener">來源 ↗</a><span class="date">2026-08-29</span></div>
       </article>
 
@@ -339,28 +340,28 @@
 
       <article class="card" data-level="context">
         <div class="tags"><span class="tag context">背景脈絡</span><span class="tag region">US · 市場／採購</span></div>
-        <h4>學區被 AI 工具數量與改版速度淹沒：資訊不對稱成為採購的核心難題</h4>
-        <p class="lead">EdWeek 8/20 報導指出，教育 AI 市場 2025 年約 $2.5B 營收、推估 2033 年超過 $15B，整體教育科技產業 2030 年上看 $90B 以上；但學區官員普遍苦於工具數量過多、廠商改版過快、缺乏清楚的判斷依據。American Enterprise Institute 的 Mark Schneider 直指「廠商知道的與學區知道的之間永遠存在不對稱」，一位學區總監則直言「多數工具其實沒有為學生帶來什麼改變」。目前學區的把關清單包括資料處理協議與資安問卷、要求廠商保證學生資料不被販售或用於訓練模型、評分與懲處決策須保留人工監督、以及實際的成效改善評估。賓州、紐約市與芝加哥已各自訂出採購指引，聯邦層面則指引有限。亞利桑那州立大學研究者另記錄到演算法公平性的實際問題：英語學習者被系統不當扣分或誤讀。</p>
-        <div class="foryou"><b>對你而言：</b>學區的把關清單其實是一份產品需求清單。值得檢視的是：「保證學生資料不用於模型訓練」「評分與懲處保留人工監督」這兩條，在自家介面上有沒有對應的可見證據——是只寫在合約與隱私政策，還是老師在使用 AI 相關功能時就看得到？另一個值得一問的是，研究點名的「英語學習者被誤判」直接對應到課中即時評量的多語情境：語音、手寫、開放式作答的判讀在非母語學生身上表現如何，介面有沒有讓老師發現並更正誤判的入口。</div>
+        <h4>學區被 AI 工具數量與改版速度淹沒：資訊不對稱成為採購核心難題</h4>
+        <p class="lead">EdWeek 8/20 指出，教育 AI 市場 2025 年約 $2.5B、推估 2033 年超過 $15B；但學區官員普遍苦於工具過多、廠商改版過快、缺乏判斷依據。AEI 的 Mark Schneider 直指「廠商知道的與學區知道的之間永遠存在不對稱」，一位學區總監直言多數工具沒為學生帶來改變。把關清單包括資料處理協議與資安問卷、保證學生資料不被販售或用於訓練模型、評分與懲處保留人工監督、實際成效評估。亞利桑那州立大學研究者另記錄到英語學習者被系統不當扣分或誤讀。</p>
+        <div class="foryou"><b>對你而言：</b>學區的把關清單其實是一份產品需求清單。「資料不用於模型訓練」「評分與懲處保留人工監督」這兩條，在介面上有沒有可見證據，還是只寫在合約與隱私政策裡？</div>
         <p class="conf"><b>信心：高</b>　·　來源類型：產業媒體訪談＋市場數據（Education Week）</p>
         <div class="foot"><a class="src" href="https://www.edweek.org/technology/schools-spend-billions-on-ai-but-struggle-to-figure-out-whats-worth-buying/2026/08" target="_blank" rel="noopener">來源 ↗</a><span class="date">2026-08-20</span></div>
       </article>
 
       <article class="card" data-level="design">
         <div class="tags"><span class="tag design">影響設計決策</span><span class="tag region">US · 市場／合約</span></div>
-        <h4>採購合約開始要求使用回報與整合標準：SSO、rostering 與依年級的用量報表被寫進條款</h4>
-        <p class="lead">MarketScale 8/29 指出學區買 AI 買得快，但合約裡從一開始就沒有定義「什麼叫成功」，導致稽核與續約時無法交代，風險是「把錯的續約鎖進未來好幾年」。文中列出的採購防護做法包括：在合約前先定義要解決的學術問題、要求依學校與年級層級的使用回報、強制 SSO 與 rostering 等整合標準、把專業培訓編列為核心導入成本而非選配。文章同時點名 Utah 與 Los Angeles 的新螢幕時間政策，正在逼學校為每項工具的使用時間提出正當理由，使成效宣稱受到更嚴格檢視；並指出當老師同時使用多個 AI 工具處理不同任務時，監督與資料控管會變得更困難。</p>
-        <div class="foryou"><b>對你而言：</b>「依學校與年級層級的使用回報」「SSO 與 rostering」這兩項若成為合約標配，就會直接回頭改變產品面貌。值得檢視的是：自動 rostering 的整合現況能不能撐住「以年級為單位」的報表切分，還是報表目前只切到班級與個人？以及登入這一段——老師與學生從 SSO 進來後，第一次使用的引導與權限狀態是不是清楚的？另一個值得觀察的是文中提到的「多工具並用讓監督變難」：如果老師的一堂課同時開著投屏、白板與即時評量，這三者的使用紀錄現在是分開的三份，還是能拼成學區看得懂的一堂課。</div>
+        <h4>採購合約開始要求使用回報與整合標準：SSO、rostering、依年級的用量報表</h4>
+        <p class="lead">MarketScale 8/29 指出學區買 AI 買得快，但合約從一開始就沒定義「什麼叫成功」，稽核與續約時無從交代，風險是「把錯的續約鎖進未來好幾年」。建議的採購防護：先定義要解決的學術問題、要求依學校與年級層級的使用回報、強制 SSO 與 rostering 等整合標準、把專業培訓編列為核心導入成本。文中並點名 Utah 與 Los Angeles 的螢幕時間政策正逼學校為每項工具的使用時間提出正當理由。</p>
+        <div class="foryou"><b>對你而言：</b>這兩項若成合約標配，會直接改變產品面貌。自動 rostering 撐不撐得住「以年級為單位」的報表切分，還是目前只切到班級與個人？另外，一堂課同時開著投屏、白板與即時評量，三份使用紀錄能不能拼成學區看得懂的一堂課？</div>
         <p class="conf"><b>信心：中</b>　·　來源類型：產業媒體分析（MarketScale，屬評論／實務建議性質而非一手調查）</p>
         <div class="foot"><a class="src" href="https://www.marketscale.com/industries/education-technology/schools-are-buying-ai-fast-but-their-contracts-still-cant-show-it-helps" target="_blank" rel="noopener">來源 ↗</a><span class="date">2026-08-29</span></div>
       </article>
 
       <article class="card" data-level="context">
         <div class="tags"><span class="tag context">背景脈絡</span><span class="tag region">US · 市場／成本</span></div>
-        <h4>AI 的成本被拆成兩筆帳：資料中心帳單，以及重新設計作業所需的教師時間</h4>
-        <p class="lead">EdSurge 8/19 的 podcast 把「AI 到底讓學校付出什麼」拆成兩層。財務層：記者 Mi Aniefuna 把教育科技一路追回到支撐它的資料中心與隨之而來的成本，指出帳單會「隨每一次使用而增長」，學區在權衡 AI 導入時往往只看課程決策、忽略了不斷上升的發票。教學層：Michael Hernandez 討論的則是當 AI 隨處可得，教學本身要跟著改——教師必須額外投入時間重新設計作業，才能在學生普遍可用 AI 的前提下維持認知強度。核心張力是：學校在資訊不完整的情況下推動 AI 導入，可能同時低估了直接營運費用與重新設計教學的間接成本。</p>
-        <div class="foryou"><b>對你而言：</b>「每一次使用都在增加帳單」這件事，換到介面上是個少被討論的設計題。值得思考的是：課中的 AI 輔助功能若是按用量計費，老師在使用當下知不知道自己在消耗什麼、學校端看不看得到用量分佈？如果不揭露，超支的驚訝會在續約時反噬；如果揭露得太重，又會讓老師在課堂中猶豫。另一個值得一問的是教師時間這筆帳——自家功能如果讓老師省下備課時間，但同時要求他們重新設計評量方式，這個「省下的」與「多花的」在產品敘事裡有沒有被誠實地擺在一起。</div>
-        <p class="conf"><b>信心：中</b>　·　來源類型：產業媒體 podcast 節目（EdSurge，屬記者與教育工作者的討論而非量化調查）</p>
+        <h4>AI 的成本被拆成兩筆帳：資料中心帳單，以及重新設計作業的教師時間</h4>
+        <p class="lead">EdSurge 8/19 的 podcast 把「AI 讓學校付出什麼」拆成兩層。財務層：記者 Mi Aniefuna 把教育科技追回到支撐它的資料中心與成本，指出帳單會「隨每一次使用而增長」，學區權衡導入時往往只看課程決策、忽略上升的發票。教學層：Michael Hernandez 討論當 AI 隨處可得，教師必須額外投入時間重新設計作業，才能維持認知強度。</p>
+        <div class="foryou"><b>對你而言：</b>課中的 AI 輔助若按用量計費，老師在使用當下知不知道自己在消耗什麼、學校端看不看得到分佈？不揭露，超支的驚訝會在續約時反噬；揭露太重，又會讓老師在課堂中猶豫。</div>
+        <p class="conf"><b>信心：中</b>　·　來源類型：產業媒體 podcast 節目（EdSurge，屬討論而非量化調查）</p>
         <div class="foot"><a class="src" href="https://www.edsurge.com/news/what-is-ai-actually-costing-schools" target="_blank" rel="noopener">來源 ↗</a><span class="date">2026-08-19</span></div>
       </article>
 
@@ -369,9 +370,9 @@
 
   <!-- 取樣方式 -->
   <section class="method">
-    <b>本期取樣與查證方式（先驗證再交付）</b><br>
-    本期蒐集區間為 <b>2026/08/16 – 09/01</b>，銜接上一期（2026-08-15）。對五大面向各做 2–4 次日期精確搜尋，逐層掃描一手／權威層（ed.gov、FCC、各州 DOE、Google Workspace Updates、blog.google、OpenAI、各廠商 newsroom）→ 產業媒體層（K-12 Dive、EdWeek、EdSurge、TechCrunch、MarketScale、rAVe／AVNetwork）→ 展會／報告層（ISTE、CoSN、Instructure）。軟體競品面向已個別查詢 Canva for Education、SchoolAI、ClassDojo、Microsoft Education。<b>本期納入的每一則卡片來源皆已實際開頁核對內容、網址與真實發布日期</b>（ED 指引 8/20、EdSurge 8/20、K-12 Dive 8/20 與 8/26、TechCrunch 8/18、Google 8/19 與 8/26、EdWeek 8/20、MarketScale 8/29、EdSurge 8/19 均通過驗證）。每則另標信心等級（高／中／低）與來源類型。<br>
-    <span class="excl">本期開頁查證後排除或校正：<b>Nearpod 開學季更新（AI Text Leveler、Teacher Notes、148 堂 Common Sense 數位公民課）實際發布日為 2026-08-06</b>，落在上期窗口，本期不列卡；<b>MagicSchool Back-to-School 更新（Raina 助理、個人化首頁、All Tools）實際發布日為 2026-06-25</b>；<b>SMART 為 Lumio 導入 WCAG 2.2 的新聞稿為 2026-07-07</b>；<b>Instructure 2026 Evidence Report（僅 2% 消費級工具具 ESSA 證據）實際發布日為 2026-03-10</b>；<b>Canva for Education 最新一波（Learn Grid、Magic Activities）為 Canva Create 2026（4–5 月）</b>；上述均不在本期窗口。<b>Google（8/19）一則於交付後兩度逐字比對原頁校正</b>：Back to School 為彙整頁，實質敘述在其所連的細節頁「College students get 12 months of Google AI free」（同日 published_time 2026-08-19T19:00:00+00:00），來源連結已改指該頁。經逐字核對，本期真正新增者為 Gemini app 內的 student hub 與學生免費方案；<b>study notebooks 原文為「we launched study notebooks in June」、Classroom teacher-led tools 原文為「we recently introduced」（連向 ISTE 2026 更新），二者皆屬既有功能</b>，先前卡片與頭條誤植為本期首發，已改正。先前所引「互動式視覺化」「整理課綱／追蹤截止日」出自該細節頁頂端由 Google AI 生成的摘要、而非本文敘述，已移除。EdTech Innovation Hub 一則「8 月熱門故事含 ClassDojo 隱私協議」經開頁確認實為 <b>2025-09-05</b> 的舊文，不予採用。Microsoft EDU「Back to School August 2026」貼文本期多次嘗試開頁均無法取得正文與明確發布日期，依誠實原則不列卡。SchoolAI 本期僅見 Chrome 擴充功能 2.0.4 的商店更新紀錄，查無可開頁核對的官方新聞稿。ClassDojo 最近一次校級工具發布為 2026-07（上期之前）。ADA Title II 網站無障礙規則已於 2026-04 延至 2027-04（州教育機關），本期無新進展；FCC E-Rate 檢討 NPRM 意見期於 10/13 截止，本期無新里程碑，兩者均不列卡。IFP 硬體（ViewSonic／Samsung／BenQ／Promethean／Clevertouch／Newline）本期查無窗口內可開頁核對的新品或新聞稿，ViewSonic 官方 press releases 頁最新一則為 2026-05-13。myViewBoard／ClassSwift／AirSync 本期查無窗口內可核對的新版新聞稿，自家產品本期無新項。</span>
+    <p><b>本期取樣與查證方式</b>　蒐集區間 2026/08/16–09/01，銜接上一期（2026-08-15）。五大面向各做 2–4 次日期精確搜尋，逐層掃描一手／權威層（ed.gov、Google Workspace Updates、blog.google、OpenAI、各廠商 newsroom）→ 產業媒體層（K-12 Dive、EdWeek、EdSurge、TechCrunch、MarketScale）→ 展會／報告層。軟體競品已個別查詢 Canva for Education、SchoolAI、ClassDojo、Microsoft Education。每則來源均已開頁核對內容、網址與真實發布日期，並標信心等級與來源類型。</p>
+    <p><b>開頁後排除（均不在本期窗口）</b>　Nearpod 開學季更新 2026-08-06、MagicSchool 2026-06-25、SMART Lumio WCAG 2.2 為 2026-07-07、Instructure Evidence Report 2026-03-10、Canva 最新一波為 Canva Create 2026（4–5 月）；EdTech Innovation Hub 一則「8 月熱門故事」實為 2025-09-05 舊文。Microsoft EDU「Back to School August 2026」多次開頁均無法取得正文與明確發布日，依誠實原則不列卡；SchoolAI 查無可核對的官方新聞稿。ADA Title II 已延至 2027-04、FCC E-Rate 意見期 10/13 截止，本期均無新里程碑。IFP 硬體與 myViewBoard／ClassSwift／AirSync 本期查無窗口內可核對的新聞稿。</p>
+    <p><b>交付後校正（Google 8/19）</b>　Back to School 為彙整頁，實質敘述在其所連的細節頁「College students get 12 months of Google AI free」（同日），來源連結已改指該頁。逐字核對後確認本期新增者為 student hub 與學生免費方案；study notebooks（「launched in June」）與 Classroom teacher-led tools（「recently introduced」）皆屬既有功能，先前誤植為本期首發，已改正。</p>
   </section>
 
   <footer>
