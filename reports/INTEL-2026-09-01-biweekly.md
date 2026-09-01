@@ -101,7 +101,7 @@ category: edtech-software
 source-url: https://blog.google/
 source-date: 2026-08-19
 
-8/19 的 Back to School 發布把 Gemini 的學生端整理成一個學習中樞。Study notebooks 用診斷式小測驗找出強項與知識缺口，再產出分段（bite-sized）的個人化學習計畫；student hub 讓學生整理課綱、追蹤截止日、依課程教材建立客製學習計畫；另加上互動式視覺化與可在 Gemini Live 中口頭討論的 Deep Research 報告。教師端則在 Google Classroom 拿到 teacher-led tools，可依自身課綱調整學生的 AI 體驗並即時追蹤進度，另有連結 Classroom 的 Gemini 應用可安全地起草教案。美國符合資格的大學生另可領一年免費 Google AI Pro。
+8/19 的 Back to School 發布把 Gemini 的學生端整理成一個學習中樞。Study notebooks 用診斷式小測驗找出強項與知識缺口，再產出分段（bite-sized）的個人化學習計畫；另有一個 dedicated student hub，讓學生保持條理並從這裡開始使用 Gemini 的學習工具（原文僅到此）；Gemini Live 新增可請求並口頭討論 Deep Research 報告。美國符合資格的大學生可領一年免費 Google AI Pro，美國以外為免費 Google AI Plus。教師端部分，原文以「we recently introduced」描述 Classroom 的 teacher-led tools（依課綱調整學生 AI 體驗、即時追蹤進度）與連結 Classroom 的 Gemini 起草教案應用——屬既有功能的開學季回顧，非 8/19 首發。
 
 **對你而言**：值得檢視的是這條動線的順序——Google 的做法是「先診斷 → 再產出分段計畫 → 老師可調整範圍並看到進度」，把 AI 放在診斷與規劃這一端，而不只是產內容。自家課中即時評量已經在收集答題資料，這些資料現在停在「這題全班對幾成」，還是有往「這個學生下一步該練什麼」延伸的位置？如果要延伸，老師是在課中就要看到建議，還是課後在後端報告裡看？另外「teacher-led」在介面上到底長什麼樣：是老師先設好範圍學生才看得到，還是學生先用、老師事後看紀錄，這個預設會決定教師端主畫面該以「設定」還是以「觀察」為中心。
 
