@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EdTech 雙週報 · 2026-11-02</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0f1320; --panel:#161b2e; --panel2:#1d2336;
+    --card:#ffffff; --card-border:#e4e7ef;
+    --ink:#11151f; --ink-soft:#5b6473; --muted:#8b93a4;
+    --accent:#4f7cff; --accent-2:#22c3a6;
+    --hi:#ffd54a; --tag-design:#1f8a5b; --tag-design-bg:#e3f6ec;
+    --tag-context:#6b7280; --tag-context-bg:#eef0f4;
+    --shadow:0 1px 3px rgba(10,15,30,.08),0 8px 24px rgba(10,15,30,.06);
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0; background:var(--bg);
+    font-family:"Noto Sans TC","Inter",system-ui,-apple-system,sans-serif;
+    color:var(--ink); line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:inherit;}
+  .wrap{max-width:980px;margin:0 auto;padding:0 18px 64px;}
+
+  /* Header */
+  header.top{
+    background:linear-gradient(135deg,#141a2e 0%,#222c4d 100%);
+    color:#fff; padding:34px 0 30px; border-bottom:1px solid rgba(255,255,255,.06);
+  }
+  .top .wrap{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:14px;padding-bottom:0;}
+  .brand{display:flex;align-items:center;gap:14px;}
+  .logo{
+    width:46px;height:46px;border-radius:12px;flex:none;
+    background:linear-gradient(135deg,var(--accent),var(--accent-2));
+    display:flex;align-items:center;justify-content:center;font-weight:900;font-size:20px;color:#fff;
+    font-family:"Inter",sans-serif;
+  }
+  a.logo{text-decoration:none;cursor:pointer;
+    transition:transform .15s ease, box-shadow .15s ease;}
+  a.logo:hover{transform:scale(1.06);box-shadow:0 0 0 3px rgba(79,124,255,.45);}
+  a.logo:focus-visible{outline:2px solid #fff;outline-offset:3px;}
+  .brand h1{font-size:25px;margin:0;font-weight:900;letter-spacing:.3px;}
+  .brand p{margin:2px 0 0;color:#aeb7cd;font-size:13.5px;}
+  .issue{text-align:right;}
+  .issue .date{font-family:"Inter",sans-serif;font-weight:800;font-size:22px;color:#fff;}
+  .issue .label{font-size:12px;color:#8b95ad;letter-spacing:2px;text-transform:uppercase;}
+  .scope{
+    margin-top:18px;display:flex;flex-wrap:wrap;gap:8px;
+  }
+  .scope span{
+    background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.1);
+    color:#cdd5e6;font-size:12px;padding:4px 11px;border-radius:20px;
+  }
+
+  /* Highlights */
+  section.hi-block{
+    background:var(--panel); margin-top:26px;border-radius:18px;padding:26px 26px 12px;
+    border:1px solid rgba(255,255,255,.05);
+  }
+  .hi-block h2{color:#fff;font-size:18px;margin:0 0 4px;display:flex;align-items:center;gap:9px;}
+  .hi-block .sub{color:#8b95ad;font-size:13px;margin:0 0 16px;}
+  .hi-dot{width:9px;height:9px;border-radius:50%;background:var(--hi);box-shadow:0 0 0 4px rgba(255,213,74,.18);}
+  ol.hilist{list-style:none;counter-reset:h;margin:0;padding:0;}
+  ol.hilist li{
+    counter-increment:h;position:relative;padding:14px 4px 16px 56px;
+    border-top:1px solid rgba(255,255,255,.06);color:#dfe5f1;font-size:14.5px;
+  }
+  ol.hilist li:first-child{border-top:none;}
+  ol.hilist li::before{
+    content:counter(h,decimal-leading-zero);position:absolute;left:0;top:13px;
+    font-family:"Inter",sans-serif;font-weight:800;font-size:15px;color:var(--accent);
+    background:rgba(79,124,255,.12);width:38px;height:38px;border-radius:10px;
+    display:flex;align-items:center;justify-content:center;
+  }
+  ol.hilist li b{color:#fff;font-weight:700;}
+  ol.hilist li .meta{display:block;color:#8b95ad;font-size:12px;margin-top:3px;}
+  ol.hilist li .hi-src{display:inline-block;margin-top:8px;font-family:"Inter",sans-serif;font-size:12px;font-weight:600;color:#8fb0ff;text-decoration:none;}
+  ol.hilist li .hi-src:hover{text-decoration:underline;}
+
+  /* Toggle bar */
+  .toolbar{
+    position:sticky;top:0;z-index:10;margin-top:30px;
+    background:rgba(15,19,32,.92);backdrop-filter:blur(8px);
+    padding:14px 4px;display:flex;align-items:center;justify-content:space-between;gap:14px;
+    border-bottom:1px solid rgba(255,255,255,.07);
+  }
+  .toolbar h2{color:#fff;font-size:17px;margin:0;}
+  .switch{display:flex;align-items:center;gap:10px;color:#cdd5e6;font-size:13px;cursor:pointer;user-select:none;}
+  .switch input{display:none;}
+  .track{width:44px;height:24px;border-radius:20px;background:#33405e;position:relative;transition:.2s;flex:none;}
+  .track::after{content:"";position:absolute;top:3px;left:3px;width:18px;height:18px;border-radius:50%;background:#fff;transition:.2s;}
+  .switch input:checked + .track{background:var(--tag-design);}
+  .switch input:checked + .track::after{transform:translateX(20px);}
+
+  /* Category */
+  .cat{margin-top:30px;}
+  .cat-head{display:flex;align-items:center;gap:11px;margin-bottom:14px;}
+  .cat-head .ico{
+    width:34px;height:34px;border-radius:9px;flex:none;display:flex;align-items:center;justify-content:center;font-size:17px;
+    background:var(--panel2);border:1px solid rgba(255,255,255,.07);
+  }
+  .cat-head h3{color:#fff;font-size:17px;margin:0;font-weight:700;}
+  .cat-head .count{color:#8b95ad;font-size:12.5px;margin-left:auto;}
+
+  .cards{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+  @media(max-width:720px){.cards{grid-template-columns:1fr;}}
+  .card{
+    background:var(--card);border:1px solid var(--card-border);border-radius:14px;
+    padding:17px 17px 15px;box-shadow:var(--shadow);display:flex;flex-direction:column;
+  }
+  .card .tags{display:flex;gap:7px;align-items:center;margin-bottom:9px;flex-wrap:wrap;}
+  .tag{font-size:11px;font-weight:700;padding:3px 9px;border-radius:6px;letter-spacing:.3px;}
+  .tag.design{color:var(--tag-design);background:var(--tag-design-bg);}
+  .tag.context{color:var(--tag-context);background:var(--tag-context-bg);}
+  .tag.region{color:#9a5b00;background:#fdeccb;}
+  .card h4{margin:0 0 7px;font-size:15.5px;line-height:1.45;color:var(--ink);font-weight:700;}
+  .card .lead{font-size:13.5px;color:var(--ink-soft);margin:0 0 11px;}
+  .card .foryou{
+    background:#f4f7ff;border-left:3px solid var(--accent);border-radius:0 8px 8px 0;
+    padding:9px 12px;font-size:13px;color:#324063;margin:0 0 12px;
+  }
+  .card .foryou b{color:var(--accent);font-weight:700;}
+  .card .conf{font-size:11.5px;color:var(--muted);margin:0 0 11px;font-family:"Inter",sans-serif;}
+  .card .conf b{color:var(--ink-soft);font-weight:600;}
+  .card .foot{margin-top:auto;display:flex;align-items:center;justify-content:space-between;gap:10px;border-top:1px solid #eef0f5;padding-top:11px;}
+  .card .src{font-size:12.5px;font-weight:600;color:var(--accent);text-decoration:none;display:inline-flex;align-items:center;gap:5px;}
+  .card .src:hover{text-decoration:underline;}
+  .card .date{font-size:12px;color:var(--muted);font-family:"Inter",sans-serif;}
+  .empty{
+    grid-column:1/-1;background:rgba(255,255,255,.04);border:1px dashed rgba(255,255,255,.14);
+    border-radius:12px;color:#8b95ad;font-size:13.5px;padding:18px;text-align:center;line-height:1.7;
+  }
+  .hidden{display:none !important;}
+
+  /* 取樣方式說明 */
+  .method{
+    margin-top:30px;background:var(--panel);border:1px solid rgba(255,255,255,.06);
+    border-radius:14px;padding:18px 20px;color:#aeb7cd;font-size:12.5px;line-height:1.75;
+  }
+  .method b{color:#dfe5f1;}
+  .method p{margin:0 0 10px;}
+  .method p:last-child{margin-bottom:0;}
+
+  footer{margin-top:30px;text-align:center;color:#6c768c;font-size:12px;line-height:1.8;}
+  footer .ftag{color:#8b95ad;}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <div class="brand">
+      <a class="logo" href="../index.html" title="回歷史總表：查看全部期數" aria-label="回歷史總表，查看全部期數">ET</a>
+      <div>
+        <h1>EdTech 雙週報</h1>
+        <p>給 EdTech UX Designer 的雙週產業掃描 · 北美優先</p>
+      </div>
+    </div>
+    <div class="issue">
+      <div class="label">本期執行日期</div>
+      <div class="date">2026.11.02</div>
+    </div>
+  </div>
+  <div class="wrap" style="padding-top:0;">
+    <div class="scope">
+      <span>蒐集區間：2026/10/16 – 11/02</span>
+      <span>地區：US › APAC › EU</span>
+    </div>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <!-- HIGHLIGHTS -->
+  <section class="hi-block">
+    <h2><span class="hi-dot"></span>本期最該關注</h2>
+    <p class="sub">依設計決策影響程度排序，競品動態優先</p>
+    <ol class="hilist">
+      <li>
+        <b>佛州 Promethean 大屏致死事故後續：學區檢查逾 3,000 台未見安裝不當模式，事發前兩天曾有教師來信詢問能否固定大屏</b>：Brevard 學區總監 10/27 向董事會表示檢查「沒有安裝不當的模式」，最終報告未出，將委請外部律師獨立調查；家屬已聘律師、考慮提告。Space Coast Rocket 取得的郵件顯示，一位教師 10/5 來信問能否把 Promethean 大屏固定住，因為學生不斷把它上下猛推。
+        <span class="meta">→ 主要競品事故的調查仍在進行，學區已排定外部獨立調查。</span>
+        <a class="hi-src" href="https://www.clickorlando.com/news/local/2026/10/27/review-of-brevard-school-video-boards-amid-boys-death-shows-no-pattern-of-improper-installations/" target="_blank" rel="noopener">來源：News 6 ClickOrlando（2026-10-27） ↗</a>　<a class="hi-src" href="https://thespacecoastrocket.com/riviera-elementary-promethean-board-email-teacher-warning/" target="_blank" rel="noopener">教師郵件：Space Coast Rocket（2026-10-23） ↗</a>
+      </li>
+      <li>
+        <b>Microsoft Learning Zone 推出 Presenter Mode，可在共用螢幕帶全班互動；K-12 的 Copilot Study and Learn 預設開啟</b>：10/20 月度更新。Presenter Mode 讓教師把互動課程投到共用螢幕帶領全班，可啟動計時器、慶祝答對。Copilot Chat 的 Study and Learn 對 K-12 預設開啟、高教預設關閉，設定在 M365 管理中心。
+        <span class="meta">→ 競品把「投到共用螢幕帶全班」做成課程工具內的獨立模式。</span>
+        <a class="hi-src" href="https://techcommunity.microsoft.com/blog/educationblog/whats-new-in-microsoft-edu-%E2%80%93-october-2026/4516290" target="_blank" rel="noopener">來源：Microsoft Education Blog（2026-10-20） ↗</a>
+      </li>
+      <li>
+        <b>Google Classroom 的 Gemini Notebook 讓教師檢視學生對話紀錄，外部分享預設關閉</b>：10/19 起推出。教師可看學生在指派 notebook 中的個別對話紀錄，學生端會被告知對話對教師可見；外部分享預設關閉，管理員可依網域、OU、群組控制。未來幾週開放給 Gemini LTI 使用者。
+        <span class="meta">→ 競品在學生端明示「老師看得到」，並把分享控制交給管理員。</span>
+        <a class="hi-src" href="https://workspaceupdates.googleblog.com/2026/10/teacher-led-gemini-notebook-in-google-Classroom-now-offers-insight-summaries-for-educators-and-updated-sharing-settings-for-admins-including-trusted-domains.html" target="_blank" rel="noopener">來源：Google Workspace Updates（2026-10-19） ↗</a>
+      </li>
+      <li>
+        <b>FCC E-Rate 意見：近 99% 支持保留，是否把螢幕時間綁進 E-Rate 意見分歧</b>：EdWeek Market Brief 引述顧問公司 Funds For Learning 的分析，約 1,100 則意見提到螢幕時間，866 則反對把聯邦螢幕時間規範與 E-Rate 掛鉤、169 則支持。回覆意見 11/12 截止，最終命令最快明年初。
+        <span class="meta">→ 連網補助的去留與螢幕時間規範被放在同一個程序裡討論。</span>
+        <a class="hi-src" href="https://marketbrief.edweek.org/regulation-policy/fcc-public-comments-show-broad-support-for-e-rate-divide-over-regulating-screen-time/2026/10" target="_blank" rel="noopener">來源：EdWeek Market Brief（2026-10-29） ↗</a>
+      </li>
+      <li>
+        <b>兩位參議員致函 Google，質疑為何在學校裝置把 AI 功能設為預設</b>：參議員 Blumenthal 與 Hawley 去函 Google，要求其說明為何 AI 功能在學校裝置上是預設設定，並限 11/2 前回覆。Google 發言人則引用公司先前的聲明，表示由教師與管理員主導如何使用。
+        <span class="meta">→ 學校裝置上 AI 功能的預設值成為國會提問的對象。</span>
+        <a class="hi-src" href="https://www.govtech.com/education/k-12/sens-blumenthal-and-hawley-question-googles-push-for-ai-in-schools" target="_blank" rel="noopener">來源：GovTech（2026-10-26） ↗</a>
+      </li>
+    </ol>
+  </section>
+
+  <!-- TOOLBAR -->
+  <div class="toolbar">
+    <h2>本期結果</h2>
+    <label class="switch">
+      <span>只看「影響設計決策」</span>
+      <input type="checkbox" id="designOnly">
+      <span class="track"></span>
+    </label>
+  </div>
+
+  <section class="cat" data-cat="法規">
+    <div class="cat-head">
+      <div class="ico">⚖️</div><h3>法規 / 政策</h3>
+      <span class="count"></span>
+    </div>
+    <div class="cards">
+      <article class="card" data-level="design">
+        <div class="tags"><span class="tag design">影響設計決策</span><span class="tag region">US · 競品 · 預設值</span></div>
+        <h4>兩位參議員致函 Google，質疑為何在學校裝置把 AI 功能設為預設</h4>
+        <p class="lead">GovTech 轉載 Quartz 報導，參議員 Blumenthal 與 Hawley 致函 Google，指其向學童積極推動 AI 產品，威脅整個世代的學業與身心福祉。信中詢問為何 AI 功能在學校裝置上被設為預設，並要求 Google 於 11/2 前回覆。Google 發言人向 WSJ 引用公司先前的聲明，表示由教師與管理員主導這些功能如何使用。</p>
+        <div class="foryou"><b>對你而言：</b>國會開始追問「預設值」由誰決定。自家 AI 功能在學校第一次啟用時，預設是開還是關，誰改得了？</div>
+        <p class="conf"><b>信心：中</b>　·　來源類型：媒體轉載報導（GovTech／Quartz）；參議員新聞稿原頁無法開啟</p>
+        <div class="foot"><a class="src" href="https://www.govtech.com/education/k-12/sens-blumenthal-and-hawley-question-googles-push-for-ai-in-schools" target="_blank" rel="noopener">來源 ↗</a><span class="date">2026-10-26</span></div>
+      </article>
+      <article class="card" data-level="context">
+        <div class="tags"><span class="tag context">背景脈絡</span><span class="tag region">US · 聯邦經費</span></div>
+        <h4>FCC E-Rate 意見：近 99% 支持保留，是否把螢幕時間綁進 E-Rate 意見分歧</h4>
+        <p class="lead">EdWeek Market Brief 引述顧問公司 Funds For Learning 對 FCC 意見的分析，近 99% 呼籲保留 E-Rate。約 1,100 則提到螢幕時間，其中 866 則反對把聯邦螢幕時間規範與 E-Rate 掛鉤、169 則支持；紐約市學校表示 E-Rate 不應與聯邦螢幕時間規範綁定。FCC 的選項包括縮小範圍、減少經費，最壞情況是終止計畫。回覆意見 11/12 截止，最終命令最快明年初。</p>
+        <div class="foryou"><b>對你而言：</b>螢幕時間被放進連網補助一起討論。自家課中功能裡，學生看個人裝置與全班看大屏的時間，目前分得開嗎？</div>
+        <p class="conf"><b>信心：高</b>　·　來源類型：產業媒體分析聯邦規則制定意見（EdWeek Market Brief）</p>
+        <div class="foot"><a class="src" href="https://marketbrief.edweek.org/regulation-policy/fcc-public-comments-show-broad-support-for-e-rate-divide-over-regulating-screen-time/2026/10" target="_blank" rel="noopener">來源 ↗</a><span class="date">2026-10-29</span></div>
+      </article>
+      <article class="card" data-level="design">
+        <div class="tags"><span class="tag design">影響設計決策</span><span class="tag region">US-CA · 學生資料外洩</span></div>
+        <h4>加州警告全體公立學校學生：ETS 資料外洩涉及近三年在學學生</h4>
+        <p class="lead">The Record 報導，ETS 資料外洩涉及加州過去三年所有公立學校在學學生，外洩資料含姓名、生日、住址、學校、學區與年級；資料於 5/22 至 9/18 間遭複製，ETS 於 9/25 發現，並暫停部分測驗活動。據 LA Times（經 EdWeek 轉載），外洩內容含身心障礙紀錄，攻擊者使用一組遭盜用的登入憑證。</p>
+        <div class="foryou"><b>對你而言：</b>這次的入口是一組被盜的登入憑證。自家管理端的登入紀錄，學區 IT 看得到誰在何時登入嗎？</div>
+        <p class="conf"><b>信心：高</b>　·　來源類型：資安產業媒體（The Record）；身障紀錄與憑證細節引自 LA Times（經 Education Week 轉載）</p>
+        <div class="foot"><span><a class="src" href="https://therecord.media/california-warns-all-public-school-students-of-data-breach" target="_blank" rel="noopener">來源 ↗</a>　<a class="src" href="https://www.edweek.org/technology/hackers-steal-personal-data-of-millions-of-california-students-in-massive-breach/2026/10" target="_blank" rel="noopener">身障紀錄與憑證 ↗</a></span><span class="date">2026-10-20</span></div>
+      </article>
+      <article class="card" data-level="design">
+        <div class="tags"><span class="tag design">影響設計決策</span><span class="tag region">US · 手機禁令</span></div>
+        <h4>調查：80% 高中生的學校有手機禁令，八成反對全天禁用</h4>
+        <p class="lead">K-12 Dive 報導 Hopelab 與 Data for Progress 調查：80% 高中生就讀的學校有手機禁令，42% 為全天禁用；64% 支持課堂內禁用，但 80% 反對全天禁用。21 州要求從上課鈴到下課鈴全面禁用。研究者建議限制措施應有明確的緊急應變程序與正式的通融管道。</p>
+        <div class="foryou"><b>對你而言：</b>手機收起來後，學生能用的只剩學校配發的裝置。自家課中互動的學生端，有沒有預設學生手上有手機？</div>
+        <p class="conf"><b>信心：高</b>　·　來源類型：產業媒體報導全國調查（K-12 Dive／Hopelab、Data for Progress）</p>
+        <div class="foot"><a class="src" href="https://www.k12dive.com/news/high-schoolers-oppose-full-day-cellphone-bans-amid-safety-concerns/833512/" target="_blank" rel="noopener">來源 ↗</a><span class="date">2026-10-20</span></div>
+      </article>
+      <article class="card" data-level="context">
+        <div class="tags"><span class="tag context">背景脈絡</span><span class="tag region">APAC · 澳洲維州</span></div>
+        <h4>澳洲維州禁止智慧眼鏡：2027 學年起學生須關機收妥，公立學校教職員與家長也不得配戴</h4>
+        <p class="lead">維州政府公告，自 2027 學年起所有學校學生須將包括智慧眼鏡在內的裝置關機收妥。此外，公立學校的教師、家長與志工也不得在校內配戴智慧眼鏡或隱密錄影裝置。唯一例外是沒有其他合適調整時，為身心障礙者提供的合理調整。政府指既有手機禁令的評估顯示，學生更能專注上課、下課更常互動。</p>
+        <div class="foryou"><b>對你而言：</b>禁令針對的是「看不出正在錄」的裝置。自家有擷取畫面的功能時，教室裡的人看得出正在擷取嗎？</div>
+        <p class="conf"><b>信心：高</b>　·　來源類型：政府官方新聞稿（Premier of Victoria）</p>
+        <div class="foot"><a class="src" href="https://www.premier.vic.gov.au/smart-glasses-be-banned-all-victorian-schools" target="_blank" rel="noopener">來源 ↗</a><span class="date">2026-10-21</span></div>
+      </article>
+    </div>
+  </section>
+
+  <section class="cat" data-cat="IFP">
+    <div class="cat-head">
+      <div class="ico">🖥️</div><h3>IFP 互動大屏</h3>
+      <span class="count"></span>
+    </div>
+    <div class="cards">
+      <article class="card" data-level="design">
+        <div class="tags"><span class="tag design">影響設計決策</span><span class="tag region">US · 安全事件後續</span></div>
+        <h4>佛州 Promethean 大屏致死事故後續：學區檢查逾 3,000 台未見安裝不當模式，事發前兩天曾有教師來信詢問能否固定大屏</h4>
+        <p class="lead">Brevard 學區總監 Mark Rendell 10/27 向董事會表示，逾 3,000 台顯示大屏的檢查「沒有安裝不當的模式」；最終報告未出，學區將委請外部律師獨立調查。家屬已聘律師、考慮提告，警方調查持續。Space Coast Rocket 取得的郵件顯示，一位教師 10/5 來信問能否把 Promethean 大屏固定住，因學生不斷把它上下猛推；技術人員回覆認為撐不住孩子攀掛，移除需經學區與校方核准、費用約 6,000 美元。</p>
+        <div class="foryou"><b>對你而言：</b>教師發現大屏有狀況時，能用的管道只有寫信給技術人員。自家大屏的使用者發現硬體異常時，有地方可以回報嗎？</div>
+        <p class="conf"><b>信心：中</b>　·　來源類型：地方電視台網站報導學區董事會說明（News 6 ClickOrlando）；教師郵件引自地方獨立媒體（Space Coast Rocket），該媒體的公共紀錄申請尚未獲回覆</p>
+        <div class="foot"><span><a class="src" href="https://www.clickorlando.com/news/local/2026/10/27/review-of-brevard-school-video-boards-amid-boys-death-shows-no-pattern-of-improper-installations/" target="_blank" rel="noopener">來源 ↗</a>　<a class="src" href="https://thespacecoastrocket.com/riviera-elementary-promethean-board-email-teacher-warning/" target="_blank" rel="noopener">教師郵件 ↗</a></span><span class="date">2026-10-27</span></div>
+      </article>
+    </div>
+  </section>
+
+  <section class="cat" data-cat="軟體">
+    <div class="cat-head">
+      <div class="ico">🧩</div><h3>教育軟體競品</h3>
+      <span class="count"></span>
+    </div>
+    <div class="cards">
+      <article class="card" data-level="design">
+        <div class="tags"><span class="tag design">影響設計決策</span><span class="tag region">Global · 競品</span></div>
+        <h4>Microsoft Learning Zone 推出 Presenter Mode，可在共用螢幕帶全班互動；K-12 的 Copilot Study and Learn 預設開啟</h4>
+        <p class="lead">Microsoft 10 月更新：Learning Zone 新增 Presenter Mode，教師可把互動課程投到共用螢幕帶領全班，並可啟動個人或分組計時器、慶祝答對，參與者抽選器即將推出。Copilot Chat 的 Study and Learn 對 K-12 預設開啟、高教預設關閉，設定在 M365 管理中心。教師可在 Assignments 附上 Study and Learn 或 Copilot 起始提示（預覽中，11 月全面開放）。Learning Groups 的分組名稱與成員只有教師看得到。</p>
+        <div class="foryou"><b>對你而言：</b>競品把投到共用螢幕做成獨立模式。自家課中互動在大屏上，老師站在螢幕前能做完哪些事、哪些得回座位？</div>
+        <p class="conf"><b>信心：高</b>　·　來源類型：官方產品部落格（Microsoft Education Blog）</p>
+        <div class="foot"><a class="src" href="https://techcommunity.microsoft.com/blog/educationblog/whats-new-in-microsoft-edu-%E2%80%93-october-2026/4516290" target="_blank" rel="noopener">來源 ↗</a><span class="date">2026-10-20</span></div>
+      </article>
+      <article class="card" data-level="design">
+        <div class="tags"><span class="tag design">影響設計決策</span><span class="tag region">Global · 競品</span></div>
+        <h4>Google Classroom 的 Gemini Notebook 讓教師檢視學生對話紀錄，外部分享預設關閉</h4>
+        <p class="lead">Google 10/19 起推出：教師可檢視學生在指派 notebook 中的個別對話紀錄，以補充脈絡並確認 AI 提供的洞察是否正確；學生端會被告知自己的對話對教師可見。管理員端，Gemini Notebook 外部分享預設關閉，可依網域、OU、群組層級控制。此功能未來幾週開放給 Gemini LTI 使用者，適用 Education Fundamentals、Standard、Plus。</p>
+        <div class="foryou"><b>對你而言：</b>Google 直接告訴學生「老師看得到」。自家學生端的作答與互動資料對老師可見，學生看得到這個說明嗎？</div>
+        <p class="conf"><b>信心：高</b>　·　來源類型：官方產品公告（Google Workspace Updates）</p>
+        <div class="foot"><a class="src" href="https://workspaceupdates.googleblog.com/2026/10/teacher-led-gemini-notebook-in-google-Classroom-now-offers-insight-summaries-for-educators-and-updated-sharing-settings-for-admins-including-trusted-domains.html" target="_blank" rel="noopener">來源 ↗</a><span class="date">2026-10-19</span></div>
+      </article>
+      <article class="card" data-level="design">
+        <div class="tags"><span class="tag design">影響設計決策</span><span class="tag region">Global · 競品</span></div>
+        <h4>Gemini 學生入口新增 immersive explorations，Google 明寫沒有管理端開關</h4>
+        <p class="lead">Google 10/28 公告，使用者可在 Gemini student hub 點選「Try immersive explorations」進入資源庫；公告明寫此功能沒有管理員控制。student hub 適用 Education Fundamentals、Standard、Plus。此功能支援英文、印尼文、印地文、巴西葡萄牙文、法文與簡體中文，其他語言的使用者目前只有英文體驗，之後會加入旁白語音導覽。</p>
+        <div class="foryou"><b>對你而言：</b>學生端功能上線時沒有給管理開關。學校 IT 想關掉自家某項學生端功能時，有對應的設定路徑嗎？</div>
+        <p class="conf"><b>信心：高</b>　·　來源類型：官方產品公告（Google Workspace Updates）</p>
+        <div class="foot"><a class="src" href="https://workspaceupdates.googleblog.com/2026/10/immersive-explorations-now-available-in-the-Gemini-app.html" target="_blank" rel="noopener">來源 ↗</a><span class="date">2026-10-28</span></div>
+      </article>
+      <article class="card" data-level="design">
+        <div class="tags"><span class="tag design">影響設計決策</span><span class="tag region">US · 競品</span></div>
+        <h4>Seesaw 推出 Interactive Video Quiz：在 YouTube 影片中自動產生並插入題目</h4>
+        <p class="lead">Seesaw 10/27 產品更新：Interactive Video Quiz 讓教師把題目直接嵌入 YouTube 影片，題目會自動產生並放在影片的關鍵時間點，影片暫停讓學生作答，以確認理解。同次更新另新增凌晨 4 點作為第三方 rostering 學區與學校的夜間同步選項。</p>
+        <div class="foryou"><b>對你而言：</b>自動插題把出題時機交給系統。自家課中出題若加入自動產生，老師發出前看得到也改得了每一題嗎？</div>
+        <p class="conf"><b>信心：高</b>　·　來源類型：官方版本更新說明（Seesaw Help Center）</p>
+        <div class="foot"><a class="src" href="https://help.seesaw.me/hc/en-us/articles/42646607468045-Seesaw-Product-Updates-2026" target="_blank" rel="noopener">來源 ↗</a><span class="date">2026-10-27</span></div>
+      </article>
+    </div>
+  </section>
+
+  <section class="cat" data-cat="UX">
+    <div class="cat-head">
+      <div class="ico">🎨</div><h3>UX / 設計趨勢</h3>
+      <span class="count"></span>
+    </div>
+    <div class="cards">
+      <article class="card" data-level="design">
+        <div class="tags"><span class="tag design">影響設計決策</span><span class="tag region">US · 教師態度</span></div>
+        <h4>EdWeek 調查：資淺教師較少認為科技有助學習；家長對課堂科技量的觀感在郊區與鄉村最負面</h4>
+        <p class="lead">EdWeek Research Center 調查 596 名教育工作者：年資不到 10 年者僅 17% 認為科技對學習利大於弊，年資 10–14 年者為 39%；近半資淺教師認為科技增加或減少學習的可能相同。家長觀感方面，57% 都會區教育者表示家長認為課堂科技量「剛好」，郊區為 40%、鄉村／小鎮為 38%；學校貧窮程度造成的差距不具統計顯著性。</p>
+        <div class="foryou"><b>對你而言：</b>資淺教師對科技最保留。新進老師第一次打開自家大屏軟體，最先看到的是課程內容還是功能選單？</div>
+        <p class="conf"><b>信心：高</b>　·　來源類型：產業媒體自辦調查（Education Week Research Center）</p>
+        <div class="foot"><span><a class="src" href="https://www.edweek.org/technology/newer-educators-are-less-likely-to-say-tech-helps-students-learn/2026/10" target="_blank" rel="noopener">來源 ↗</a>　<a class="src" href="https://www.edweek.org/technology/techlash-is-strongest-in-suburban-and-rural-schools/2026/10" target="_blank" rel="noopener">家長觀感 ↗</a></span><span class="date">2026-10-28</span></div>
+      </article>
+      <article class="card" data-level="context">
+        <div class="tags"><span class="tag context">背景脈絡</span><span class="tag region">US · 教師工作量</span></div>
+        <h4>RAND：教師每週約 8 小時用於學生支持，半數認為比兩年前更難</h4>
+        <p class="lead">K-12 Dive 報導 RAND 2026 年美國教師現況調查（829 名教師）：教師每週平均花 8 小時提供學生支持，其中約 2 小時在合約工時之外；半數表示與兩年前相比，提供支持變得更困難。</p>
+        <div class="foryou"><b>對你而言：</b>課外時間已被學生支持佔去。課後報告若要老師另外整理才能用，那段時間從哪來？</div>
+        <p class="conf"><b>信心：高</b>　·　來源類型：產業媒體報導全國調查（K-12 Dive／RAND）</p>
+        <div class="foot"><a class="src" href="https://www.k12dive.com/news/teachers-spend-about-8-hours-per-week-on-student-well-being/833729/" target="_blank" rel="noopener">來源 ↗</a><span class="date">2026-10-23</span></div>
+      </article>
+    </div>
+  </section>
+
+  <section class="cat" data-cat="市場">
+    <div class="cat-head">
+      <div class="ico">📊</div><h3>市場動向 / 展會報告</h3>
+      <span class="count"></span>
+    </div>
+    <div class="cards">
+      <article class="card" data-level="design">
+        <div class="tags"><span class="tag design">影響設計決策</span><span class="tag region">US · 學區資安</span></div>
+        <h4>CIS 與 CoSN 調查：過去一年逾半學校與學區遭遇資安事件，83% 已實施多因素驗證</h4>
+        <p class="lead">K-12 Dive 報導 CIS／MS-ISAC 與 CoSN 對 426 位 K-12 領導者的調查：過去一年逾半學校與學區遭遇資安事件；87% 表示釣魚或電子郵件入侵是主要事件，83% 已實施多因素驗證。56% 表示資安計畫經費不足，70% 因預算問題延後資安專案、技術投資或人力。</p>
+        <div class="foryou"><b>對你而言：</b>多數學區已導入多因素驗證。老師站在大屏前登入時，學區的驗證會多出哪些步驟？</div>
+        <p class="conf"><b>信心：高</b>　·　來源類型：產業媒體報導全國調查（K-12 Dive／CIS、CoSN）</p>
+        <div class="foot"><a class="src" href="https://www.k12dive.com/news/cybersecurity-incidents-hit-over-50-of-schools-and-districts-in-past-year/872783/" target="_blank" rel="noopener">來源 ↗</a><span class="date">2026-10-27</span></div>
+      </article>
+      <article class="card" data-level="context">
+        <div class="tags"><span class="tag context">背景脈絡</span><span class="tag region">US · 關校整併</span></div>
+        <h4>Tulsa 學區核准 2027–28 學年關閉或整併 17 所學校</h4>
+        <p class="lead">K-12 Dive 報導，奧克拉荷馬州 Tulsa 公立學區董事會核准於 2027–28 學年關閉或整併 17 所學校。在學人數從 2016 年 10 月約 40,900 人降至 2026 年 10 月的 32,500 人，計畫預計為學區節省 1,110 萬美元。</p>
+        <div class="foryou"><b>對你而言：</b>整併校時設備與老師一起搬。老師換到新學校的大屏，原本的設定與課程跟得過去嗎？</div>
+        <p class="conf"><b>信心：高</b>　·　來源類型：產業媒體報導學區決議（K-12 Dive）</p>
+        <div class="foot"><a class="src" href="https://www.k12dive.com/news/tulsa-public-schools-will-close-or-consolidate-17-schools-in-2027-28/833629/" target="_blank" rel="noopener">來源 ↗</a><span class="date">2026-10-21</span></div>
+      </article>
+      <article class="card" data-level="context">
+        <div class="tags"><span class="tag context">背景脈絡</span><span class="tag region">EU · 英國</span></div>
+        <h4>英國 EEF 開放標案，開發學校測試 AI 與 edtech 的指引，提醒勿把使用量當成效</h4>
+        <p class="lead">EdTech Innovation Hub 報導，英國教育捐贈基金會（EEF）開放 15,000–25,000 英鎊標案，開發學校測試 AI 與 edtech 的指引；整體計畫規劃最多 75 項快速評估、至多 15 項較大規模研究。提案截止為 2026/11/13 下午 5 點。標案特別提醒，不應過度依賴使用量指標作為學習成效的證據。</p>
+        <div class="foryou"><b>對你而言：</b>評估方開始區分使用量與成效。自家產品向學校說明價值時，引用的是哪一種數據？</div>
+        <p class="conf"><b>信心：高</b>　·　來源類型：產業媒體報導公開標案（EdTech Innovation Hub）</p>
+        <div class="foot"><a class="src" href="https://www.edtechinnovationhub.com/news/eef-opens-1500025000-tender-to-develop-guidance-for-testing-ai-and-edtech-in-schools" target="_blank" rel="noopener">來源 ↗</a><span class="date">2026-10-30</span></div>
+      </article>
+    </div>
+  </section>
+
+  <!-- 取樣方式 -->
+  <section class="method">
+    <p><b>本期取樣與查證方式</b>　蒐集區間 2026/10/16–11/02，與前期（2026-10-15，區間 10/01–10/15）銜接，期間無空隙。</p>
+    <p>五大面向各做多次日期精確搜尋，逐層掃描一手／權威層（政府公告、廠商 newsroom 與官方部落格、版本更新說明）→ 產業媒體層（K-12 Dive、EdWeek、EdTech Innovation Hub、The 74、GovTech）→ 展會／報告層。軟體競品已個別查詢 Canva for Education、SchoolAI、ClassDojo、Microsoft Education；IFP 競品已逐家查詢 Promethean（含母公司 Mynd.ai）、SMART、BenQ、Samsung、Newline、Clevertouch、Vibe。</p>
+    <p>每則來源均已開頁核對內容、網址與真實發布日期，並標信心等級與來源類型；排序以競品動態與相關市場訊號優先，AI 通論類項目降權。</p>
+  </section>
+
+  <footer>
+    <div>EdTech 雙週報 · 本期 2026-11-02 · 蒐集區間 2026/10/16–11/02</div>
+    <div class="ftag">本期僅保留可查證於本期的項目並回溯一手來源。連結為原始來源，請以原文為準。下期預定 2026-11-15。</div>
+  </footer>
+
+</div>
+
+<script>
+  // 設計決策過濾開關
+  (function(){
+    var toggle=document.getElementById('designOnly');
+    var cats=document.querySelectorAll('.cat');
+    function apply(){
+      var on=toggle.checked;
+      cats.forEach(function(cat){
+        var cards=cat.querySelectorAll('.card');
+        var shown=0;
+        cards.forEach(function(c){
+          var keep=!on || c.getAttribute('data-level')==='design';
+          c.classList.toggle('hidden',!keep);
+          if(keep) shown++;
+        });
+        var emptyEl=cat.querySelector('.empty');
+        if(emptyEl && cat.querySelectorAll('.card').length>0){
+          if(shown===0){
+            emptyEl.textContent='本區本期無「影響設計決策」項目';
+            emptyEl.classList.remove('hidden');
+          } else {
+            emptyEl.classList.add('hidden');
+          }
+        }
+        var countEl=cat.querySelector('.count');
+        if(countEl) countEl.textContent=shown+' 則';
+      });
+    }
+    cats.forEach(function(cat){
+      var n=cat.querySelectorAll('.card').length;
+      var c=cat.querySelector('.count'); if(c)c.textContent=n+' 則';
+    });
+    toggle.addEventListener('change',apply);
+  })();
+</script>
+</body>
+</html>
