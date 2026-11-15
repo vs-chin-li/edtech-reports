@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EdTech 雙週報 · 2026-11-15</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0f1320; --panel:#161b2e; --panel2:#1d2336;
+    --card:#ffffff; --card-border:#e4e7ef;
+    --ink:#11151f; --ink-soft:#5b6473; --muted:#8b93a4;
+    --accent:#4f7cff; --accent-2:#22c3a6;
+    --hi:#ffd54a; --tag-design:#1f8a5b; --tag-design-bg:#e3f6ec;
+    --tag-context:#6b7280; --tag-context-bg:#eef0f4;
+    --shadow:0 1px 3px rgba(10,15,30,.08),0 8px 24px rgba(10,15,30,.06);
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0; background:var(--bg);
+    font-family:"Noto Sans TC","Inter",system-ui,-apple-system,sans-serif;
+    color:var(--ink); line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:inherit;}
+  .wrap{max-width:980px;margin:0 auto;padding:0 18px 64px;}
+
+  /* Header */
+  header.top{
+    background:linear-gradient(135deg,#141a2e 0%,#222c4d 100%);
+    color:#fff; padding:34px 0 30px; border-bottom:1px solid rgba(255,255,255,.06);
+  }
+  .top .wrap{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:14px;padding-bottom:0;}
+  .brand{display:flex;align-items:center;gap:14px;}
+  .logo{
+    width:46px;height:46px;border-radius:12px;flex:none;
+    background:linear-gradient(135deg,var(--accent),var(--accent-2));
+    display:flex;align-items:center;justify-content:center;font-weight:900;font-size:20px;color:#fff;
+    font-family:"Inter",sans-serif;
+  }
+  a.logo{text-decoration:none;cursor:pointer;
+    transition:transform .15s ease, box-shadow .15s ease;}
+  a.logo:hover{transform:scale(1.06);box-shadow:0 0 0 3px rgba(79,124,255,.45);}
+  a.logo:focus-visible{outline:2px solid #fff;outline-offset:3px;}
+  .brand h1{font-size:25px;margin:0;font-weight:900;letter-spacing:.3px;}
+  .brand p{margin:2px 0 0;color:#aeb7cd;font-size:13.5px;}
+  .issue{text-align:right;}
+  .issue .date{font-family:"Inter",sans-serif;font-weight:800;font-size:22px;color:#fff;}
+  .issue .label{font-size:12px;color:#8b95ad;letter-spacing:2px;text-transform:uppercase;}
+  .scope{
+    margin-top:18px;display:flex;flex-wrap:wrap;gap:8px;
+  }
+  .scope span{
+    background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.1);
+    color:#cdd5e6;font-size:12px;padding:4px 11px;border-radius:20px;
+  }
+
+  /* Highlights */
+  section.hi-block{
+    background:var(--panel); margin-top:26px;border-radius:18px;padding:26px 26px 12px;
+    border:1px solid rgba(255,255,255,.05);
+  }
+  .hi-block h2{color:#fff;font-size:18px;margin:0 0 4px;display:flex;align-items:center;gap:9px;}
+  .hi-block .sub{color:#8b95ad;font-size:13px;margin:0 0 16px;}
+  .hi-dot{width:9px;height:9px;border-radius:50%;background:var(--hi);box-shadow:0 0 0 4px rgba(255,213,74,.18);}
+  ol.hilist{list-style:none;counter-reset:h;margin:0;padding:0;}
+  ol.hilist li{
+    counter-increment:h;position:relative;padding:14px 4px 16px 56px;
+    border-top:1px solid rgba(255,255,255,.06);color:#dfe5f1;font-size:14.5px;
+  }
+  ol.hilist li:first-child{border-top:none;}
+  ol.hilist li::before{
+    content:counter(h,decimal-leading-zero);position:absolute;left:0;top:13px;
+    font-family:"Inter",sans-serif;font-weight:800;font-size:15px;color:var(--accent);
+    background:rgba(79,124,255,.12);width:38px;height:38px;border-radius:10px;
+    display:flex;align-items:center;justify-content:center;
+  }
+  ol.hilist li b{color:#fff;font-weight:700;}
+  ol.hilist li .meta{display:block;color:#8b95ad;font-size:12px;margin-top:3px;}
+  ol.hilist li .hi-src{display:inline-block;margin-top:8px;font-family:"Inter",sans-serif;font-size:12px;font-weight:600;color:#8fb0ff;text-decoration:none;}
+  ol.hilist li .hi-src:hover{text-decoration:underline;}
+
+  /* Toggle bar */
+  .toolbar{
+    position:sticky;top:0;z-index:10;margin-top:30px;
+    background:rgba(15,19,32,.92);backdrop-filter:blur(8px);
+    padding:14px 4px;display:flex;align-items:center;justify-content:space-between;gap:14px;
+    border-bottom:1px solid rgba(255,255,255,.07);
+  }
+  .toolbar h2{color:#fff;font-size:17px;margin:0;}
+  .switch{display:flex;align-items:center;gap:10px;color:#cdd5e6;font-size:13px;cursor:pointer;user-select:none;}
+  .switch input{display:none;}
+  .track{width:44px;height:24px;border-radius:20px;background:#33405e;position:relative;transition:.2s;flex:none;}
+  .track::after{content:"";position:absolute;top:3px;left:3px;width:18px;height:18px;border-radius:50%;background:#fff;transition:.2s;}
+  .switch input:checked + .track{background:var(--tag-design);}
+  .switch input:checked + .track::after{transform:translateX(20px);}
+
+  /* Category */
+  .cat{margin-top:30px;}
+  .cat-head{display:flex;align-items:center;gap:11px;margin-bottom:14px;}
+  .cat-head .ico{
+    width:34px;height:34px;border-radius:9px;flex:none;display:flex;align-items:center;justify-content:center;font-size:17px;
+    background:var(--panel2);border:1px solid rgba(255,255,255,.07);
+  }
+  .cat-head h3{color:#fff;font-size:17px;margin:0;font-weight:700;}
+  .cat-head .count{color:#8b95ad;font-size:12.5px;margin-left:auto;}
+
+  .cards{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+  @media(max-width:720px){.cards{grid-template-columns:1fr;}}
+  .card{
+    background:var(--card);border:1px solid var(--card-border);border-radius:14px;
+    padding:17px 17px 15px;box-shadow:var(--shadow);display:flex;flex-direction:column;
+  }
+  .card .tags{display:flex;gap:7px;align-items:center;margin-bottom:9px;flex-wrap:wrap;}
+  .tag{font-size:11px;font-weight:700;padding:3px 9px;border-radius:6px;letter-spacing:.3px;}
+  .tag.design{color:var(--tag-design);background:var(--tag-design-bg);}
+  .tag.context{color:var(--tag-context);background:var(--tag-context-bg);}
+  .tag.region{color:#9a5b00;background:#fdeccb;}
+  .card h4{margin:0 0 7px;font-size:15.5px;line-height:1.45;color:var(--ink);font-weight:700;}
+  .card .lead{font-size:13.5px;color:var(--ink-soft);margin:0 0 11px;}
+  .card .foryou{
+    background:#f4f7ff;border-left:3px solid var(--accent);border-radius:0 8px 8px 0;
+    padding:9px 12px;font-size:13px;color:#324063;margin:0 0 12px;
+  }
+  .card .foryou b{color:var(--accent);font-weight:700;}
+  .card .conf{font-size:11.5px;color:var(--muted);margin:0 0 11px;font-family:"Inter",sans-serif;}
+  .card .conf b{color:var(--ink-soft);font-weight:600;}
+  .card .foot{margin-top:auto;display:flex;align-items:center;justify-content:space-between;gap:10px;border-top:1px solid #eef0f5;padding-top:11px;}
+  .card .src{font-size:12.5px;font-weight:600;color:var(--accent);text-decoration:none;display:inline-flex;align-items:center;gap:5px;}
+  .card .src:hover{text-decoration:underline;}
+  .card .date{font-size:12px;color:var(--muted);font-family:"Inter",sans-serif;}
+  .empty{
+    grid-column:1/-1;background:rgba(255,255,255,.04);border:1px dashed rgba(255,255,255,.14);
+    border-radius:12px;color:#8b95ad;font-size:13.5px;padding:18px;text-align:center;line-height:1.7;
+  }
+  .hidden{display:none !important;}
+
+  /* 取樣方式說明 */
+  .method{
+    margin-top:30px;background:var(--panel);border:1px solid rgba(255,255,255,.06);
+    border-radius:14px;padding:18px 20px;color:#aeb7cd;font-size:12.5px;line-height:1.75;
+  }
+  .method b{color:#dfe5f1;}
+  .method p{margin:0 0 10px;}
+  .method p:last-child{margin-bottom:0;}
+
+  footer{margin-top:30px;text-align:center;color:#6c768c;font-size:12px;line-height:1.8;}
+  footer .ftag{color:#8b95ad;}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <div class="brand">
+      <a class="logo" href="../index.html" title="回歷史總表：查看全部期數" aria-label="回歷史總表，查看全部期數">ET</a>
+      <div>
+        <h1>EdTech 雙週報</h1>
+        <p>給 EdTech UX Designer 的雙週產業掃描 · 北美優先</p>
+      </div>
+    </div>
+    <div class="issue">
+      <div class="label">本期執行日期</div>
+      <div class="date">2026.11.15</div>
+    </div>
+  </div>
+  <div class="wrap" style="padding-top:0;">
+    <div class="scope">
+      <span>蒐集區間：2026/11/03 – 11/15</span>
+      <span>地區：US › APAC › EU</span>
+    </div>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <!-- HIGHLIGHTS -->
+  <section class="hi-block">
+    <h2><span class="hi-dot"></span>本期最該關注</h2>
+    <p class="sub">依設計決策影響程度排序，競品動態優先</p>
+    <ol class="hilist">
+      <li>
+        <b>Microsoft 宣布獨立的 Microsoft Classroom，整合作業、成績與 OneNote 課堂筆記本，也能透過 LTI 在既有 LMS 內使用</b>：Microsoft 11/11 公告，Classroom 不取代 Teams for Education 或 Microsoft 365 LTI，整合 Assignments、Grades、OneNote Class Notebook 等，AI 備課工作區 Teach 也會放進來。預覽版預計 2027 年初。
+        <span class="meta">→ 競品把教學流程集中到一個獨立入口。</span>
+        <a class="hi-src" href="https://techcommunity.microsoft.com/blog/educationblog/introducing-microsoft-classroom-a-new-experience-built-for-teaching-and-learning/4571185" target="_blank" rel="noopener">來源：Microsoft Education Blog（2026-11-11） ↗</a>
+      </li>
+      <li>
+        <b>Google 將對 K-12 學生帳號預設關閉 Search 與另兩項 AI 功能，需管理員開啟；芝加哥家長與教育者到 Google 辦公室抗議</b>：K-12 Dive 報導，Google 表示學校要求對學生使用 AI 服務有更多控制，但何時開始仍不明；管理員可重新開啟 Search、Gemini 等。批評者稱這是「敵意的最後通牒」。據 The 74 轉載 Chalkbeat，芝加哥公立學校已封鎖學生使用生成式 AI，約 30 人 11/11 在 Google 芝加哥辦公室抗議。
+        <span class="meta">→ 競品把搜尋與 AI 綁在同一個預設開關上。</span>
+        <a class="hi-src" href="https://www.k12dive.com/news/google-will-turn-off-its-search-engine-for-schools-by-default-is-it-an-ai/873922/" target="_blank" rel="noopener">來源：K-12 Dive（2026-11-05） ↗</a>　<a class="hi-src" href="https://www.the74million.org/article/protests-in-chicago-after-google-warns-schools-about-disabling-ai-feature/" target="_blank" rel="noopener">芝加哥抗議：The 74（2026-11-14） ↗</a>
+      </li>
+      <li>
+        <b>Clever 宣布學生可用徽章、圖片、PIN 等八種方式做多因素驗證，並可量測每位學生的螢幕使用時間</b>：Clever 11/13 公告 NEXT@ Clever 產品更新：Classroom MFA 提供八種適合學生的驗證方式；自 2026 年 11 月起，管理員可量測到個別學生的實際螢幕時間；學區可限制分享給每個應用夥伴的 SIS 欄位。
+        <span class="meta">→ 登入入口開始把學生年齡與螢幕時間一起納入。</span>
+        <a class="hi-src" href="https://www.clever.com/blog/2026/11/product-roadmap-schools" target="_blank" rel="noopener">來源：Clever 官方部落格（2026-11-13） ↗</a>
+      </li>
+      <li>
+        <b>Google Classroom 可在作業中加入 Guided Learning，教師可看個別學生對話紀錄</b>：Google 11/3 宣布 Guided Learning 在 Google Classroom 全球上線，教師可把它加進任何作業，並取得即時洞察找出全班需要協助之處。Workspace 公告寫明教師與學生須在 Gemini 設為開啟的群組或 OU 內。
+        <span class="meta">→ 競品把 AI 家教放進作業流程，並給教師全班視角。</span>
+        <a class="hi-src" href="https://workspaceupdates.googleblog.com/2026/11/educators-can-now-add-guided-learning-to-assignments-in-Google-Classroom-to-help-students-get-extra-support.html" target="_blank" rel="noopener">來源：Google Workspace Updates（2026-11-04） ↗</a>　<a class="hi-src" href="https://blog.google/products-and-platforms/products/education/ai-learning-era-updates-2026/" target="_blank" rel="noopener">全球上線與即時洞察：Google 官方部落格（2026-11-03） ↗</a>
+      </li>
+      <li>
+        <b>家長提告：指 13 歲女兒用學校配發 Chromebook 與 Google 搜尋 AI 模式對話後陷入心理危機</b>：EdWeek 報導，訴訟 11/4 在加州 Santa Clara 郡高等法院提出，原告律師稱這是第一件針對 Google Chromebook 的案件。據訴狀，學生透過與 AI 聊天機器人對話，深信自己有心理疾患；事情是經由學校的第三方監控軟體發現。
+        <span class="meta">→ 學校配發裝置上的 AI 對話成為訴訟對象。</span>
+        <a class="hi-src" href="https://www.edweek.org/technology/lawsuit-blames-a-school-issued-chromebook-for-students-mental-health-crisis/2026/11" target="_blank" rel="noopener">來源：Education Week（2026-11-06） ↗</a>
+      </li>
+    </ol>
+  </section>
+
+  <!-- TOOLBAR -->
+  <div class="toolbar">
+    <h2>本期結果</h2>
+    <label class="switch">
+      <span>只看「影響設計決策」</span>
+      <input type="checkbox" id="designOnly">
+      <span class="track"></span>
+    </label>
+  </div>
+
+  <section class="cat" data-cat="法規">
+    <div class="cat-head">
+      <div class="ico">⚖️</div><h3>法規 / 政策</h3>
+      <span class="count"></span>
+    </div>
+    <div class="cards">
+      <article class="card" data-level="design">
+        <div class="tags"><span class="tag design">影響設計決策</span><span class="tag region">US · 競品 · 預設值</span></div>
+        <h4>Google 將對 K-12 學生帳號預設關閉 Search 與另兩項 AI 功能，需管理員開啟；芝加哥家長與教育者到 Google 辦公室抗議</h4>
+        <p class="lead">K-12 Dive 報導，Google 將對 K-12 學生帳號預設關閉 Search 與另兩項 AI 功能，理由是學校要求對學生使用 AI 服務有更多控制，但何時開始仍不明；管理員可重新開啟 Search、Gemini 等服務。批評者稱這是「敵意的最後通牒」。據 The 74 轉載 Chalkbeat，芝加哥公立學校已封鎖學生使用生成式 AI；Google 表示禁用 AI 的學校將無法使用搜尋，約 30 人 11/11 到 Google 芝加哥辦公室抗議。</p>
+        <div class="foryou"><b>對你而言：</b>被學區關掉的功能，連帶影響了不相干的功能。自家某項功能被管理員關閉時，學生畫面上會怎麼呈現？</div>
+        <p class="conf"><b>信心：高</b>　·　來源類型：產業媒體報導（K-12 Dive）；芝加哥抗議引自 The 74 轉載 Chalkbeat</p>
+        <div class="foot"><span><a class="src" href="https://www.k12dive.com/news/google-will-turn-off-its-search-engine-for-schools-by-default-is-it-an-ai/873922/" target="_blank" rel="noopener">來源 ↗</a>　<a class="src" href="https://www.the74million.org/article/protests-in-chicago-after-google-warns-schools-about-disabling-ai-feature/" target="_blank" rel="noopener">芝加哥抗議 ↗</a></span><span class="date">2026-11-05</span></div>
+      </article>
+      <article class="card" data-level="design">
+        <div class="tags"><span class="tag design">影響設計決策</span><span class="tag region">US · 兒少安全 · 競品</span></div>
+        <h4>家長提告：指 13 歲女兒用學校配發 Chromebook 與 Google 搜尋 AI 模式對話後陷入心理危機</h4>
+        <p class="lead">EdWeek 報導，訴訟 11/4 在加州 Santa Clara 郡高等法院提出，原告律師稱這是第一件針對 Google Chromebook 的案件。學生用學校配發的 Chromebook 使用 Google 搜尋由 Gemini 驅動的 AI 模式；據訴狀，她透過與 AI 聊天機器人的對話，深信自己有心理疾患；事情經由學校的第三方監控軟體發現。報導並提到 Google Classroom 已向所有年齡的 K-12 學生開放 Gemini 聊天機器人。</p>
+        <div class="foryou"><b>對你而言：</b>訴訟對象是學校配發的裝置。自家學生端若出現開放式 AI 回應，老師能即時看到學生收到了什麼嗎？</div>
+        <p class="conf"><b>信心：中</b>　·　來源類型：產業媒體報導訴訟（Education Week）；內容為原告主張，尚未經法院認定</p>
+        <div class="foot"><a class="src" href="https://www.edweek.org/technology/lawsuit-blames-a-school-issued-chromebook-for-students-mental-health-crisis/2026/11" target="_blank" rel="noopener">來源 ↗</a><span class="date">2026-11-06</span></div>
+      </article>
+      <article class="card" data-level="context">
+        <div class="tags"><span class="tag context">背景脈絡</span><span class="tag region">APAC · 澳洲</span></div>
+        <h4>澳洲教育部長會議同意全國「數位排毒」：成立專責小組，限制小學使用生成式 AI</h4>
+        <p class="lead">Region 報導，澳洲各州教育部長同意成立 Australian Schools Digital Detox Taskforce 推動改革，並限制小學學生使用生成式 AI，以及學生在中學評量中使用生成式 AI。五年級 NAPLAN 寫作測驗將自 2028 年改回紙本；另設 Teaching and Learning Commission，作為負責全國課綱的單一機構。</p>
+        <div class="foryou"><b>對你而言：</b>規範對象是學生使用的數位工具。全班共看大屏的課中互動，在這類規範下會被歸為學生螢幕時間嗎？</div>
+        <p class="conf"><b>信心：中</b>　·　來源類型：地區媒體報導部長會議決議（Region）；官方公報 PDF 無法開啟</p>
+        <div class="foot"><a class="src" href="https://region.com.au/back-to-reading-writing-and-rithmetic-as-schools-head-for-a-digital-detox/1013679/" target="_blank" rel="noopener">來源 ↗</a><span class="date">2026-11-06</span></div>
+      </article>
+      <article class="card" data-level="context">
+        <div class="tags"><span class="tag context">背景脈絡</span><span class="tag region">US · 聯邦經費</span></div>
+        <h4>美國教育部改寫補助規則，學區擔憂經費不穩定</h4>
+        <p class="lead">The 74 報導，教育部刪減 12 州近 1.7 億美元的社區學校補助；11/1 生效的一項全聯邦政府規定，要求受補助者每次請款都提出書面理由。另一項提案允許「為了便利」中途取消補助，收到逾 5,500 則意見，23 位州檢察長反對。</p>
+        <div class="foryou"><b>對你而言：</b>補助可能中途中止，學區採購會更謹慎。學區從試用走到正式採購時，自家產品能提供哪些使用數據？</div>
+        <p class="conf"><b>信心：高</b>　·　來源類型：教育非營利媒體報導（The 74）</p>
+        <div class="foot"><a class="src" href="https://www.the74million.org/article/education-dept-s-overhaul-of-grant-rules-sparks-concern-about-instability/" target="_blank" rel="noopener">來源 ↗</a><span class="date">2026-11-09</span></div>
+      </article>
+      <article class="card" data-level="context">
+        <div class="tags"><span class="tag context">背景脈絡</span><span class="tag region">US · 學生資料</span></div>
+        <h4>Anthropic 與教師工會簽訂學生 AI 隱私協議，由學校決定資料保存與刪除</h4>
+        <p class="lead">K-12 Dive 報導，這份具法律約束力的協議條款，將適用於 Anthropic 與學區的既有合約；學生與教育者資訊僅能用於經授權的教育目的，由學校控制資料保存多久與何時刪除。AFT 主席 Weingarten 稱這離產業標準更近一步。</p>
+        <div class="foryou"><b>對你而言：</b>協議把保存期限與刪除權交給學校。學區 IT 在自家管理端找得到設定保存期限與刪除資料的地方嗎？</div>
+        <p class="conf"><b>信心：高</b>　·　來源類型：產業媒體報導（K-12 Dive）</p>
+        <div class="foot"><a class="src" href="https://www.k12dive.com/news/anthropic-enters-student-ai-privacy-agreement-with-teachers-unions/874193/" target="_blank" rel="noopener">來源 ↗</a><span class="date">2026-11-10</span></div>
+      </article>
+    </div>
+  </section>
+
+  <section class="cat" data-cat="IFP">
+    <div class="cat-head">
+      <div class="ico">🖥️</div><h3>IFP 互動大屏</h3>
+      <span class="count"></span>
+    </div>
+    <div class="cards">
+      <article class="card" data-level="context">
+        <div class="tags"><span class="tag context">背景脈絡</span><span class="tag region">APAC · 台灣 · 自家</span></div>
+        <h4>ViewSonic 在 2026 臺灣教育科技展展出 myViewBoard AI 教材製作與大型 LED 案例</h4>
+        <p class="lead">ViewSonic 11/12 新聞稿：於臺北世貿一館 B822 攤位展出，首度公開展示 myViewBoard 全新 AI 輔助教材製作與學習分析功能，系統可自動生成符合 myViewBoard 應用的 OLF 格式教材。案例包括東海大學導入 294 吋 All-in-One LED、臺大體育館以 231 吋 All-in-One LED 取代手動計分板。</p>
+        <div class="foryou"><b>對你而言：</b>AI 把既有教材轉成統一格式。老師打開轉好的教材時，看得出哪些頁面是 AI 生成或改寫的嗎？</div>
+        <p class="conf"><b>信心：高</b>　·　來源類型：自家官方新聞稿（ViewSonic 台灣）</p>
+        <div class="foot"><a class="src" href="https://www.viewsonic.com/tw/presscenter/content/2026-viewsoniccny_7959" target="_blank" rel="noopener">來源 ↗</a><span class="date">2026-11-12</span></div>
+      </article>
+    </div>
+  </section>
+
+  <section class="cat" data-cat="軟體">
+    <div class="cat-head">
+      <div class="ico">🧩</div><h3>教育軟體競品</h3>
+      <span class="count"></span>
+    </div>
+    <div class="cards">
+      <article class="card" data-level="design">
+        <div class="tags"><span class="tag design">影響設計決策</span><span class="tag region">Global · 競品</span></div>
+        <h4>Microsoft 宣布獨立的 Microsoft Classroom，整合作業、成績與 OneNote 課堂筆記本，也能透過 LTI 在既有 LMS 內使用</h4>
+        <p class="lead">Microsoft 11/11 公告，Classroom 是獨立的 Microsoft 365 教學體驗，不取代 Teams for Education 或 Microsoft 365 LTI。它整合 Assignments、Classwork、Grades、OneNote Class Notebook、Learning Accelerators 與 Insights，AI 備課工作區 Teach 也會放進來；也可透過 LTI 在既有 LMS 內使用。預覽版預計 2027 年初。</p>
+        <div class="foryou"><b>對你而言：</b>競品把教學流程集中到一個入口。老師從 LMS 進到自家課中互動時，需要另外登入或重建班級嗎？</div>
+        <p class="conf"><b>信心：高</b>　·　來源類型：官方產品部落格（Microsoft Education Blog）</p>
+        <div class="foot"><a class="src" href="https://techcommunity.microsoft.com/blog/educationblog/introducing-microsoft-classroom-a-new-experience-built-for-teaching-and-learning/4571185" target="_blank" rel="noopener">來源 ↗</a><span class="date">2026-11-11</span></div>
+      </article>
+      <article class="card" data-level="design">
+        <div class="tags"><span class="tag design">影響設計決策</span><span class="tag region">US · 互通性</span></div>
+        <h4>Clever 宣布學生可用徽章、圖片、PIN 等八種方式做多因素驗證，並可量測每位學生的螢幕使用時間</h4>
+        <p class="lead">Clever 11/13 公告 NEXT@ Clever 產品更新：Classroom MFA 提供八種適合學生的驗證方式，如 Clever Badges、登入圖片與 PIN；自 2026 年 11 月起，管理員可量測到個別學生的實際螢幕時間；學區可限制分享給 1,250 多個應用夥伴的 SIS 欄位。公告也提到，Microsoft 將自 2027/2/1 起取消 Entra ID 的語音與簡訊登入碼。</p>
+        <div class="foryou"><b>對你而言：</b>Clever 為學生設計低齡也能用的驗證方式。最低年級的學生加入自家課中互動時，能不靠老師自己完成嗎？</div>
+        <p class="conf"><b>信心：高</b>　·　來源類型：官方公司部落格（Clever）</p>
+        <div class="foot"><a class="src" href="https://www.clever.com/blog/2026/11/product-roadmap-schools" target="_blank" rel="noopener">來源 ↗</a><span class="date">2026-11-13</span></div>
+      </article>
+      <article class="card" data-level="design">
+        <div class="tags"><span class="tag design">影響設計決策</span><span class="tag region">Global · 競品</span></div>
+        <h4>Google Classroom 可在作業中加入 Guided Learning，教師可看個別學生對話紀錄</h4>
+        <p class="lead">Google Workspace 11/4 公告：教師可把 Guided Learning 加進 Google Classroom 的任何作業，並可查看個別學生的對話紀錄；適用 Education Fundamentals、Standard、Plus，教師與學生須在 Gemini 設為開啟的群組或 OU 內。Google 官方部落格 11/3 表示 Guided Learning 即日起在 Google Classroom 全球上線，並提供即時洞察，找出全班可能需要協助之處。</p>
+        <div class="foryou"><b>對你而言：</b>競品給老師全班卡關的即時視角。ClassSwift 的即時回饋在大屏上，老師一眼看得出哪題該停下來講嗎？</div>
+        <p class="conf"><b>信心：高</b>　·　來源類型：官方產品公告（Google Workspace Updates）；即時洞察引自 Google 官方部落格</p>
+        <div class="foot"><span><a class="src" href="https://workspaceupdates.googleblog.com/2026/11/educators-can-now-add-guided-learning-to-assignments-in-Google-Classroom-to-help-students-get-extra-support.html" target="_blank" rel="noopener">來源 ↗</a>　<a class="src" href="https://blog.google/products-and-platforms/products/education/ai-learning-era-updates-2026/" target="_blank" rel="noopener">即時洞察 ↗</a></span><span class="date">2026-11-04</span></div>
+      </article>
+    </div>
+  </section>
+
+  <section class="cat" data-cat="UX">
+    <div class="cat-head">
+      <div class="ico">🎨</div><h3>UX / 設計趨勢</h3>
+      <span class="count"></span>
+    </div>
+    <div class="cards">
+      <article class="card" data-level="design">
+        <div class="tags"><span class="tag design">影響設計決策</span><span class="tag region">US · 裝置使用</span></div>
+        <h4>Fordham 調查：逾四分之三高中生承認上課時間誤用科技，三分之二說學校裝置可開 YouTube</h4>
+        <p class="lead">K-12 Dive 報導 Fordham Institute 調查：略高於四分之三的高中生表示在上課時間誤用科技；62% 表示超過一半的課堂時間在用學校配發裝置；三分之二表示學校裝置可以開 YouTube。手機全面禁用時，學生使用社群媒體的可能性最低。</p>
+        <div class="foryou"><b>對你而言：</b>學生在學校裝置上分心很常見。課中把內容推到學生裝置時，老師看得出誰已離開課堂畫面嗎？</div>
+        <p class="conf"><b>信心：高</b>　·　來源類型：產業媒體報導全國調查（K-12 Dive／Fordham Institute）</p>
+        <div class="foot"><a class="src" href="https://www.k12dive.com/news/majority-of-students-report-misusing-tech-during-school-hours/874322/" target="_blank" rel="noopener">來源 ↗</a><span class="date">2026-11-11</span></div>
+      </article>
+      <article class="card" data-level="context">
+        <div class="tags"><span class="tag context">背景脈絡</span><span class="tag region">US · 研究</span></div>
+        <h4>Stanford 回顧 52 項研究：AI 用來支援學習比用來完成作業效果好</h4>
+        <p class="lead">EdWeek 報導 Stanford 研究者分析 52 項隨機對照與準實驗研究：學生把 AI 用於學習支援，學習成效通常優於用 AI 完成作業；至少一項研究發現教師使用 AI 會降低學生的動機與信心。52 項研究中只有 10 項以美國 K-12 學生或教育者為對象。</p>
+        <div class="foryou"><b>對你而言：</b>差別在 AI 幫學生想還是幫學生做。自家的 AI 功能，屬於哪一種？</div>
+        <p class="conf"><b>信心：高</b>　·　來源類型：產業媒體報導研究回顧（Education Week）</p>
+        <div class="foot"><a class="src" href="https://www.edweek.org/technology/is-ai-good-or-bad-for-learning-the-answer-isnt-so-simple/2026/11" target="_blank" rel="noopener">來源 ↗</a><span class="date">2026-11-10</span></div>
+      </article>
+    </div>
+  </section>
+
+  <section class="cat" data-cat="市場">
+    <div class="cat-head">
+      <div class="ico">📊</div><h3>市場動向 / 展會報告</h3>
+      <span class="count"></span>
+    </div>
+    <div class="cards">
+      <article class="card" data-level="design">
+        <div class="tags"><span class="tag design">影響設計決策</span><span class="tag region">Global · 競品 · 授權</span></div>
+        <h4>Microsoft 將退場免費的 Office 365 A1，Classroom 只放在付費 A2–A7 版本</h4>
+        <p class="lead">EdTech Innovation Hub 報導，免費 A1 將在 2028/1/1 以後的首次續約時退場；Classroom 將包含在付費的 Microsoft 365 Education A2、A3、A5、A7。Microsoft Learn 頁面寫明，免費學生方案不含 Exchange Online、SharePoint Online 與 Teams；A2 自 2026/12/1 起正式提供。</p>
+        <div class="foryou"><b>對你而言：</b>學區可能改用不含 Teams 與郵件的免費方案。自家依賴 Microsoft 帳號的登入與分享流程，在這種方案下還走得通嗎？</div>
+        <p class="conf"><b>信心：高</b>　·　來源類型：產業媒體報導（EdTech Innovation Hub）；方案細節引自 Microsoft Learn 官方文件</p>
+        <div class="foot"><span><a class="src" href="https://www.edtechinnovationhub.com/news/microsoft-to-retire-free-office-365-a1-as-it-introduces-classroom" target="_blank" rel="noopener">來源 ↗</a>　<a class="src" href="https://learn.microsoft.com/en-us/training/educator-center/instructor-materials/microsoft-365-education-portfolio" target="_blank" rel="noopener">方案細節 ↗</a></span><span class="date">2026-11-11</span></div>
+      </article>
+      <article class="card" data-level="context">
+        <div class="tags"><span class="tag context">背景脈絡</span><span class="tag region">US · 競品財務</span></div>
+        <h4>Promethean 母公司 Mynd.ai 將 ADS 比率從 1:10 改為 1:75</h4>
+        <p class="lead">Mynd.ai 11/6 新聞稿：ADS 比率將從 1 ADS 代表 10 股普通股改為代表 75 股，效果等同 1 比 7.5 的 ADS 反向分割；新聞稿寫預計 2027/12/7 前後生效。ADS 仍在 NYSE American 以「MYND」交易，普通股不受影響，持有人無須採取行動。新聞稿未說明變更原因。</p>
+        <div class="foryou"><b>對你而言：</b>這是主要競品母公司的資本動作，新聞稿未提產品。後續是否牽動 Promethean 的產品或通路，值得在下期持續觀察。</div>
+        <p class="conf"><b>信心：高</b>　·　來源類型：公司新聞稿（PR Newswire）</p>
+        <div class="foot"><a class="src" href="https://www.prnewswire.com/news-releases/myndai-announces-change-to-american-depositary-share-ratio-302932330.html" target="_blank" rel="noopener">來源 ↗</a><span class="date">2026-11-06</span></div>
+      </article>
+      <article class="card" data-level="context">
+        <div class="tags"><span class="tag context">背景脈絡</span><span class="tag region">US · 競品財務</span></div>
+        <h4>Clevertouch 母公司 Boxlight 股東通過各項提案，董事會決定不改名</h4>
+        <p class="lead">Boxlight 11/12 新聞稿（SEC 8-K 附件）：股東在特別會議通過各項提案，但董事會決定不進行更名；董事會尚未決定是否、何時、以何比率進行反向分割。公司預期第二批籌資毛額 200 萬美元，並可開始動用最高 1,500 萬美元的股權信用額度。Nasdaq 聽證小組 9 月認定其已恢復合規。</p>
+        <div class="foryou"><b>對你而言：</b>大屏競品仍在籌措營運資金。學區比較大屏廠商時，看得到各家軟體更新與支援年限嗎？</div>
+        <p class="conf"><b>信心：高</b>　·　來源類型：公司新聞稿（SEC 8-K 附件 99.1）</p>
+        <div class="foot"><a class="src" href="https://www.sec.gov/Archives/edgar/data/1624512/000121390026118494/ea031180201ex99-1.htm" target="_blank" rel="noopener">來源 ↗</a><span class="date">2026-11-12</span></div>
+      </article>
+      <article class="card" data-level="context">
+        <div class="tags"><span class="tag context">背景脈絡</span><span class="tag region">US · 採購指引</span></div>
+        <h4>SETDA《State EdTech Trends Report》：53% 州已發布 AI 工具採購指引</h4>
+        <p class="lead">EdWeek Market Brief 報導 SETDA 第五份州教育科技趨勢報告：各州連續第二年把 AI 列為首要優先；53% 的州已發布採購 AI 工具的指引，去年約 40%；62% 指專業發展是教師最大未滿足的科技需求，上升 15 個百分點。已有採購指引的州中，約八成納入實證導向的品質指標，前一年為 45%。</p>
+        <div class="foryou"><b>對你而言：</b>過半州已有 AI 採購指引。學區審查自家 AI 功能時會問的問題，在產品頁上找得到答案嗎？</div>
+        <p class="conf"><b>信心：高</b>　·　來源類型：產業媒體報導全國調查（EdWeek Market Brief／SETDA）</p>
+        <div class="foot"><a class="src" href="https://marketbrief.edweek.org/education-market/ai-is-the-top-state-ed-tech-priority-and-pd-the-fastest-growing-unmet-need-new-report-shows/2026/11" target="_blank" rel="noopener">來源 ↗</a><span class="date">2026-11-05</span></div>
+      </article>
+      <article class="card" data-level="context">
+        <div class="tags"><span class="tag context">背景脈絡</span><span class="tag region">US · 關校整併</span></div>
+        <h4>St. Louis 學區投票通過關閉 9 所學校</h4>
+        <p class="lead">K-12 Dive 報導，St. Louis 公立學區董事會 11/10 以 4 比 3 通過，自 2027–28 學年將學校數從 61 所減為 52 所。1991 至 2025 年間在學人數減少 58.5%，即 25,303 人；關校能省下多少經費仍不明。學區今年稍早被降為「暫時認證」。</p>
+        <div class="foryou"><b>對你而言：</b>關校後學生分散到其他學校。學生轉班後，自家課中互動的班級名單能隨 rostering 自動更新嗎？</div>
+        <p class="conf"><b>信心：高</b>　·　來源類型：產業媒體報導學區決議（K-12 Dive）</p>
+        <div class="foot"><a class="src" href="https://www.k12dive.com/news/st-louis-school-board-votes-to-close-9-schools/874530/" target="_blank" rel="noopener">來源 ↗</a><span class="date">2026-11-12</span></div>
+      </article>
+    </div>
+  </section>
+
+  <!-- 取樣方式 -->
+  <section class="method">
+    <p><b>本期取樣與查證方式</b>　蒐集區間 2026/11/03–11/15，與前期（2026-11-02，區間 10/16–11/02）銜接，期間無空隙。</p>
+    <p>五大面向各做多次日期精確搜尋，逐層掃描一手／權威層（政府公告、廠商 newsroom 與官方部落格、版本更新說明、SEC 申報）→ 產業媒體層（K-12 Dive、EdWeek、EdWeek Market Brief、EdTech Innovation Hub、The 74）→ 展會／報告層。軟體競品已個別查詢 Canva for Education、SchoolAI、ClassDojo、Microsoft Education；IFP 競品已逐家查詢 Promethean（含母公司 Mynd.ai）、SMART、BenQ、Samsung、Newline、Clevertouch、Vibe。</p>
+    <p>每則來源均已開頁核對內容、網址與真實發布日期，並標信心等級與來源類型；排序以競品動態與相關市場訊號優先，AI 通論類項目降權。</p>
+  </section>
+
+  <footer>
+    <div>EdTech 雙週報 · 本期 2026-11-15 · 蒐集區間 2026/11/03–11/15</div>
+    <div class="ftag">本期僅保留可查證於本期的項目並回溯一手來源。連結為原始來源，請以原文為準。下期預定 2026-12-01。</div>
+  </footer>
+
+</div>
+
+<script>
+  // 設計決策過濾開關
+  (function(){
+    var toggle=document.getElementById('designOnly');
+    var cats=document.querySelectorAll('.cat');
+    function apply(){
+      var on=toggle.checked;
+      cats.forEach(function(cat){
+        var cards=cat.querySelectorAll('.card');
+        var shown=0;
+        cards.forEach(function(c){
+          var keep=!on || c.getAttribute('data-level')==='design';
+          c.classList.toggle('hidden',!keep);
+          if(keep) shown++;
+        });
+        var emptyEl=cat.querySelector('.empty');
+        if(emptyEl && cat.querySelectorAll('.card').length>0){
+          if(shown===0){
+            emptyEl.textContent='本區本期無「影響設計決策」項目';
+            emptyEl.classList.remove('hidden');
+          } else {
+            emptyEl.classList.add('hidden');
+          }
+        }
+        var countEl=cat.querySelector('.count');
+        if(countEl) countEl.textContent=shown+' 則';
+      });
+    }
+    cats.forEach(function(cat){
+      var n=cat.querySelectorAll('.card').length;
+      var c=cat.querySelector('.count'); if(c)c.textContent=n+' 則';
+    });
+    toggle.addEventListener('change',apply);
+  })();
+</script>
+</body>
+</html>
